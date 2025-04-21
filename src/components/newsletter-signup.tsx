@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Send } from "lucide-react";
 import Button from "@/components/ui/button";
 import Input from "@/components/ui/input";
+import Link from "next/link";
 
 /**
  * Newsletter signup component
@@ -89,9 +90,9 @@ export default function NewsletterSignup() {
 
         <p className="text-xs text-muted-foreground">
           By subscribing, you agree to our{" "}
-          <a href="/" className="underline hover:text-primary">
+          <Link href="/" className="underline hover:text-primary">
             Privacy Policy
-          </a>{" "}
+          </Link>{" "}
           and to receive marketing emails from us.
         </p>
       </form>

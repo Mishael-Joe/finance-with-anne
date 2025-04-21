@@ -10,10 +10,12 @@ import NewsletterSignup from "@/components/newsletter-signup";
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
+  // Await the params to get the slug
+  const { slug } = await params;
   // Get the post data based on the slug
-  const post = getPostBySlug(params.slug);
+  const post = getPostBySlug(slug);
 
   if (!post) {
     return {
@@ -35,9 +37,15 @@ export function generateStaticParams() {
   }));
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  // Await the params to get the slug
+  const { slug } = await params;
   // Get the post data based on the slug
-  const post = getPostBySlug(params.slug);
+  const post = getPostBySlug(slug);
 
   // If post not found, display a message
   if (!post) {
