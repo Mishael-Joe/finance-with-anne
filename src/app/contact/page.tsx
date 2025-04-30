@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Instagram,
-  Linkedin,
-  Youtube,
-} from "lucide-react";
+import { Mail } from "lucide-react";
+import { FiYoutube, FiFacebook } from "react-icons/fi";
+import { FaInstagram } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { RiTiktokLine } from "react-icons/ri";
 import ContactForm from "@/components/contact-form";
+import { anneEmail } from "@/config";
 
 // Define metadata for SEO
 export const metadata: Metadata = {
@@ -49,12 +47,10 @@ export default function ContactPage() {
                   <Mail className="h-6 w-6 text-primary mr-4 mt-1" />
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
-                    <p className="text-muted-foreground">
-                      hello@financewithanne.com
-                    </p>
+                    <p className="text-muted-foreground">{anneEmail}</p>
                   </div>
                 </div>
-                <div className="flex items-start">
+                {/* <div className="flex items-start">
                   <Phone className="h-6 w-6 text-primary mr-4 mt-1" />
                   <div>
                     <h3 className="font-semibold mb-1">Phone</h3>
@@ -73,7 +69,7 @@ export default function ContactPage() {
                       Nigeria
                     </p>
                   </div>
-                </div>
+                </div> */}
               </div>
 
               {/* Social Media */}
@@ -86,17 +82,26 @@ export default function ContactPage() {
                     rel="noopener noreferrer"
                     className="bg-white p-3 rounded-full text-primary hover:bg-primary hover:text-white transition-colors"
                   >
-                    <Instagram className="h-5 w-5" />
+                    <FaInstagram className="h-5 w-5" />
                     <span className="sr-only">Instagram</span>
                   </a>
                   <a
-                    href="https://linkedin.com"
+                    href="https://facebook.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-white p-3 rounded-full text-primary hover:bg-primary hover:text-white transition-colors"
                   >
-                    <Linkedin className="h-5 w-5" />
-                    <span className="sr-only">LinkedIn</span>
+                    <FiFacebook className="h-5 w-5" />
+                    <span className="sr-only">Facebook</span>
+                  </a>
+                  <a
+                    href="https://x.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white p-3 rounded-full text-primary hover:bg-primary hover:text-white transition-colors"
+                  >
+                    <FaXTwitter className="h-5 w-5" />
+                    <span className="sr-only">Twitter Now X</span>
                   </a>
                   <a
                     href="https://youtube.com"
@@ -104,8 +109,17 @@ export default function ContactPage() {
                     rel="noopener noreferrer"
                     className="bg-white p-3 rounded-full text-primary hover:bg-primary hover:text-white transition-colors"
                   >
-                    <Youtube className="h-5 w-5" />
+                    <FiYoutube className="h-5 w-5" />
                     <span className="sr-only">YouTube</span>
+                  </a>
+                  <a
+                    href="https://tiktok.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white p-3 rounded-full text-primary hover:bg-primary hover:text-white transition-colors"
+                  >
+                    <RiTiktokLine className="h-5 w-5" />
+                    <span className="sr-only">Tiktok</span>
                   </a>
                 </div>
               </div>
@@ -150,15 +164,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      {/* Map (Optional) */}
-      {/* <section>
-        <div className="aspect-21/9 w-full bg-muted rounded-lg overflow-hidden relative">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <p className="text-muted-foreground">Map would be embedded here</p>
-          </div>
-        </div>
-      </section> */}
     </div>
   );
 }

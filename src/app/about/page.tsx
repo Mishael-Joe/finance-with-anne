@@ -30,28 +30,32 @@ export default function AboutPage() {
           <div>
             <h2 className="text-3xl font-bold mb-6">My Mission</h2>
             <p className="mb-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in
-              dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed
-              auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
+              At <span className=" italic">'Finance With Anne'</span>, my
+              mission is to simplify personal finance and empower
+              individuals—especially beginners—with the tools, knowledge, and
+              confidence to take control of their financial journey.
             </p>
             <p className="mb-4">
-              Ut in nulla enim. Phasellus molestie magna non est bibendum non
-              venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.
-              Mauris iaculis porttitor posuere.
+              I believe that financial literacy should be practical, relatable,
+              and accessible. Whether it’s budgeting, saving, investing, or
+              understanding money mindsets, my goal is to break down complex
+              financial concepts into easy, everyday steps you can take.
             </p>
             <p className="mb-6">
-              With over 10 years of experience in personal finance, I'm
-              dedicated to helping you build a secure financial future through
-              practical, actionable advice.
+              With years of experience teaching and practicing smart money
+              habits, I'm here to guide you toward building wealth with purpose
+              and intention—starting right where you are, one smart decision at
+              a time.
             </p>
             <Button href="/contact" variant="primary">
               Get in Touch
             </Button>
           </div>
+
           <div className="flex justify-center">
             <div className="relative w-full max-w-md aspect-3/4 rounded-lg overflow-hidden shadow-lg">
               <Image
-                src="/anne.jpg?height=600&width=450"
+                src="/anne.JPG?height=600&width=450"
                 alt="Anne - Financial Educator"
                 fill
                 className="object-cover"
@@ -69,20 +73,23 @@ export default function AboutPage() {
         </h2>
         <div className="space-y-4">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in
-            dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed
-            auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
+            I started Finance with Anne out of a deep desire to bridge the gap
+            between everyday people and practical financial wisdom. Too many are
+            overwhelmed by money talk, feeling left behind or unqualified to
+            take charge of their finances.
           </p>
           <p>
-            Ut in nulla enim. Phasellus molestie magna non est bibendum non
-            venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.
-            Mauris iaculis porttitor posuere.
+            Over the years, I’ve seen how financial stress can affect lives,
+            relationships, and opportunities. But I’ve also witnessed the
+            transformation that happens when people are equipped with clear,
+            simple, and empowering guidance on managing their money.
           </p>
           <p>
-            My own financial journey taught me that with the right knowledge and
-            tools, anyone can take control of their finances. Now, I'm
-            passionate about sharing what I've learned to help others achieve
-            financial freedom.
+            This platform is my way of paying it forward. My goal is to
+            demystify finance and show that anyone—regardless of background—can
+            make informed financial decisions and build a secure future. Finance
+            with Anne is more than just a blog; it’s a movement toward
+            confident, values-driven money management.
           </p>
         </div>
       </section>

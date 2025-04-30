@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Star } from "lucide-react";
+import { FaRegCircleUser } from "react-icons/fa6";
+import Link from "next/link";
 
 // Define metadata for SEO
 export const metadata: Metadata = {
@@ -40,31 +42,31 @@ export default function TestimonialsPage() {
               </div>
               <blockquote className="text-xl md:text-2xl italic mb-6">
                 "Working with Anne completely transformed my relationship with
-                money. For the first time in my life, I feel in control of my
-                finances and confident about my future."
+                money. I feel in control of my finances and confident about my
+                future."
               </blockquote>
               <div className="flex items-center">
                 <div className="mr-4">
                   <Image
-                    src="/anne.jpg?height=80&width=80"
+                    src="/testimonials/mishael.jpg?height=80&width=80"
                     alt="Featured Client"
-                    width={80}
-                    height={80}
+                    width={60}
+                    height={60}
                     className="rounded-full"
                   />
                 </div>
                 <div>
-                  <h3 className="font-bold text-xl">Jessica Martinez</h3>
-                  <p className="text-white/80">
-                    Financial Freedom Fundamentals Graduate
-                  </p>
+                  <h3 className="font-bold text-xl text-slate-200">
+                    Mishael Joseph
+                  </h3>
+                  {/* <p className="text-white/80">Mishael Joseph</p> */}
                 </div>
               </div>
             </div>
             <div className="flex justify-center">
               <div className="relative w-full max-w-md aspect-video rounded-lg overflow-hidden">
                 <Image
-                  src="/anne.jpg?height=400&width=600"
+                  src="/testimonials/mishael.jpg?height=400&width=600"
                   alt="Client Success Story"
                   fill
                   className="object-cover"
@@ -89,14 +91,14 @@ export default function TestimonialsPage() {
               ))}
             </div>
             <blockquote className="mb-6 italic">
-              "Anne's budgeting course helped me save an extra $500 per month
-              that I didn't even know I was wasting. I've now built my emergency
-              fund and started investing."
+              "Very excellent and professional. Attended to all my pertubing
+              questions and provided practical steps to improve my finance.
+              Thanks for the session, Anne."
             </blockquote>
             <div className="flex items-center">
               <div className="mr-4">
                 <Image
-                  src="/anne.jpg?height=60&width=60"
+                  src="/testimonials/adedayo.png?height=60&width=60"
                   alt="Client"
                   width={60}
                   height={60}
@@ -104,10 +106,7 @@ export default function TestimonialsPage() {
                 />
               </div>
               <div>
-                <h4 className="font-bold">Michael Johnson</h4>
-                <p className="text-sm text-muted-foreground">
-                  Budgeting Bootcamp Graduate
-                </p>
+                <h4 className="font-bold">Adedayo Adekunle</h4>
               </div>
             </div>
           </div>
@@ -123,24 +122,18 @@ export default function TestimonialsPage() {
               ))}
             </div>
             <blockquote className="mb-6 italic">
-              "I was drowning in debt and felt hopeless before finding Anne's
-              Debt Freedom Plan. Within 18 months, I paid off $27,000 in credit
-              card debt and student loans."
+              "Amazing session with Anne, when we finished I felt like I should
+              pay her more. She is doing an amazing job. You need to book her to
+              change your financial story."
             </blockquote>
             <div className="flex items-center">
               <div className="mr-4">
-                <Image
-                  src="/anne.jpg?height=60&width=60"
-                  alt="Client"
-                  width={60}
-                  height={60}
-                  className="rounded-full"
-                />
+                <FaRegCircleUser className="rounded-full w-12 h-12 text-slate-500" />
               </div>
               <div>
-                <h4 className="font-bold">Sarah Williams</h4>
+                <h4 className="font-bold">Ayodele Excellent Digitalpreneur</h4>
                 <p className="text-sm text-muted-foreground">
-                  Debt Freedom Plan Graduate
+                  Financial Coaching Client
                 </p>
               </div>
             </div>
@@ -157,25 +150,17 @@ export default function TestimonialsPage() {
               ))}
             </div>
             <blockquote className="mb-6 italic">
-              "As someone who knew nothing about investing, Anne's course gave
-              me the confidence to start building my portfolio. Her explanations
-              are clear and actionable."
+              "Thank you very much for today's class I feel so strong that my
+              journey to financial freedom just began I feel so excited right
+              now I don't think i can thank you enough Thank you very much God
+              bless you."
             </blockquote>
             <div className="flex items-center">
               <div className="mr-4">
-                <Image
-                  src="/anne.jpg?height=60&width=60"
-                  alt="Client"
-                  width={60}
-                  height={60}
-                  className="rounded-full"
-                />
+                <FaRegCircleUser className="rounded-full w-12 h-12 text-slate-500" />
               </div>
               <div>
-                <h4 className="font-bold">David Chen</h4>
-                <p className="text-sm text-muted-foreground">
-                  Investing for Beginners Student
-                </p>
+                <h4 className="font-bold">Chibunna Miracle</h4>
               </div>
             </div>
           </div>
@@ -191,25 +176,20 @@ export default function TestimonialsPage() {
               ))}
             </div>
             <blockquote className="mb-6 italic">
-              "Anne's retirement planning workshop completely changed how I view
-              my future. I now have a clear roadmap to retirement and feel much
-              more secure."
+              "This session was highly informative and educative as well, Anne
+              has this simple side of her that makes everything she teaches easy
+              to practice and apply, I love how I was able to discuss and plan
+              my investment journey with her. This class is recommended to you
+              if you are really tired of trial and error, Anne is the best
+              partner to have on your journey to steady growth in your
+              finances."
             </blockquote>
             <div className="flex items-center">
               <div className="mr-4">
-                <Image
-                  src="/anne.jpg?height=60&width=60"
-                  alt="Client"
-                  width={60}
-                  height={60}
-                  className="rounded-full"
-                />
+                <FaRegCircleUser className="rounded-full w-12 h-12 text-slate-500" />
               </div>
               <div>
-                <h4 className="font-bold">Robert Taylor</h4>
-                <p className="text-sm text-muted-foreground">
-                  Retirement Planning Workshop Attendee
-                </p>
+                <h4 className="font-bold">Toyin Osasona Fanisi</h4>
               </div>
             </div>
           </div>
@@ -225,25 +205,17 @@ export default function TestimonialsPage() {
               ))}
             </div>
             <blockquote className="mb-6 italic">
-              "The resources on Anne's website helped me create a budget that
-              actually works for my lifestyle. I no longer feel stressed about
-              money every month."
+              "Coach Anne is a practical financial advisor with vast investment
+              acumen. I wish the life-changing conversation could have gone
+              forever. Attentive and Compassionate;your wisdom is a gift. Thank
+              you for sharing your investment with me,you are treasure."
             </blockquote>
             <div className="flex items-center">
               <div className="mr-4">
-                <Image
-                  src="/anne.jpg?height=60&width=60"
-                  alt="Client"
-                  width={60}
-                  height={60}
-                  className="rounded-full"
-                />
+                <FaRegCircleUser className="rounded-full w-12 h-12 text-slate-500" />
               </div>
               <div>
-                <h4 className="font-bold">Emily Rodriguez</h4>
-                <p className="text-sm text-muted-foreground">
-                  Budget Template User
-                </p>
+                <h4 className="font-bold">okulaja oludayo</h4>
               </div>
             </div>
           </div>
@@ -259,25 +231,18 @@ export default function TestimonialsPage() {
               ))}
             </div>
             <blockquote className="mb-6 italic">
-              "Anne's one-on-one coaching helped me navigate a career transition
-              and ensure my finances stayed on track during a period of
-              uncertainty."
+              "Engaging with Anne has been an eye opener. Her guidance and
+              advice are born out of experience of someone who can relate to the
+              everyday challenges of average person trying to navigate the
+              personal finance journey. I came out of with clarity about the
+              next things to do and HOW to do them."
             </blockquote>
             <div className="flex items-center">
               <div className="mr-4">
-                <Image
-                  src="/anne.jpg?height=60&width=60"
-                  alt="Client"
-                  width={60}
-                  height={60}
-                  className="rounded-full"
-                />
+                <FaRegCircleUser className="rounded-full w-12 h-12 text-slate-500" />
               </div>
               <div>
-                <h4 className="font-bold">James Wilson</h4>
-                <p className="text-sm text-muted-foreground">
-                  Financial Coaching Client
-                </p>
+                <h4 className="font-bold">Chidi Mbakigwe</h4>
               </div>
             </div>
           </div>
@@ -285,16 +250,16 @@ export default function TestimonialsPage() {
       </section>
 
       {/* Video Testimonials */}
-      <section className="mb-16">
+      {/* <section className="mb-16">
         <h2 className="text-3xl font-bold mb-8 text-center">
           Video Testimonials
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Video Testimonial 1 */}
+          
           <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
             <div className="aspect-video relative bg-muted">
               <Image
-                src="/anne.jpg?height=300&width=500"
+                src="/anne.JPG?height=300&width=500"
                 alt="Video Testimonial"
                 fill
                 className="object-cover"
@@ -316,11 +281,11 @@ export default function TestimonialsPage() {
             </div>
           </div>
 
-          {/* Video Testimonial 2 */}
+          
           <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
             <div className="aspect-video relative bg-muted">
               <Image
-                src="/anne.jpg?height=300&width=500"
+                src="/anne.JPG?height=300&width=500"
                 alt="Video Testimonial"
                 fill
                 className="object-cover"
@@ -342,7 +307,7 @@ export default function TestimonialsPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Call to Action */}
       <section className="bg-secondary/10 p-8 md:p-12 rounded-lg text-center">
@@ -354,18 +319,18 @@ export default function TestimonialsPage() {
           future with Anne's guidance.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
+          {/* <a
             href="/courses"
             className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-white shadow-sm transition-colors hover:bg-primary/90"
           >
             Explore Courses
-          </a>
-          <a
+          </a> */}
+          <Link
             href="/resources"
             className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground"
           >
             Browse Resources
-          </a>
+          </Link>
         </div>
       </section>
     </div>

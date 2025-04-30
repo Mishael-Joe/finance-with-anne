@@ -285,7 +285,7 @@ export default function CoursesPage() {
             <div className="flex items-center mb-4">
               <div className="mr-4">
                 <Image
-                  src="/anne.jpg?height=60&width=60"
+                  src="/anne.JPG?height=60&width=60"
                   alt="Student"
                   width={60}
                   height={60}
@@ -308,7 +308,7 @@ export default function CoursesPage() {
             <div className="flex items-center mb-4">
               <div className="mr-4">
                 <Image
-                  src="/anne.jpg?height=60&width=60"
+                  src="/anne.JPG?height=60&width=60"
                   alt="Student"
                   width={60}
                   height={60}
@@ -332,7 +332,7 @@ export default function CoursesPage() {
             <div className="flex items-center mb-4">
               <div className="mr-4">
                 <Image
-                  src="/anne.jpg?height=60&width=60"
+                  src="/anne.JPG?height=60&width=60"
                   alt="Student"
                   width={60}
                   height={60}

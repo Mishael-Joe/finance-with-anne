@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { Menu, X } from "lucide-react"
-import Button from "@/components/ui/button"
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
+import Button from "@/components/ui/button";
 
 /**
  * Header component with responsive navigation
@@ -17,8 +17,8 @@ import Button from "@/components/ui/button"
  * - Call-to-action button
  */
 export default function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const pathname = usePathname()
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   // Navigation links configuration
   const navLinks = [
@@ -26,17 +26,17 @@ export default function Header() {
     { href: "/about", label: "About Anne" },
     { href: "/blog", label: "Blog" },
     { href: "/resources", label: "Resources" },
-    { href: "/courses", label: "Courses" },
+    // { href: "/courses", label: "Courses" },
     { href: "/testimonials", label: "Testimonials" },
     { href: "/contact", label: "Contact" },
-  ]
+  ];
 
   // Function to check if a link is active
   const isActive = (path: string) => {
-    if (path === "/" && pathname === "/") return true
-    if (path !== "/" && pathname.startsWith(path)) return true
-    return false
-  }
+    if (path === "/" && pathname === "/") return true;
+    if (path !== "/" && pathname.startsWith(path)) return true;
+    return false;
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm">
@@ -46,7 +46,9 @@ export default function Header() {
           <span className="h-8 w-8 rounded-full bg-primary flex items-center justify-center text-white font-bold">
             A
           </span>
-          <span className="font-semibold text-xl hidden sm:inline-block">Finance with Anne</span>
+          <span className="font-semibold text-xl hidden sm:inline-block">
+            Finance with Anne
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -77,7 +79,11 @@ export default function Header() {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
         >
-          {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {mobileMenuOpen ? (
+            <X className="h-6 w-6" />
+          ) : (
+            <Menu className="h-6 w-6" />
+          )}
         </button>
       </div>
 
@@ -97,12 +103,17 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <Button href="/contact" variant="primary" size="sm" className="mt-2">
+            <Button
+              href="/contact"
+              variant="primary"
+              size="sm"
+              className="mt-2"
+            >
               Get Started
             </Button>
           </nav>
         </div>
       )}
     </header>
-  )
+  );
 }

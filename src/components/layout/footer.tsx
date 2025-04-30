@@ -1,5 +1,9 @@
 import Link from "next/link";
-import { Instagram, Linkedin, Youtube } from "lucide-react";
+import { anneEmail } from "@/config";
+import { RiTiktokLine } from "react-icons/ri";
+import { FiFacebook, FiYoutube } from "react-icons/fi";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa";
 
 /**
  * Footer component with navigation links, social media, and copyright
@@ -36,27 +40,45 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="Instagram"
               >
-                <Instagram className="h-5 w-5" />
+                <FaInstagram className="h-5 w-5" />
+                <span className="sr-only">Instagram</span>
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="LinkedIn"
               >
-                <Linkedin className="h-5 w-5" />
+                <FiFacebook className="h-5 w-5" />
+                <span className="sr-only">Facebook</span>
+              </a>
+              <a
+                href="https://x.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                <FaXTwitter className="h-5 w-5" />
+                <span className="sr-only">Twitter Now X</span>
               </a>
               <a
                 href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="YouTube"
               >
-                <Youtube className="h-5 w-5" />
+                <FiYoutube className="h-5 w-5" />
+                <span className="sr-only">YouTube</span>
+              </a>
+              <a
+                href="https://tiktok.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                <RiTiktokLine className="h-5 w-5" />
+                <span className="sr-only">Tiktok</span>
               </a>
             </div>
           </div>
@@ -97,14 +119,14 @@ export default function Footer() {
                   Resources
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   href="/courses"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Courses
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link
                   href="/testimonials"
@@ -136,7 +158,7 @@ export default function Footer() {
                   Budget Templates
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   href="/resources"
                   className="text-muted-foreground hover:text-primary transition-colors"
@@ -159,7 +181,7 @@ export default function Footer() {
                 >
                   Investment Guides
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link
                   href="/blog"
@@ -175,11 +197,11 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-lg mb-4">Contact</h3>
             <address className="not-italic text-muted-foreground space-y-2">
-              <p>123 Financial Street</p>
+              {/* <p>123 Financial Street</p>
               <p>Suite 456</p>
               <p>Nigeria</p>
-              <p className="mt-4">hello@financewithanne.com</p>
-              <p>(+234) 123-4567</p>
+              <p>(+234) 123-4567</p> */}
+              <p className="mt-">{anneEmail}</p>
             </address>
           </div>
         </div>

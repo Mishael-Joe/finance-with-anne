@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Download, FileText, Calculator, BookOpen } from "lucide-react";
 import Button from "@/components/ui/button";
+import Link from "next/link";
 
 // Define metadata for SEO
 export const metadata: Metadata = {
@@ -77,14 +78,19 @@ export default function ResourcesPage() {
                 A comprehensive monthly budget template to track your income,
                 expenses, and savings goals.
               </p>
-              <Button href="#" variant="primary" className="w-full">
+              <Link
+                download={true}
+                href="/files/Monthly_Budget_Template.xlsx"
+                // variant="primary"
+                className="w-full bg-primary text-white hover:bg-primary/90 inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background h-10"
+              >
                 <Download className="mr-2 h-4 w-4" /> Download Template
-              </Button>
+              </Link>
             </div>
           </div>
 
           {/* Debt Payoff Calculator */}
-          <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
+          {/* <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
             <div className="aspect-video relative bg-muted">
               <Image
                 src="/budgeting.jpg?height=300&width=500"
@@ -112,10 +118,10 @@ export default function ResourcesPage() {
                 <Download className="mr-2 h-4 w-4" /> Download Calculator
               </Button>
             </div>
-          </div>
+          </div> */}
 
           {/* Emergency Fund Worksheet */}
-          <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
+          {/* <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
             <div className="aspect-video relative bg-muted">
               <Image
                 src="/saving.jpg?height=300&width=500"
@@ -145,10 +151,10 @@ export default function ResourcesPage() {
                 <Download className="mr-2 h-4 w-4" /> Download Worksheet
               </Button>
             </div>
-          </div>
+          </div> */}
 
           {/* Retirement Planning Guide */}
-          <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
+          {/* <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
             <div className="aspect-video relative bg-muted">
               <Image
                 src="/saving.jpg?height=300&width=500"
@@ -178,10 +184,10 @@ export default function ResourcesPage() {
                 <Download className="mr-2 h-4 w-4" /> Download Guide
               </Button>
             </div>
-          </div>
+          </div> */}
 
           {/* Investment Tracker */}
-          <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
+          {/* <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
             <div className="aspect-video relative bg-muted">
               <Image
                 src="/investing.jpg?height=300&width=500"
@@ -209,10 +215,10 @@ export default function ResourcesPage() {
                 <Download className="mr-2 h-4 w-4" /> Download Tracker
               </Button>
             </div>
-          </div>
+          </div> */}
 
           {/* Financial Goal Setting Workbook */}
-          <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
+          {/* <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
             <div className="aspect-video relative bg-muted">
               <Image
                 src="/investing.jpg?height=300&width=500"
@@ -242,12 +248,12 @@ export default function ResourcesPage() {
                 <Download className="mr-2 h-4 w-4" /> Download Workbook
               </Button>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
       {/* Premium Resources Teaser */}
-      <section className="bg-primary text-white p-8 md:p-12 rounded-lg">
+      {/* <section className="bg-primary text-white p-8 md:p-12 rounded-lg">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div>
             <h2 className="text-3xl font-bold mb-4">Premium Resources</h2>
@@ -270,7 +276,7 @@ export default function ResourcesPage() {
             />
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
