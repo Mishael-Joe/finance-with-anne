@@ -46,7 +46,7 @@ export default function BlogCard({ post }: { post: Post }) {
         <div className="flex items-center text-sm text-muted-foreground">
           <div className="mr-3">
             <Image
-              src="/anne.JPG?height=32&width=32"
+              src="/anne.jpg?height=32&width=32"
               alt="Anne"
               width={32}
               height={32}

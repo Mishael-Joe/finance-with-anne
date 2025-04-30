@@ -87,7 +87,7 @@
 //           <div className="flex items-center text-muted-foreground mb-6">
 //             <div className="mr-4">
 //               <Image
-//                 src="/anne.JPG?height=40&width=40"
+//                 src="/anne.jpg?height=40&width=40"
 //                 alt="Anne"
 //                 width={40}
 //                 height={40}
@@ -164,7 +164,7 @@
 //           <div className="flex items-center">
 //             <div className="mr-4">
 //               <Image
-//                 src="/anne.JPG?height=80&width=80"
+//                 src="/anne.jpg?height=80&width=80"
 //                 alt="Anne"
 //                 width={80}
 //                 height={80}
@@ -302,7 +302,7 @@ export default async function BlogPostPage({
                   src={
                     Post.author === "Mishael Joseph"
                       ? "/testimonials/mishael.jpg?height=40&width=40"
-                      : "/anne.JPG?height=40&width=40"
+                      : "/anne.jpg?height=40&width=40"
                   }
                   alt="Anne"
                   width={40}

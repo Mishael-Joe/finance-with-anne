@@ -55,7 +55,7 @@ export default function AboutPage() {
           <div className="flex justify-center">
             <div className="relative w-full max-w-md aspect-3/4 rounded-lg overflow-hidden shadow-lg">
               <Image
-                src="/anne.JPG?height=600&width=450"
+                src="/anne.jpg?height=600&width=450"
                 alt="Anne - Financial Educator"
                 fill
                 className="object-cover"

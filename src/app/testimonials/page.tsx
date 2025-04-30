@@ -259,7 +259,7 @@ export default function TestimonialsPage() {
           <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
             <div className="aspect-video relative bg-muted">
               <Image
-                src="/anne.JPG?height=300&width=500"
+                src="/anne.jpg?height=300&width=500"
                 alt="Video Testimonial"
                 fill
                 className="object-cover"
@@ -285,7 +285,7 @@ export default function TestimonialsPage() {
           <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
             <div className="aspect-video relative bg-muted">
               <Image
-                src="/anne.JPG?height=300&width=500"
+                src="/anne.jpg?height=300&width=500"
                 alt="Video Testimonial"
                 fill
                 className="object-cover"
