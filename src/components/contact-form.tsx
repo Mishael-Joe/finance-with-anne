@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Send } from "lucide-react"
-import Button from "@/components/ui/button"
-import Input from "@/components/ui/input"
+import { useState } from "react";
+import { Send } from "lucide-react";
+import Button from "@/components/ui/button";
+import Input from "@/components/ui/input";
 
 /**
  * Contact form component
@@ -20,51 +20,52 @@ export default function ContactForm() {
     name: "",
     email: "",
     message: "",
-  })
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
-  const [message, setMessage] = useState("")
+  });
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+  const [message, setMessage] = useState("");
 
   // Handle input changes
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    // Basic validation
     if (!formData.name || !formData.email || !formData.message) {
-      setStatus("error")
-      setMessage("Please fill out all fields")
-      return
+      setStatus("error");
+      setMessage("Please fill out all fields");
+      return;
     }
 
-    if (!formData.email.includes("@")) {
-      setStatus("error")
-      setMessage("Please enter a valid email address")
-      return
-    }
-
-    // Simulate API call
-    setStatus("loading")
+    setStatus("loading");
 
     try {
-      // In a real app, this would be an API call to your backend
-      await new Promise((resolve) => setTimeout(resolve, 1500))
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-      setStatus("success")
-      setMessage("Thank you for your message! I'll get back to you soon.")
-      setFormData({ name: "", email: "", message: "" })
-    } catch (error) {
-      setStatus("error")
-      setMessage("Something went wrong. Please try again.")
+      if (!res.ok) throw new Error("Failed");
+
+      setStatus("success");
+      setMessage("Thank you for your message! I'll get back to you soon.");
+      setFormData({ name: "", email: "", message: "" });
+    } catch {
+      setStatus("error");
+      setMessage("Something went wrong. Please try again.");
     }
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -122,7 +123,12 @@ export default function ContactForm() {
       </div>
 
       {/* Submit button */}
-      <Button type="submit" variant="primary" disabled={status === "loading"} className="w-full">
+      <Button
+        type="submit"
+        variant="primary"
+        disabled={status === "loading"}
+        className="w-full"
+      >
         {status === "loading" ? (
           "Sending..."
         ) : (
@@ -133,8 +139,14 @@ export default function ContactForm() {
       </Button>
 
       {/* Status message */}
-      {status === "success" && <div className="p-4 bg-secondary/10 text-secondary rounded-md">{message}</div>}
-      {status === "error" && <div className="p-4 bg-red-100 text-red-600 rounded-md">{message}</div>}
+      {status === "success" && (
+        <div className="p-4 bg-secondary/10 text-secondary rounded-md">
+          {message}
+        </div>
+      )}
+      {status === "error" && (
+        <div className="p-4 bg-red-100 text-red-600 rounded-md">{message}</div>
+      )}
     </form>
-  )
+  );
 }

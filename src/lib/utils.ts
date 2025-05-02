@@ -1,5 +1,5 @@
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 /**
  * Utility function to conditionally join class names
@@ -9,7 +9,7 @@ import { twMerge } from "tailwind-merge"
  * @returns Merged class string
  */
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
 /**
@@ -18,13 +18,13 @@ export function cn(...inputs: ClassValue[]) {
  * @param dateString - ISO date string (YYYY-MM-DD)
  * @returns Formatted date string (e.g., "April 15, 2023")
  */
-export function formatDate(dateString: string): string {
-  const date = new Date(dateString)
+export function formatDate(dateString: Date): string {
+  const date = new Date(dateString);
   return date.toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
-  })
+  });
 }
 
 /**
@@ -38,7 +38,7 @@ export function getInitials(name: string): string {
     .split(" ")
     .map((part) => part[0])
     .join("")
-    .toUpperCase()
+    .toUpperCase();
 }
 
 /**
@@ -49,8 +49,8 @@ export function getInitials(name: string): string {
  * @returns Truncated text with ellipsis if needed
  */
 export function truncateText(text: string, length: number): string {
-  if (text.length <= length) return text
-  return text.slice(0, length) + "..."
+  if (text.length <= length) return text;
+  return text.slice(0, length) + "...";
 }
 
 /**
@@ -60,7 +60,7 @@ export function truncateText(text: string, length: number): string {
  * @returns Estimated reading time in minutes
  */
 export function calculateReadingTime(content: string): number {
-  const wordsPerMinute = 200
-  const wordCount = content.split(/\s+/).length
-  return Math.ceil(wordCount / wordsPerMinute)
+  const wordsPerMinute = 200;
+  const wordCount = content.split(/\s+/).length;
+  return Math.ceil(wordCount / wordsPerMinute);
 }

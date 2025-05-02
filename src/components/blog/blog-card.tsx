@@ -21,15 +21,15 @@ export default function BlogCard({ post }: { post: Post }) {
       {/* Cover image */}
       <div className="aspect-video relative bg-muted">
         <Image
-          src={post.coverImage || "/placeholder.svg?height=300&width=500"}
+          src={post.coverImage || "/budgeting.jpg?height=300&width=500"}
           alt={post.title}
           fill
           className="object-cover"
         />
         {/* Category badge */}
-        <div className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+        {/* <div className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
           {post.category}
-        </div>
+        </div> */}
       </div>
 
       {/* Content */}
@@ -46,7 +46,11 @@ export default function BlogCard({ post }: { post: Post }) {
         <div className="flex items-center text-sm text-muted-foreground">
           <div className="mr-3">
             <Image
-              src="/anne.jpg?height=32&width=32"
+              src={
+                post.author === "Mishael Joseph"
+                  ? "/testimonials/mishael.jpg?height=40&width=40"
+                  : "/anne.jpg?height=40&width=40"
+              }
               alt="Anne"
               width={32}
               height={32}
@@ -54,7 +58,7 @@ export default function BlogCard({ post }: { post: Post }) {
             />
           </div>
           <div>
-            <p className="font-medium">Anne Johnson</p>
+            <p className="font-medium">{post.author}</p>
             <p>{formatDate(post.date)}</p>
           </div>
         </div>

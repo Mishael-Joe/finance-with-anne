@@ -36,7 +36,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/financewithanne?igsh=MTUzcWY0MWE2YnhsdQ%3D%3D&utm_source=qr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
@@ -45,7 +45,7 @@ export default function Footer() {
                 <span className="sr-only">Instagram</span>
               </a>
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/share/18nwuqrJ36/?mibextid=LQQJ4d"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
@@ -54,7 +54,7 @@ export default function Footer() {
                 <span className="sr-only">Facebook</span>
               </a>
               <a
-                href="https://x.com"
+                href="https://x.com/financewithanne?s=21&t=Hzd4iPIbzdXj9WMW-swU_A"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
@@ -63,7 +63,7 @@ export default function Footer() {
                 <span className="sr-only">Twitter Now X</span>
               </a>
               <a
-                href="https://youtube.com"
+                href="https://youtube.com/@financewithanne?si=5zX3b99rfYKi8RQM"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
@@ -72,7 +72,7 @@ export default function Footer() {
                 <span className="sr-only">YouTube</span>
               </a>
               <a
-                href="https://tiktok.com"
+                href="https://www.tiktok.com/@financewithanne?_t=ZM-8vzFmbQoZtt&_r=1"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"

@@ -1,5 +1,5 @@
-import { getPosts } from "@/lib/posts"
-import BlogCard from "@/components/blog/blog-card"
+import { getPosts } from "@/lib/posts";
+import BlogCard from "@/components/blog/blog-card";
 
 /**
  * Blog list component to display a grid of blog posts
@@ -11,12 +11,12 @@ import BlogCard from "@/components/blog/blog-card"
  *
  * @param limit - Optional number of posts to display
  */
-export default function BlogList({ limit }: { limit?: number }) {
+export default async function BlogList({ limit }: { limit?: number }) {
   // Get all posts from the data source
-  const allPosts = getPosts()
+  const allPosts = await getPosts();
 
   // Apply limit if provided
-  const posts = limit ? allPosts.slice(0, limit) : allPosts
+  const posts = limit ? allPosts.slice(0, limit) : allPosts;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -24,5 +24,5 @@ export default function BlogList({ limit }: { limit?: number }) {
         <BlogCard key={post.slug} post={post} />
       ))}
     </div>
-  )
+  );
 }

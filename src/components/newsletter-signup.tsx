@@ -28,26 +28,33 @@ export default function NewsletterSignup() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Basic email validation
     if (!email || !email.includes("@")) {
       setStatus("error");
       setMessage("Please enter a valid email address");
       return;
     }
 
-    // Simulate API call
     setStatus("loading");
 
     try {
-      // In a real app, this would be an API call to your newsletter service
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Something went wrong");
+      }
 
       setStatus("success");
-      setMessage("Thank you for subscribing to our newsletter!");
+      setMessage("Thank you for subscribing!");
       setEmail("");
-    } catch (error) {
+    } catch (err: any) {
       setStatus("error");
-      setMessage("Something went wrong. Please try again.");
+      setMessage(err.message || "Subscription failed.");
     }
   };
 

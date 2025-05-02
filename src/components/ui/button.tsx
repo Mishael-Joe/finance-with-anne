@@ -1,6 +1,6 @@
-import type React from "react"
-import Link from "next/link"
-import { cn } from "@/lib/utils"
+import type React from "react";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 /**
  * Button component that can be rendered as a button element or a Link
@@ -26,12 +26,12 @@ export default function Button({
   children,
   ...props
 }: {
-  variant?: "default" | "primary" | "secondary" | "outline" | "ghost"
-  size?: "default" | "sm" | "lg"
-  href?: string
-  className?: string
-  children: React.ReactNode
-  [key: string]: any
+  variant?: "default" | "primary" | "secondary" | "outline" | "ghost";
+  size?: "default" | "sm" | "lg";
+  href?: string;
+  className?: string;
+  children: React.ReactNode;
+  [key: string]: any;
 }) {
   // Define the base styles for the button
   const baseStyles = cn(
@@ -39,9 +39,12 @@ export default function Button({
     {
       // Variant styles
       "bg-primary text-white hover:bg-primary/90": variant === "primary",
-      "bg-secondary text-white hover:bg-secondary/90": variant === "secondary",
-      "bg-primary-light text-white hover:bg-primary-light/90": variant === "default",
-      "border border-input bg-background hover:bg-accent hover:text-accent-foreground": variant === "outline",
+      "bg-secondary text-white hover:bg-secondary/90 rounded":
+        variant === "secondary",
+      "bg-primary-light text-white hover:bg-primary-light/90":
+        variant === "default",
+      "border border-input bg-background hover:bg-accent hover:text-accent-foreground":
+        variant === "outline",
       "hover:bg-accent hover:text-accent-foreground": variant === "ghost",
 
       // Size styles
@@ -49,8 +52,8 @@ export default function Button({
       "h-9 px-3 text-sm": size === "sm",
       "h-11 px-8 text-base": size === "lg",
     },
-    className,
-  )
+    className
+  );
 
   // If href is provided, render as a Link
   if (href) {
@@ -58,7 +61,7 @@ export default function Button({
       <Link href={href} className={baseStyles} {...props}>
         {children}
       </Link>
-    )
+    );
   }
 
   // Otherwise render as a button
@@ -66,5 +69,5 @@ export default function Button({
     <button className={baseStyles} {...props}>
       {children}
     </button>
-  )
+  );
 }
