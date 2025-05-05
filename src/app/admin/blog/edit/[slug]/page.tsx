@@ -9,6 +9,8 @@ import QuillEditor from "@/components/blog/quill-editor";
 import Button from "@/components/ui/button";
 import Input from "@/components/ui/input";
 import { Loader2 } from "lucide-react";
+import { UploadDropzone } from "@/utils/uploadthing";
+import { twMerge } from "tailwind-merge";
 
 /**
  * Edit Blog Post page component
@@ -241,14 +243,26 @@ export default function EditBlogPostPage() {
         {/* Featured Image */}
         <div className="space-y-2">
           <label htmlFor="featuredImage" className="text-sm font-medium">
-            Featured Image URL
+            Featured Image
           </label>
-          <Input
-            id="featuredImage"
-            name="featuredImage"
-            value={formData.featuredImage}
-            onChange={handleInputChange}
-            placeholder="https://example.com/image.jpg"
+          <UploadDropzone
+            endpoint="imageUploader"
+            onClientUploadComplete={(res) => {
+              // Do something with the response
+              // console.log("Files: ", res);
+              alert("Upload Completed");
+              setFormData((prev) => ({
+                ...prev,
+                featuredImage: res[0]?.ufsUrl,
+              }));
+            }}
+            onUploadError={(error: Error) => {
+              // Do something with the error.
+              // console.log("error: ", error);
+              alert(`ERROR! ${error.message}`);
+            }}
+            config={{ cn: twMerge }}
+            className="bg-secondary/15 ut-label:text-lg ut-allowed-content:ut-uploading:text-red-300 cursor-pointer"
           />
         </div>
 

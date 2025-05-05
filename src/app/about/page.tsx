@@ -102,34 +102,36 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-white p-6 rounded-lg shadow-sm border border-border">
             <h3 className="text-xl font-semibold mb-2">
-              Certified Financial Educator (CFE)
+              Certified Financial Education Instructor (CFEI)
             </h3>
-            <p className="text-muted-foreground">
+            {/* <p className="text-muted-foreground">
               National Financial Educators Council
-            </p>
+            </p> */}
           </div>
           <div className="bg-white p-6 rounded-lg shadow-sm border border-border">
             <h3 className="text-xl font-semibold mb-2">
-              Personal Finance Specialist
+              Chartered Accountant (ACA)
             </h3>
-            <p className="text-muted-foreground">
+            {/* <p className="text-muted-foreground">
               Financial Planning Association
-            </p>
+            </p> */}
           </div>
           <div className="bg-white p-6 rounded-lg shadow-sm border border-border">
-            <h3 className="text-xl font-semibold mb-2">MBA in Finance</h3>
-            <p className="text-muted-foreground">
+            <h3 className="text-xl font-semibold mb-2">
+              MBA in Finance and Investments
+            </h3>
+            {/* <p className="text-muted-foreground">
               University of Financial Excellence
-            </p>
+            </p> */}
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-border">
+          {/* <div className="bg-white p-6 rounded-lg shadow-sm border border-border">
             <h3 className="text-xl font-semibold mb-2">
               Certified Budget Counselor
             </h3>
             <p className="text-muted-foreground">
               American Association of Budget Counselors
             </p>
-          </div>
+          </div> */}
         </div>
       </section>
     </div>
