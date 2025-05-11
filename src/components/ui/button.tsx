@@ -43,9 +43,10 @@ export default function Button({
         variant === "secondary",
       "bg-primary-light text-white hover:bg-primary-light/90":
         variant === "default",
-      "border border-input bg-background hover:bg-accent hover:text-accent-foreground":
+      "border border-input bg-background text-foreground hover:bg-accent hover:text-accent-foreground":
         variant === "outline",
-      "hover:bg-accent hover:text-accent-foreground": variant === "ghost",
+      "hover:bg-accent hover:text-accent-foreground text-foreground":
+        variant === "ghost",
 
       // Size styles
       "h-10 py-2 px-4": size === "default",

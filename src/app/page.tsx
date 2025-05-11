@@ -21,7 +21,7 @@ export default function Home() {
             </p>
             <Button
               href="/about"
-              className="border bg-background text-primary font-semibold hover:text-accent-foreground"
+              className="border bg-background text-primary font-semibold hover:text-white"
               size="lg"
             >
               Get Started <ArrowRight className="ml-2 h-5 w-5" />

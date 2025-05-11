@@ -11,6 +11,9 @@ import Input from "@/components/ui/input";
 import { Loader2 } from "lucide-react";
 import { UploadDropzone } from "@/utils/uploadthing";
 import { twMerge } from "tailwind-merge";
+import { useSession } from "next-auth/react";
+import PageLoader from "@/components/ui/page-loader";
+import { toast } from "sonner";
 
 /**
  * Edit Blog Post page component
@@ -25,6 +28,8 @@ export default function EditBlogPostPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const { data: session, status } = useSession();
+
   // Form state
   const [formData, setFormData] = useState({
     title: "",
@@ -35,6 +40,16 @@ export default function EditBlogPostPage() {
     tags: "",
     published: false,
   });
+
+  useEffect(() => {
+    if (status === "unauthenticated" || session?.user?.role !== "admin") {
+      router.push(
+        `/admin/login?error=AccessDenied&callbackUrl=${encodeURIComponent(
+          "/admin/blog/edit/" + slug
+        )}`
+      );
+    }
+  }, [status, session, router]);
 
   // Fetch post data on component mount
   useEffect(() => {
@@ -75,6 +90,10 @@ export default function EditBlogPostPage() {
       fetchPost();
     }
   }, [slug]);
+
+  if (status === "unauthenticated" || session?.user?.role !== "admin") {
+    return <PageLoader />; // Still render null but only after the effect runs
+  }
 
   /**
    * Handle input changes for form fields
@@ -250,7 +269,8 @@ export default function EditBlogPostPage() {
             onClientUploadComplete={(res) => {
               // Do something with the response
               // console.log("Files: ", res);
-              alert("Upload Completed");
+              // alert("Upload Completed");
+              toast.success("Upload Completed.");
               setFormData((prev) => ({
                 ...prev,
                 featuredImage: res[0]?.ufsUrl,
@@ -259,7 +279,8 @@ export default function EditBlogPostPage() {
             onUploadError={(error: Error) => {
               // Do something with the error.
               // console.log("error: ", error);
-              alert(`ERROR! ${error.message}`);
+              // alert(`ERROR! ${error.message}`);
+              toast.error(`ERROR! ${error.message}`);
             }}
             config={{ cn: twMerge }}
             className="bg-secondary/15 ut-label:text-lg ut-allowed-content:ut-uploading:text-red-300 cursor-pointer"

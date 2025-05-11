@@ -1,8 +1,58 @@
 @import "tailwindcss";
-
 @import "uploadthing/tw/v4";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
 @source "../../node_modules/@uploadthing/react/dist";
 
+/* Core Theme Variables  */
+:root {
+  --radius: 0.5rem;
+
+  --background: 0 0% 100%;
+  --foreground: 0 0% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 3.9%;
+  --primary: 210 100% 56%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 51 100% 50%;
+  --secondary-foreground: 0 0% 9%;
+  --muted: 210 20% 98%;
+  --muted-foreground: 0 0% 45.1%;
+  --accent: 0 0% 96.1%;
+  --accent-foreground: 0 0% 9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 210 20% 90%;
+  --input: 0 0% 89.8%;
+  --ring: 0 0% 3.9%;
+}
+
+/* Dark Mode Overrides  */
+.dark {
+  --background: 0 0% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 0 0% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 0 0% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 0 0% 9%;
+  --secondary: 0 0% 14.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 0 0% 14.9%;
+  --muted-foreground: 0 0% 63.9%;
+  --accent: 0 0% 14.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --border: 0 0% 14.9%;
+  --input: 0 0% 14.9%;
+  --ring: 0 0% 83.1%;
+}
+
+/* Theme Map for Components  */
 @theme {
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
@@ -12,8 +62,7 @@
 
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
-  /* --color-primary-light: #1d3557; dark blue */
-  --color-primary-light: #1e90ff; /* light blue */
+  --color-primary-light: #1e90ff;
 
   --color-secondary: hsl(var(--secondary));
   --color-secondary-foreground: hsl(var(--secondary-foreground));
@@ -41,14 +90,30 @@
   --font-sans: var(--font-inter), sans-serif;
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
+/* Optional Inline Theme Overrides  */
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
+  /* Charts and sidebar color mapping if needed  */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* Compatibility with Tailwind v3 defaults  */
 @layer base {
   *,
   ::after,
@@ -57,46 +122,11 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentcolor);
   }
-}
 
-@utility container-custom {
-  @apply container mx-auto px-4 md:px-6 py-8 md:py-12;
-}
-
-@utility section {
-  @apply py-12 md:py-16;
-}
-
-@utility card {
-  @apply bg-white rounded-lg shadow-md p-6 transition-all duration-300;
-
-  &:hover {
-    @apply shadow-lg;
+  * {
+    @apply border-border outline-ring/50;
   }
-}
 
-@layer utilities {
-  :root {
-    /* 
-    Define custom color variables for the Finance with Anne brand
-    These colors create a calm, trustworthy palette as requested
-  */
-    /* --primary-light: #1d3557;
-  --secondary-light: #a3b18a;
-
-  --muted-foreground: #6c757d; */
-
-    /* Replace hex values with HSL */
-    --background: 0 0% 100%; /* Was #ffffff */
-    --foreground: 0 0% 3.9%; /* Was #333333 */
-    --primary: 210 100% 56%; /* Was #0a2342 */
-    --secondary: 51 100% 50%; /* Was #588157 */
-    --muted: 210 20% 98%; /* Was #f8f9fa */
-    --border: 210 20% 90%; /* Was #e9ecef */
-  }
-}
-
-@layer base {
   body {
     @apply bg-background text-foreground;
   }
@@ -113,20 +143,44 @@
   h1 {
     @apply text-4xl md:text-5xl;
   }
-
   h2 {
     @apply text-3xl md:text-4xl;
   }
-
   h3 {
     @apply text-2xl md:text-3xl;
   }
-
   h4 {
     @apply text-xl md:text-2xl;
   }
-
   p {
     @apply leading-relaxed;
+  }
+  .prose ul {
+    list-style-type: disc;
+    padding-left: 1.25rem;
+  }
+  .prose ol {
+    list-style-type: decimal;
+    padding-left: 1.25rem;
+  }
+  .prose li {
+    margin-bottom: 0.25rem;
+  }
+}
+
+/* Custom Utilities  */
+@utility container-custom {
+  @apply container mx-auto px-4 md:px-6 py-8 md:py-12;
+}
+
+@utility section {
+  @apply py-12 md:py-16;
+}
+
+@utility card {
+  @apply bg-white rounded-lg shadow-md p-6 transition-all duration-300;
+
+  &:hover {
+    @apply shadow-lg;
   }
 }
