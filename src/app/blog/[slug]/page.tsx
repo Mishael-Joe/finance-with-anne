@@ -63,12 +63,12 @@ export default async function BlogPostPage({
     }
 
     return (
-      <div className="container mx-auto px-4 md:px-6 py-12">
+      <div className="container mx-auto px-4 md:px-6 py-8">
         {/* Back to blog link */}
         <div className="mb-8">
           <Link
             href="/blog"
-            className="text-secondary hover:text-secondary-light font-medium flex items-center"
+            className="text-primary hover:text-primary-light font-medium flex items-center"
           >
             <ArrowLeft className="mr-2 h-4 w-4" /> Back to Blog
           </Link>
