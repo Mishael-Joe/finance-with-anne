@@ -1,62 +1,41 @@
+"use client";
+
+import { generateReactHelpers } from "@uploadthing/react";
+import type { OurFileRouter } from "@/app/api/uploadthing/core";
+
+// Generate UploadThing helpers for use in React components
+const { uploadFiles } = generateReactHelpers<OurFileRouter>();
+
 /**
- * Uploads an image to a storage service and returns the URL
+ * Uploads an image file using UploadThing and returns the resulting URL
  *
- * In a production environment, this would upload to a service like AWS S3,
- * Cloudinary, or similar. For this example, we're simulating the upload.
+ * This function uses UploadThing's `uploadFiles` utility to send a file to the
+ * configured `imageUploader` route defined in the UploadThing file router.
  *
- * @param file - The image file to upload
- * @returns Promise resolving to the image URL
+ * In production, this ensures proper storage handling (e.g., UploadThing to S3 or another service).
+ *
+ * @param file - The image file to be uploaded
+ * @returns Promise that resolves to the uploaded image URL
+ *
+ * @throws Error if the upload fails or no URL is returned
+ *
+ * @example
+ * const imageUrl = await uploadImage(selectedFile);
+ * quill.insertEmbed(cursorIndex, 'image', imageUrl);
  */
 export async function uploadImage(file: File): Promise<string> {
-  // In a real implementation, you would upload the file to a storage service
-  // For this example, we'll simulate the upload with a delay
+  try {
+    // Upload file using the "imageUploader" route from your file router
+    const res = await uploadFiles("imageUploader", { files: [file] });
 
-  return new Promise((resolve, reject) => {
-    // Create a FileReader to read the file as a data URL
-    const reader = new FileReader()
+    // Retrieve the URL of the uploaded image
+    const imageUrl = res?.[0]?.ufsUrl;
+    if (!imageUrl) throw new Error("Uploadthing did not return a URL");
 
-    reader.onload = () => {
-      // Simulate network delay
-      setTimeout(() => {
-        // Resolve with the data URL as the "uploaded" image URL
-        // In a real implementation, this would be the URL from your storage service
-        if (typeof reader.result === "string") {
-          resolve(reader.result)
-        } else {
-          reject(new Error("Failed to read file"))
-        }
-      }, 1500)
-    }
-
-    reader.onerror = () => {
-      reject(new Error("Failed to read file"))
-    }
-
-    // Read the file as a data URL
-    reader.readAsDataURL(file)
-  })
+    return imageUrl;
+  } catch (err) {
+    // Log error for debugging and rethrow to caller
+    console.error("Image upload failed:", err);
+    throw err;
+  }
 }
-
-/**
- * In a production environment, you would implement a real upload function
- * that sends the file to your backend, which then uploads it to a storage service.
- *
- * Example implementation with FormData:
- *
- * export async function uploadImage(file: File): Promise<string> {
- *   const formData = new FormData()
- *   formData.append('image', file)
- *
- *   const response = await fetch('/api/upload', {
- *     method: 'POST',
- *     body: formData,
- *   })
- *
- *   if (!response.ok) {
- *     throw new Error('Failed to upload image')
- *   }
- *
- *   const data = await response.json()
- *   return data.imageUrl
- * }
- */
