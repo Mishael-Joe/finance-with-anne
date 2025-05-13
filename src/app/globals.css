@@ -131,6 +131,10 @@
     @apply bg-background text-foreground;
   }
 
+  a:hover {
+    @apply text-primary-light;
+  }
+
   h1,
   h2,
   h3,
