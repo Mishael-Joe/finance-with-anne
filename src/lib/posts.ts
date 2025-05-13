@@ -26,7 +26,9 @@ export async function getPosts(): Promise<Post[]> {
   const Post = await getPostModel();
 
   // Fetch all posts, sorted by creation date (newest first)
-  const posts = await Post.find({}).sort({ createdAt: -1 }).lean();
+  const posts = await Post.find({ published: true })
+    .sort({ createdAt: -1 })
+    .lean();
   return posts.map((post) => ({
     slug: post.slug,
     title: post.title,
