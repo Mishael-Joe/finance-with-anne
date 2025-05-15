@@ -26,7 +26,7 @@ export default function Header() {
     { href: "/about", label: "About Anne" },
     { href: "/blog", label: "Real Money Talk" },
     { href: "/resources", label: "Free Resources" },
-    { href: "/resources", label: "Products and Services" },
+    { href: "/products", label: "Products and Services" },
     // { href: "/courses", label: "Courses" },
     { href: "/testimonials", label: "Testimonials" },
     { href: "/contact", label: "Contact Anne" },
