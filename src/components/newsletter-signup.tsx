@@ -96,11 +96,10 @@ export default function NewsletterSignup() {
         )}
 
         <p className="text-xs text-muted-foreground">
-          By subscribing, you agree to our{" "}
-          <Link href="/" className="underline hover:text-primary">
-            Privacy Policy
-          </Link>{" "}
-          and to receive marketing emails from us.
+          By subscribing, you'er joining a trusted community. I respect your
+          privacy and promise to never share or misuse your email. You'll only
+          receive helpful financial tips, updates and offers meant to support
+          your financial journey
         </p>
       </form>
     </div>

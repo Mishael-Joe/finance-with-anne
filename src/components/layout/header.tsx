@@ -22,13 +22,14 @@ export default function Header() {
 
   // Navigation links configuration
   const navLinks = [
-    { href: "/", label: "Home" },
+    // { href: "/", label: "Home" },
     { href: "/about", label: "About Anne" },
-    { href: "/blog", label: "Blog" },
-    { href: "/resources", label: "Resources" },
+    { href: "/blog", label: "Real Money Talk" },
+    { href: "/resources", label: "Free Resources" },
+    { href: "/resources", label: "Products and Services" },
     // { href: "/courses", label: "Courses" },
     { href: "/testimonials", label: "Testimonials" },
-    { href: "/contact", label: "Contact" },
+    { href: "/contact", label: "Contact Anne" },
   ];
 
   // Function to check if a link is active
@@ -68,7 +69,7 @@ export default function Header() {
 
         {/* Desktop CTA Button */}
         <div className="hidden md:block">
-          <Button href="/contact" variant="primary" size="sm">
+          <Button href="/blog" variant="primary" size="sm">
             Get Started
           </Button>
         </div>
@@ -103,12 +104,7 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <Button
-              href="/contact"
-              variant="primary"
-              size="sm"
-              className="mt-2"
-            >
+            <Button href="/blog" variant="primary" size="sm" className="mt-2">
               Get Started
             </Button>
           </nav>
