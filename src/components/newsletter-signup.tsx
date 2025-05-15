@@ -96,7 +96,7 @@ export default function NewsletterSignup() {
         )}
 
         <p className="text-xs text-muted-foreground">
-          By subscribing, you'er joining a trusted community. I respect your
+          By subscribing, you are joining a trusted community. I respect your
           privacy and promise to never share or misuse your email. You'll only
           receive helpful financial tips, updates and offers meant to support
           your financial journey

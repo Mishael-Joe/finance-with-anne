@@ -14,7 +14,7 @@ export default function Home() {
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl lg:text-4xl font-bold text-white mb-6">
-                READY TO TAKE CHARGE OF YOUR MONEY AND BUILD THE LIFE YOU WANT?
+                TAKE CONTROL OF YOUR FINANCIAL FUTURE
               </h1>
               <p className="md:text-xl mb-8 text-white/90">
                 Here, you'll find simple, practical strategies to help you earn
@@ -25,7 +25,7 @@ export default function Home() {
                 build the life you've always dreamed of.
               </p>
               <Button
-                href="/about"
+                href="/blog"
                 className="border bg-background text-primary font-semibold hover:text-white"
                 size="lg"
               >
@@ -37,7 +37,7 @@ export default function Home() {
           <div className="flex justify-center">
             <div className="relative w-full max-w-md aspect-3/4 rounded-lg overflow-hidden shadow-lg">
               <Image
-                src="/anne-home-img.jpg?height=600&width=450"
+                src="/anne-home-img.jpg"
                 alt="Anne - Financial Educator"
                 fill
                 className="object-cover"
@@ -69,7 +69,7 @@ export default function Home() {
               <h3 className="text-xl font-semibold mb-3">Make More Money</h3>
               <p className="text-muted-foreground">
                 Find simple and proven ways to actively increase your income.
-                Whether it's through side hustles, turning your skills into
+                Whether it's through side hustles or turning your skills into
                 cash.
               </p>
             </div>

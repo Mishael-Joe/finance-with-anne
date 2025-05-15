@@ -18,8 +18,51 @@ export default function AboutPage() {
           About Anne
         </h1>
         <div className="max-w-3xl mx-auto text-center">
-          <p className="text-lg text-muted-foreground mb-8">
+          {/* <p className="text-lg text-muted-foreground mb-8">
             Certified Financial Educator and Personal Finance Expert
+          </p> */}
+        </div>
+      </section>
+
+      {/* Why I Started Section */}
+      <section className="mb-16 bg-muted p-8 md:p-12 rounded-lg">
+        <h2 className="text-3xl font-bold mb-6">
+          Why I Started Finance with Anne
+        </h2>
+        <div className="space-y-4">
+          <p>
+            Growing up, I watched many of my dad’s colleagues, men who were once
+            top government officials with drivers, beautiful homes and a good
+            life — struggle financially after retirement. They had spent their
+            prime earning years in comfort, yet when the paychecks stopped, so
+            did the lifestyle. Many had to go back to work just to get by. That
+            reality left a lasting impression on me.
+          </p>
+          <p>
+            It made me realize something important: it's not just about how much
+            money you make — it's about how well you manage it. Money should
+            serve you not only in your active years but also in retirement.
+          </p>
+          <p>
+            Over the years, I’ve seen how financial stress can weigh heavily on
+            individuals, families, and relationships. But I’ve also seen the
+            power of financial knowledge to transform lives — to bring clarity,
+            peace of mind, and freedom.
+          </p>
+          <p>
+            Finance With Anne was born out of a deep desire to bridge the gap
+            between everyday people and practical financial wisdom. This
+            platform is my way of paying it forward.
+          </p>
+          <p>
+            Finance With Anne is more than just a blog or a business — it’s a
+            movement toward helping people make confident, intentional financial
+            decisions, no matter where they’re starting from.
+          </p>
+          <p>
+            I’m also a wife to one amazing man and a proud mom of three
+            beautiful children. Every day, they remind me of the importance of
+            building a legacy that lasts and I’m here to help you do the same.
           </p>
         </div>
       </section>
@@ -30,22 +73,24 @@ export default function AboutPage() {
           <div>
             <h2 className="text-3xl font-bold mb-6">My Mission</h2>
             <p className="mb-4">
-              At <span className=" italic">'Finance With Anne'</span>, my
-              mission is to simplify personal finance and empower
-              individuals—especially beginners—with the tools, knowledge, and
-              confidence to take control of their financial journey.
+              At{" "}
+              <span className=" italic text-primary-light">
+                Finance With Anne
+              </span>
+              , my mission is to make personal finance simple, practical and
+              empowering. Providing you with the right knowledge, tools, and
+              confindence to take control of your financial future.
             </p>
             <p className="mb-4">
-              I believe that financial literacy should be practical, relatable,
-              and accessible. Whether it’s budgeting, saving, investing, or
-              understanding money mindsets, my goal is to break down complex
-              financial concepts into easy, everyday steps you can take.
+              I believe financial literacy should be relatable, and within
+              everyone's reach. Whether it’s earning extra income, budgeting,
+              saving, investing, or shifting your money mindsets, I break down
+              complex knowledge into clear, actionable steps.
             </p>
             <p className="mb-6">
-              With years of experience teaching and practicing smart money
-              habits, I'm here to guide you toward building wealth with purpose
-              and intention—starting right where you are, one smart decision at
-              a time.
+              With years of experience living and teaching smart money habits,
+              I'm here to guide you toward building purposeful wealth - starting
+              from were you are, one smart decision at a time.
             </p>
             <Button href="/contact" variant="primary">
               Get in Touch
@@ -66,74 +111,29 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Why I Started Section */}
-      <section className="mb-16 bg-muted p-8 md:p-12 rounded-lg">
-        <h2 className="text-3xl font-bold mb-6">
-          Why I Started Finance with Anne
-        </h2>
-        <div className="space-y-4">
-          <p>
-            I started Finance with Anne out of a deep desire to bridge the gap
-            between everyday people and practical financial wisdom. Too many are
-            overwhelmed by money talk, feeling left behind or unqualified to
-            take charge of their finances.
-          </p>
-          <p>
-            Over the years, I’ve seen how financial stress can affect lives,
-            relationships, and opportunities. But I’ve also witnessed the
-            transformation that happens when people are equipped with clear,
-            simple, and empowering guidance on managing their money.
-          </p>
-          <p>
-            This platform is my way of paying it forward. My goal is to
-            demystify finance and show that anyone—regardless of background—can
-            make informed financial decisions and build a secure future. Finance
-            with Anne is more than just a blog; it’s a movement toward
-            confident, values-driven money management.
-          </p>
-        </div>
-      </section>
-
       {/* Certifications Section */}
-      <section>
+      {/* <section>
         <h2 className="text-3xl font-bold mb-6">
           Certifications & Credentials
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-white p-6 rounded-lg shadow-sm border border-border">
             <h3 className="text-xl font-semibold mb-2">
-              Certified Financial Education Instructor (CFEI)
+              Certified Financial Education Instructor (CFEI) (In View)
             </h3>
-            {/* <p className="text-muted-foreground">
-              National Financial Educators Council
-            </p> */}
           </div>
           <div className="bg-white p-6 rounded-lg shadow-sm border border-border">
             <h3 className="text-xl font-semibold mb-2">
               Chartered Accountant (ACA)
             </h3>
-            {/* <p className="text-muted-foreground">
-              Financial Planning Association
-            </p> */}
           </div>
           <div className="bg-white p-6 rounded-lg shadow-sm border border-border">
             <h3 className="text-xl font-semibold mb-2">
-              MBA in Finance and Investments
+              MBA in Finance and Investments (In View)
             </h3>
-            {/* <p className="text-muted-foreground">
-              University of Financial Excellence
-            </p> */}
           </div>
-          {/* <div className="bg-white p-6 rounded-lg shadow-sm border border-border">
-            <h3 className="text-xl font-semibold mb-2">
-              Certified Budget Counselor
-            </h3>
-            <p className="text-muted-foreground">
-              American Association of Budget Counselors
-            </p>
-          </div> */}
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

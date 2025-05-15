@@ -121,7 +121,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/resources"
+                  href="/products"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Products and Services
