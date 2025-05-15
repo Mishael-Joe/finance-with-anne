@@ -3,7 +3,7 @@ import BlogList from "@/components/blog/blog-list";
 
 // Define metadata for SEO
 export const metadata: Metadata = {
-  title: "Blog | Finance with Anne",
+  title: "Real Money Talk | Finance with Anne",
   description:
     "Read the latest articles on personal finance, budgeting, saving, and investing strategies.",
 };
@@ -14,7 +14,7 @@ export default function BlogPage() {
       {/* Blog Header */}
       <section className="mb-12">
         <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center">
-          Financial Wisdom Blog
+          Real Money Talk
         </h1>
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-lg text-muted-foreground">

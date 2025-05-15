@@ -108,7 +108,7 @@ export default function Footer() {
                   href="/blog"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Blog
+                  Real Money Talk
                 </Link>
               </li>
               <li>
@@ -116,7 +116,15 @@ export default function Footer() {
                   href="/resources"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Resources
+                  Free Resources
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/resources"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Products and Services
                 </Link>
               </li>
               {/* <li>
@@ -140,7 +148,7 @@ export default function Footer() {
                   href="/contact"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Contact
+                  Contact Anne
                 </Link>
               </li>
             </ul>
@@ -207,11 +215,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom Footer */}
-        <div className="border-t mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t mt-12 pt-8 flex flex-col md:flex-row justify-center items-center">
           <p className="text-sm text-muted-foreground mb-4 md:mb-0">
             &copy; {currentYear} Finance with Anne. All rights reserved.
           </p>
-          <div className="flex space-x-6">
+          {/* <div className="flex space-x-6">
             <Link
               href="/"
               className="text-sm text-muted-foreground hover:text-primary transition-colors"
@@ -230,7 +238,7 @@ export default function Footer() {
             >
               Sitemap
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

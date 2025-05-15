@@ -9,23 +9,41 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="bg-linear-to-r from-primary to-primary-light text-white py-20 md:py-28">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Take Control of Your Financial Future
-            </h1>
-            <p className="text-lg md:text-xl mb-8 text-white/90">
-              Learn practical strategies for budgeting, saving, and investing
-              that will help you achieve financial freedom.
-            </p>
-            <Button
-              href="/about"
-              className="border bg-background text-primary font-semibold hover:text-white"
-              size="lg"
-            >
-              Get Started <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+      <section className="bg-linear-to-r from-primary to-primary-light text-white py-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-3xl mx-auto text-center">
+              <h1 className="text-4xl md:text-5xl lg:text-4xl font-bold text-white mb-6">
+                READY TO TAKE CHARGE OF YOUR MONEY AND BUILD THE LIFE YOU WANT?
+              </h1>
+              <p className="md:text-xl mb-8 text-white/90">
+                Here, you'll find simple, practical strategies to help you earn
+                more, budget better, save consistenly and start investing with
+                confidence. No complicated terms - just simple, practical advice
+                with steps to help you move closer to financial freedom, one
+                step at a time. I'm here to help you gain the confidence to
+                build the life you've always dreamed of.
+              </p>
+              <Button
+                href="/about"
+                className="border bg-background text-primary font-semibold hover:text-white"
+                size="lg"
+              >
+                Get Started <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </div>
+          </div>
+
+          <div className="flex justify-center">
+            <div className="relative w-full max-w-md aspect-3/4 rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src="/anne-home-img.jpg?height=600&width=450"
+                alt="Anne - Financial Educator"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -36,6 +54,27 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             How I Can Help You
           </h2>
+          <div className="grid grid-cols-1 md:grid-cols-6 gap-8 py-4 justify-center">
+            {/* Budgeting Card */}
+            <div className="bg-white rounded-lg shadow-md p-8 text-center md:col-span-2 md:col-start-3">
+              <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Image
+                  src="/money-svgrepo-com.svg"
+                  alt="Money Icon"
+                  width={40}
+                  height={40}
+                  className="text-primary"
+                />
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Make More Money</h3>
+              <p className="text-muted-foreground">
+                Find simple and proven ways to actively increase your income.
+                Whether it's through side hustles, turning your skills into
+                cash.
+              </p>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Budgeting Card */}
             <div className="bg-white rounded-lg shadow-md p-8 text-center">
@@ -84,10 +123,10 @@ export default function Home() {
                   className="text-primary"
                 />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Beginner Investing</h3>
+              <h3 className="text-xl font-semibold mb-3">Smart Investing</h3>
               <p className="text-muted-foreground">
-                Learn the fundamentals of investing and how to build a portfolio
-                aligned with your goals.
+                Learn how to start investing confidently, grow your money over
+                time, and build a portfolio aligned with your goals.
               </p>
             </div>
           </div>
