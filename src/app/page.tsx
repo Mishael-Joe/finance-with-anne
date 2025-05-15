@@ -37,7 +37,7 @@ export default function Home() {
           <div className="flex justify-center">
             <div className="relative w-full max-w-md aspect-3/4 rounded-lg overflow-hidden shadow-lg">
               <Image
-                src="/anne-home-img.jpg"
+                src="/anne-home-img.JPG"
                 alt="Anne - Financial Educator"
                 fill
                 className="object-cover"
