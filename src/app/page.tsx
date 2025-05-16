@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import NewsletterSignup from "@/components/newsletter-signup";
 import BlogList from "@/components/blog/blog-list";
 import Button from "@/components/ui/button";
+import { YoutubeVideoGrid } from "@/components/youtube-video-grid";
 
 export default function Home() {
   return (
@@ -148,6 +149,26 @@ export default function Home() {
 
           {/* Blog list component displays the latest 3 blog posts */}
           <BlogList limit={3} />
+        </div>
+      </section>
+
+      {/* YouTube videos */}
+      <section>
+        <div className="container mx-auto px-4 md:px-6 mb-16">
+          <div className="flex justify-between items-center mb-12">
+            <h2 className="text-2xl md:text-4xl font-bold">Latest Videos</h2>
+            <Link
+              href="https://www.youtube.com/@FinancewithAnne"
+              className="text-primary hover:text-primary-light hover:underline font-medium flex items-center text-sm md:text-base"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View all videos <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </div>
+
+          {/* YouTube video grid component */}
+          <YoutubeVideoGrid />
         </div>
       </section>
 
