@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="bg-linear-to-r from-primary to-primary-light text-white py-14">
+      <section className="bg-linear-to-r from-primary to-primary-light text-white py-0 pt-10 md:py-8 lg:py-0 lg:pt-0">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-3xl mx-auto text-center">
@@ -35,9 +35,9 @@ export default function Home() {
           </div>
 
           <div className="flex justify-center">
-            <div className="relative w-full max-w-md aspect-3/4 rounded-lg overflow-hidden shadow-lg">
+            <div className="relative w-full max-w-md aspect-3/4 rounded-lg overflow-hidden shadow-none">
               <Image
-                src="/anne-home-img.JPG"
+                src="/anne-home-img-Photoroom.png"
                 alt="Anne - Financial Educator"
                 fill
                 className="object-cover"
@@ -126,7 +126,7 @@ export default function Home() {
               <h3 className="text-xl font-semibold mb-3">Smart Investing</h3>
               <p className="text-muted-foreground">
                 Learn how to start investing confidently, grow your money over
-                time, and build a portfolio aligned with your goals.
+                time and build a portfolio aligned with your goals.
               </p>
             </div>
           </div>
@@ -159,7 +159,7 @@ export default function Home() {
               Join My Financial Newsletter
             </h2>
             <p className="text-center text-lg mb-8 text-muted-foreground">
-              Get weekly tips, resources, and insights to help you on your
+              Get weekly tips, resources and insights to help you on your
               financial journey.
             </p>
             <NewsletterSignup />
