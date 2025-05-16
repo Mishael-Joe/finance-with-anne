@@ -45,9 +45,9 @@ export default function AboutPage() {
           </p>
           <p>
             Over the years, I’ve seen how financial stress can weigh heavily on
-            individuals, families, and relationships. But I’ve also seen the
+            individuals, families and relationships. But I’ve also seen the
             power of financial knowledge to transform lives — to bring clarity,
-            peace of mind, and freedom.
+            peace of mind and freedom.
           </p>
           <p>
             Finance With Anne was born out of a deep desire to bridge the gap
@@ -78,13 +78,13 @@ export default function AboutPage() {
                 Finance With Anne
               </span>
               , my mission is to make personal finance simple, practical and
-              empowering. Providing you with the right knowledge, tools, and
+              empowering. Providing you with the right knowledge, tools and
               confindence to take control of your financial future.
             </p>
             <p className="mb-4">
-              I believe financial literacy should be relatable, and within
+              I believe financial literacy should be relatable and within
               everyone's reach. Whether it’s earning extra income, budgeting,
-              saving, investing, or shifting your money mindsets, I break down
+              saving, investing or shifting your money mindsets, I break down
               complex knowledge into clear, actionable steps.
             </p>
             <p className="mb-6">
@@ -98,9 +98,9 @@ export default function AboutPage() {
           </div>
 
           <div className="flex justify-center">
-            <div className="relative w-full max-w-md aspect-3/4 rounded-lg overflow-hidden shadow-lg">
+            <div className="relative w-full max-w-md aspect-3/4 rounded-sm overflow-hidden shadow-none">
               <Image
-                src="/anne.jpg?height=600&width=450"
+                src="/anne-Photoroom.png"
                 alt="Anne - Financial Educator"
                 fill
                 className="object-cover"
