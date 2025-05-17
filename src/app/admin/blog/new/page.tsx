@@ -298,9 +298,6 @@ export default function NewBlogPostPage() {
             onChange={handleInputChange}
             placeholder="Anne Johnson"
           />
-          <p className="text-xs text-muted-foreground">
-            Comma-separated list of tags.
-          </p>
         </div>
 
         {/* Published Status */}
