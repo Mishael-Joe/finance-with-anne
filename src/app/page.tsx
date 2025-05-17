@@ -155,8 +155,10 @@ export default function Home() {
       {/* YouTube videos */}
       <section>
         <div className="container mx-auto px-4 md:px-6 mb-16">
-          <div className="flex justify-between items-center mb-12">
-            <h2 className="text-2xl md:text-4xl font-bold">Latest Videos</h2>
+          <div className="flex justify-between items-center mb-3 gap-2">
+            <h2 className="text-xl sm:text-2xl md:text-4xl font-bold">
+              Build Sustainable Wealth
+            </h2>
             <Link
               href="https://www.youtube.com/@FinancewithAnne"
               className="text-primary hover:text-primary-light hover:underline font-medium flex items-center text-sm md:text-base"
@@ -165,6 +167,15 @@ export default function Home() {
             >
               View all videos <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
+          </div>
+
+          <div className="mb-6">
+            <p className="text-muted-foreground">
+              If financial education wasn’t part of your upbringing, you are not
+              alone. That’s exactly what inspired me to launch my YouTube
+              channel: to share the financial knowledge and guidance I wish I
+              had learned earlier. Watch Me on YouTube.
+            </p>
           </div>
 
           {/* YouTube video grid component */}

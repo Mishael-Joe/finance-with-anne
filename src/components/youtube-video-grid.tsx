@@ -22,32 +22,32 @@ interface YoutubeVideoType {
 
 const videos: YoutubeVideoType[] = [
   {
-    videoLink: "https://youtu.be/mA_EzaEJ2ik?si=Dt0FXQOue_FHmZZn",
+    videoLink: "https://youtu.be/wGvjr-shdNE?si=LZyVjJoCw7rW6ARf",
     h3: "Video Title 1",
     pTag: "Description for video 1",
   },
   {
-    videoLink: "https://youtu.be/F4tp-rtOS5k?si=OsxxCesXat8T0pIK",
+    videoLink: "https://youtu.be/GaB6_OF5Hpw?si=TC3GUCGIvpvq03eB",
     h3: "Video Title 2",
     pTag: "Description for video 2",
   },
   {
-    videoLink: "https://youtu.be/bfFJEZH04NA?si=hFjo2cv5Gdm76BtE",
+    videoLink: "https://youtu.be/F4tp-rtOS5k?si=Gz1QxMdENNiusVQ7",
     h3: "Video Title 3",
     pTag: "Description for video 3",
   },
   {
-    videoLink: "https://youtu.be/iHfmnh9lQOA?si=sfToSeYuS3FTaMaH",
+    videoLink: "https://youtu.be/jfzt7xWxUgU?si=2w_bkRV6riaVPYGd",
     h3: "Video Title 4",
     pTag: "Description for video 4",
   },
   {
-    videoLink: "https://youtu.be/Ahin0lW71O4?si=Uzxjjv7J9Da-42Ll",
+    videoLink: "https://youtu.be/ECZhm9i-7v4?si=-cmWR_lK8bkel_Bq",
     h3: "Video Title 5",
     pTag: "Description for video 5",
   },
   {
-    videoLink: "https://youtu.be/ECZhm9i-7v4?si=cm61ASTC8iKrqKML",
+    videoLink: "https://youtu.be/fYT4MOEmHtg?si=JQsCGSXogPqUU3EJ",
     h3: "Video Title 6",
     pTag: "Description for video 6",
   },

@@ -38,6 +38,7 @@ export default function EditBlogPostPage() {
     excerpt: "",
     featuredImage: "",
     tags: "",
+    author: "",
     published: false,
   });
 
@@ -76,6 +77,7 @@ export default function EditBlogPostPage() {
           excerpt: post.excerpt || "",
           featuredImage: post.featuredImage || "",
           tags: tagsString,
+          author: post.author || "",
           published: post.published || false,
         });
       } catch (err) {
@@ -333,6 +335,20 @@ export default function EditBlogPostPage() {
           <p className="text-xs text-muted-foreground">
             Comma-separated list of tags.
           </p>
+        </div>
+
+        {/* Author */}
+        <div className="space-y-2">
+          <label htmlFor="author" className="text-sm font-medium">
+            Author
+          </label>
+          <Input
+            id="author"
+            name="author"
+            value={formData.author}
+            onChange={handleInputChange}
+            placeholder="Anne Johnson"
+          />
         </div>
 
         {/* Published Status */}
