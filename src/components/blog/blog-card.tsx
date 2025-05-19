@@ -16,31 +16,37 @@ import type { Post } from "@/lib/posts";
  * @param post - The blog post data to display
  */
 export default function BlogCard({ post }: { post: Post }) {
+  // Format category for display in URL
+  const categorySlug = post.category.toLowerCase().replace(/\s+/g, "-");
+
   return (
     <article className="bg-white rounded-lg shadow-md overflow-hidden border border-border h-full flex flex-col">
-      {/* Cover image */}
+      {/* Featured image */}
       <div className="aspect-video relative bg-muted">
         <Image
-          src={post.coverImage || "/budgeting.jpg?height=300&width=500"}
+          src={post.featuredImage || "/placeholder.svg?height=300&width=500"}
           alt={post.title}
           fill
           className="object-cover"
         />
         {/* Category badge */}
-        {/* <div className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+        <Link
+          href={`/blog/category/${categorySlug}`}
+          className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium hover:bg-primary-light transition-colors"
+        >
           {post.category}
-        </div> */}
+        </Link>
       </div>
 
       {/* Content */}
-      <div className="p-6 flex flex-col grow">
+      <div className="p-6 flex flex-col flex-grow">
         {/* Title */}
         <h3 className="text-xl font-bold mb-2 hover:text-primary transition-colors">
           <Link href={`/blog/${post.slug}`}>{post.title}</Link>
         </h3>
 
         {/* Excerpt */}
-        <p className="text-muted-foreground mb-4 grow">{post.excerpt}</p>
+        <p className="text-muted-foreground mb-4 flex-grow">{post.excerpt}</p>
 
         {/* Meta information */}
         <div className="flex items-center text-sm text-muted-foreground">
@@ -58,8 +64,8 @@ export default function BlogCard({ post }: { post: Post }) {
             />
           </div>
           <div>
-            <p className="font-medium">{post.author}</p>
-            <p>{formatDate(post.date)}</p>
+            <p className="font-medium">{post.author || "Anne Johnson"}</p>
+            <p>{formatDate(post.createdAt)}</p>
           </div>
         </div>
       </div>

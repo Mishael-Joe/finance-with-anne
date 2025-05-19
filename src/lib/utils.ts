@@ -13,21 +13,6 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /**
- * Format a date string into a more readable format
- *
- * @param dateString - ISO date string (YYYY-MM-DD)
- * @returns Formatted date string (e.g., "April 15, 2023")
- */
-export function formatDate(dateString: Date): string {
-  const date = new Date(dateString);
-  return date.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-}
-
-/**
  * Get initials from a name
  *
  * @param name - Full name
@@ -63,4 +48,38 @@ export function calculateReadingTime(content: string): number {
   const wordsPerMinute = 200;
   const wordCount = content.split(/\s+/).length;
   return Math.ceil(wordCount / wordsPerMinute);
+}
+
+/**
+ * Formats a date string or Date object into a readable format
+ * @param date - Date to format (string or Date object)
+ * @returns Formatted date string
+ */
+export function formatDate(date: string | Date): string {
+  if (!date) return "";
+
+  const d = typeof date === "string" ? new Date(date) : date;
+
+  // Check if date is valid
+  if (isNaN(d.getTime())) return "";
+
+  return d.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+/**
+ * Generates a slug from a string
+ * @param str - String to convert to slug
+ * @returns Slug string
+ */
+export function slugify(str: string): string {
+  return str
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/[\s_-]+/g, "-")
+    .replace(/^-+|-+$/g, "");
 }

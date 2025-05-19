@@ -134,9 +134,19 @@ export function YoutubeVideoGrid() {
                 className="object-cover"
               />
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
-                  <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-white border-b-8 border-b-transparent ml-1"></div>
+                <div>
+                  <Image
+                    src={"/youtube-svgrepo-com.svg"}
+                    alt={"Play Button"}
+                    height={72}
+                    width={72}
+                    // fill
+                    // className="object-cover"
+                  />
                 </div>
+                {/* <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
+                  <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-white border-b-8 border-b-transparent ml-1"></div>
+                </div> */}
               </div>
             </div>
 

@@ -5,8 +5,12 @@ import NewsletterSignup from "@/components/newsletter-signup";
 import BlogList from "@/components/blog/blog-list";
 import Button from "@/components/ui/button";
 import { YoutubeVideoGrid } from "@/components/youtube-video-grid";
+import { getPosts } from "@/lib/posts";
 
-export default function Home() {
+export default async function Home() {
+  // Fetch the latest posts for the blog section
+  const posts = await getPosts();
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
@@ -148,7 +152,7 @@ export default function Home() {
           </div>
 
           {/* Blog list component displays the latest 3 blog posts */}
-          <BlogList limit={3} />
+          <BlogList posts={posts} limit={3} />
         </div>
       </section>
 
@@ -156,7 +160,7 @@ export default function Home() {
       <section>
         <div className="container mx-auto px-4 md:px-6 mb-16">
           <div className="flex justify-between items-center mb-3 gap-2">
-            <h2 className="text-xl sm:text-2xl md:text-4xl font-bold">
+            <h2 className="text-2xl md:text-4xl font-bold">
               Build Sustainable Wealth
             </h2>
             <Link

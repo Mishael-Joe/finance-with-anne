@@ -14,6 +14,13 @@ import { twMerge } from "tailwind-merge";
 import { useSession } from "next-auth/react";
 import PageLoader from "@/components/ui/page-loader";
 import { toast } from "sonner";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 /**
  * Edit Blog Post page component
@@ -38,6 +45,7 @@ export default function EditBlogPostPage() {
     excerpt: "",
     featuredImage: "",
     tags: "",
+    category: "",
     author: "",
     published: false,
   });
@@ -77,6 +85,7 @@ export default function EditBlogPostPage() {
           excerpt: post.excerpt || "",
           featuredImage: post.featuredImage || "",
           tags: tagsString,
+          category: post.category || "",
           author: post.author || "",
           published: post.published || false,
         });
@@ -334,6 +343,42 @@ export default function EditBlogPostPage() {
           />
           <p className="text-xs text-muted-foreground">
             Comma-separated list of tags.
+          </p>
+        </div>
+
+        {/* Category Dropdown */}
+        <div className="space-y-2">
+          <label htmlFor="category" className="text-sm font-medium">
+            Category
+          </label>
+          <Select
+            value={formData.category}
+            onValueChange={(value) =>
+              setFormData((prev) => ({ ...prev, category: value }))
+            }
+          >
+            <SelectTrigger id="category">
+              <SelectValue placeholder="Select a category" />
+            </SelectTrigger>
+            <SelectContent>
+              {[
+                "Money Mindset",
+                "Earning More",
+                "Saving & Budgeting",
+                "Local Investing",
+                "Global Investing",
+                "Financial Tools",
+                "Life Goals",
+                "Success Stories",
+              ].map((cat) => (
+                <SelectItem key={cat} value={cat}>
+                  {cat}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <p className="text-xs text-muted-foreground">
+            The category of your post. This will help organize your content.
           </p>
         </div>
 
