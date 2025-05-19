@@ -3,6 +3,29 @@ import Link from "next/link";
 import { formatDate } from "@/lib/utils";
 import type { Post } from "@/lib/posts";
 
+const getCategoryBadgeStyle = (category: string) => {
+  switch (category) {
+    case "Money Mindset":
+      return "bg-green-600 hover:bg-green-500";
+    case "Earning More":
+      return "bg-blue-600 hover:bg-blue-500";
+    case "Saving & Budgeting":
+      return "bg-yellow-500 hover:bg-yellow-400 text-black";
+    case "Local Investing":
+      return "bg-rose-600 hover:bg-rose-500";
+    case "Global Investing":
+      return "bg-indigo-600 hover:bg-indigo-500";
+    case "Financial Tools":
+      return "bg-purple-600 hover:bg-purple-500";
+    case "Life Goals":
+      return "bg-pink-600 hover:bg-pink-500";
+    case "Success Stories":
+      return "bg-orange-600 hover:bg-orange-500";
+    default:
+      return "bg-primary hover:bg-primary-light";
+  }
+};
+
 /**
  * Blog card component to display a blog post preview
  *
@@ -32,7 +55,9 @@ export default function BlogCard({ post }: { post: Post }) {
         {/* Category badge */}
         <Link
           href={`/blog/category/${categorySlug}`}
-          className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium hover:bg-primary-light transition-colors"
+          className={`absolute top-4 left-4 px-3 py-1 rounded-full text-sm font-medium text-white transition-colors ${getCategoryBadgeStyle(
+            post.category
+          )}`}
         >
           {post.category}
         </Link>
@@ -49,7 +74,7 @@ export default function BlogCard({ post }: { post: Post }) {
         <p className="text-muted-foreground mb-4 flex-grow">{post.excerpt}</p>
 
         {/* Meta information */}
-        <div className="flex items-center text-sm text-muted-foreground">
+        {/* <div className="flex items-center text-sm text-muted-foreground">
           <div className="mr-3">
             <Image
               src={
@@ -67,7 +92,7 @@ export default function BlogCard({ post }: { post: Post }) {
             <p className="font-medium">{post.author || "Anne Johnson"}</p>
             <p>{formatDate(post.createdAt)}</p>
           </div>
-        </div>
+        </div> */}
       </div>
     </article>
   );
