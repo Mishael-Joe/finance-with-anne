@@ -10,6 +10,15 @@ export interface IPost extends Document {
   content: string;
   excerpt: string;
   featuredImage?: string;
+  category:
+    | "Money Mindset"
+    | "Earning More"
+    | "Saving & Budgeting"
+    | "Local Investing"
+    | "Global Investing"
+    | "Financial Tools"
+    | "Life Goals"
+    | "Success Stories";
   author: string;
   tags: string[];
   published: boolean;
@@ -46,6 +55,20 @@ const PostSchema = new Schema<IPost>(
     },
     featuredImage: {
       type: String,
+    },
+    category: {
+      type: String,
+      required: [true, "Category is required"],
+      enum: [
+        "Money Mindset",
+        "Earning More",
+        "Saving & Budgeting",
+        "Local Investing",
+        "Global Investing",
+        "Financial Tools",
+        "Life Goals",
+        "Success Stories",
+      ],
     },
     author: {
       type: String,
@@ -93,25 +116,3 @@ export async function getPostBySlug(slug: string): Promise<IPost | null> {
   const Post = await getPostModel();
   return Post.findOne({ slug }).lean();
 }
-
-// Step 1: Track Your Spending
-
-// Before you can manage your money, you need to know where it’s going. Start by reviewing your last month of expenses. You’ll be surprised at how the little things add up.
-
-// Step 2: Create a Realistic Budget
-
-// A budget isn’t about restriction—it’s about intention. Allocate funds to essentials, savings, and guilt-free spending, and make sure your budget aligns with your values.
-
-// Step 3: Build an Emergency Fund
-
-// Set aside at least 3–6 months’ worth of basic expenses. Start small—₦5,000 a week can go a long way. Having a cushion provides peace of mind and protects you from unexpected debt.
-
-// Step 4: Cut Unnecessary Expenses
-
-// Audit your subscriptions, daily habits, and impulse buys. Redirect those funds toward savings or paying off debt. Small sacrifices today can lead to big rewards tomorrow.
-
-// Step 5: Set Clear Financial Goals
-
-// Whether it's saving for rent, school fees, or your first investment, define your short and long-term goals. Write them down and track your progress monthly.
-
-// Remember: Financial freedom doesn’t happen overnight, but with consistency and the right habits, it’s absolutely within your reach. You’ve got this!
