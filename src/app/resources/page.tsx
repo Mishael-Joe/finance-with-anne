@@ -4,6 +4,13 @@ import { Download, FileText, Calculator, BookOpen } from "lucide-react";
 import Button from "@/components/ui/button";
 import Link from "next/link";
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 // Define metadata for SEO
 export const metadata: Metadata = {
   title: "Resources | Finance with Anne",
@@ -30,21 +37,33 @@ export default function ResourcesPage() {
       {/* Resources Categories */}
       <section className="mb-12">
         <div className="flex flex-wrap justify-center gap-3">
-          <button className="px-4 py-2 bg-primary text-white rounded-full text-sm font-medium">
+          {/* <button className="px-4 py-2 bg-primary text-white rounded-full text-sm font-medium">
             All Resources
-          </button>
-          <button className="px-4 py-2 bg-white border border-border rounded-full text-sm font-medium hover:bg-muted transition-colors">
+          </button> */}
+          <Link
+            href={"#budget-template"}
+            className="px-4 py-2 bg-white border border-border rounded-full text-sm font-medium hover:bg-muted transition-colors"
+          >
             Budget Templates
-          </button>
-          <button className="px-4 py-2 bg-white border border-border rounded-full text-sm font-medium hover:bg-muted transition-colors">
+          </Link>
+          <Link
+            href={"#"}
+            className="px-4 py-2 bg-white border border-border rounded-full text-sm font-medium hover:bg-muted transition-colors"
+          >
             Worksheets
-          </button>
-          <button className="px-4 py-2 bg-white border border-border rounded-full text-sm font-medium hover:bg-muted transition-colors">
+          </Link>
+          <Link
+            href={"#"}
+            className="px-4 py-2 bg-white border border-border rounded-full text-sm font-medium hover:bg-muted transition-colors"
+          >
             Calculators
-          </button>
-          <button className="px-4 py-2 bg-white border border-border rounded-full text-sm font-medium hover:bg-muted transition-colors">
+          </Link>
+          <Link
+            href="#guides"
+            className="px-4 py-2 bg-white border border-border rounded-full text-sm font-medium hover:bg-muted transition-colors"
+          >
             Guides
-          </button>
+          </Link>
         </div>
       </section>
 
@@ -52,7 +71,10 @@ export default function ResourcesPage() {
       <section className="mb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Budget Template */}
-          <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
+          <div
+            className="bg-white rounded-lg shadow-md overflow-hidden border border-border scroll-smooth"
+            id="budget-template"
+          >
             <div className="aspect-video relative bg-muted">
               <Image
                 src="/budgeting.jpg?height=300&width=500"
@@ -75,8 +97,8 @@ export default function ResourcesPage() {
                 Monthly Budget Template
               </h3>
               <p className="text-muted-foreground mb-4">
-                A comprehensive monthly budget template to track your income,
-                expenses, and savings goals.
+                A simple monthly budget template to track your income, expenses,
+                and savings goals.
               </p>
               <Link
                 download={true}
@@ -252,31 +274,34 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      {/* Premium Resources Teaser */}
-      {/* <section className="bg-primary text-white p-8 md:p-12 rounded-lg">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div>
-            <h2 className="text-3xl font-bold mb-4">Premium Resources</h2>
-            <p className="mb-6">
-              Get access to my complete library of premium financial resources,
-              including advanced budget templates, investment trackers, and
-              personalized financial planning tools.
-            </p>
-            <Button href="/courses" variant="secondary">
-              Learn More
-            </Button>
-          </div>
-          <div className="flex justify-center">
-            <Image
-              src="/budgeting.jpg?height=300&width=500"
-              alt="Premium Resources"
-              width={400}
-              height={300}
-              className="rounded-lg"
-            />
-          </div>
-        </div>
-      </section> */}
+      {/* GUIDES */}
+      <div className="mt-8 scroll-smooth scroll-mt-20" id="guides">
+        <h2 className="text-2xl font-bold mb-6">Guides</h2>
+        <Accordion type="single" collapsible className="w-full">
+          <AccordionItem value="item-1">
+            <AccordionTrigger>Item 1: How to Create a Budget</AccordionTrigger>
+            <AccordionContent>
+              Answer: Lorem ipsum dolor sit amet.
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="item-2">
+            <AccordionTrigger>
+              Item 2: How to Save for Retirement
+            </AccordionTrigger>
+            <AccordionContent>
+              Answer: Lorem ipsum dolor sit amet.
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="item-3">
+            <AccordionTrigger>Item 3: How to Invest in Stocks</AccordionTrigger>
+            <AccordionContent>
+              Answer: Lorem ipsum dolor sit amet.
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </div>
     </div>
   );
 }

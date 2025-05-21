@@ -6,6 +6,12 @@ import { FaXTwitter } from "react-icons/fa6";
 import { RiTiktokLine } from "react-icons/ri";
 import ContactForm from "@/components/contact-form";
 import { anneEmail } from "@/config";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 // Define metadata for SEO
 export const metadata: Metadata = {
@@ -80,6 +86,58 @@ export default function ContactPage() {
                     href="https://www.instagram.com/financewithanne?igsh=MTUzcWY0MWE2YnhsdQ%3D%3D&utm_source=qr"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="bg-[#E4405F] p-3 rounded-full text-white hover:opacity-90 transition"
+                  >
+                    <FaInstagram className="h-5 w-5" />
+                    <span className="sr-only">Instagram</span>
+                  </a>
+
+                  <a
+                    href="https://www.facebook.com/share/18nwuqrJ36/?mibextid=LQQJ4d"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-[#1877F2] p-3 rounded-full text-white hover:opacity-90 transition"
+                  >
+                    <FiFacebook className="h-5 w-5" />
+                    <span className="sr-only">Facebook</span>
+                  </a>
+
+                  <a
+                    href="https://x.com/financewithanne?s=21&t=Hzd4iPIbzdXj9WMW-swU_A"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-black p-3 rounded-full text-white hover:opacity-90 transition"
+                  >
+                    <FaXTwitter className="h-5 w-5" />
+                    <span className="sr-only">X (Twitter)</span>
+                  </a>
+
+                  <a
+                    href="https://youtube.com/@financewithanne?si=5zX3b99rfYKi8RQM"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-[#FF0000] p-3 rounded-full text-white hover:opacity-90 transition"
+                  >
+                    <FiYoutube className="h-5 w-5" />
+                    <span className="sr-only">YouTube</span>
+                  </a>
+
+                  <a
+                    href="https://www.tiktok.com/@financewithanne?_t=ZM-8vzFmbQoZtt&_r=1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-black p-3 rounded-full text-white hover:opacity-90 transition"
+                  >
+                    <RiTiktokLine className="h-5 w-5" />
+                    <span className="sr-only">TikTok</span>
+                  </a>
+                </div>
+
+                {/* <div className="flex space-x-4">
+                  <a
+                    href="https://www.instagram.com/financewithanne?igsh=MTUzcWY0MWE2YnhsdQ%3D%3D&utm_source=qr"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="bg-white p-3 rounded-full text-primary hover:bg-primary hover:text-white transition-colors"
                   >
                     <FaInstagram className="h-5 w-5" />
@@ -121,7 +179,7 @@ export default function ContactPage() {
                     <RiTiktokLine className="h-5 w-5" />
                     <span className="sr-only">Tiktok</span>
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
 
@@ -130,36 +188,45 @@ export default function ContactPage() {
               <h2 className="text-2xl font-bold mb-6">
                 Frequently Asked Questions
               </h2>
-              <div className="space-y-4">
-                <div>
-                  <h3 className="font-semibold mb-2">
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="item-1">
+                  <AccordionTrigger>
                     Do you offer one-on-one coaching?
-                  </h3>
-                  <p className="text-muted-foreground">
-                    Yes, I offer personalized financial coaching sessions.
-                    Please contact me for availability and rates.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-2">
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    Yes, I offer personalized financial coaching sessions.{" "}
+                    <a
+                      href="https://selar.com/1b8204"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary underline hover:text-primary/80 transition-colors"
+                    >
+                      Book a Session.
+                    </a>
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-2">
+                  <AccordionTrigger>
                     Are you available for speaking engagements?
-                  </h3>
-                  <p className="text-muted-foreground">
-                    I regularly speak at conferences, workshops, and corporate
-                    events on personal finance topics. Please reach out with
-                    details about your event.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-2">
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    I am available to speak at conferences, workshops and
+                    corporate events on personal finance topics. Please reach
+                    out with details about your event.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-3">
+                  <AccordionTrigger>
                     How quickly can I expect a response?
-                  </h3>
-                  <p className="text-muted-foreground">
-                    I typically respond to all inquiries within 1-2 business
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    I typically respond to all inquiries within 1–2 business
                     days.
-                  </p>
-                </div>
-              </div>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             </div>
           </div>
         </div>
