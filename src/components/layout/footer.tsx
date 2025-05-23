@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { anneEmail } from "@/config";
+import { anneContactEmail } from "@/config";
 import { RiTiktokLine } from "react-icons/ri";
 import { FiFacebook, FiYoutube } from "react-icons/fi";
 import { FaXTwitter } from "react-icons/fa6";
@@ -209,7 +209,7 @@ export default function Footer() {
               <p>Suite 456</p>
               <p>Nigeria</p>
               <p>(+234) 123-4567</p> */}
-              <p className="mt-">{anneEmail}</p>
+              <p className="mt-">{anneContactEmail}</p>
             </address>
           </div>
         </div>
