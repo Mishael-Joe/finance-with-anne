@@ -5,7 +5,7 @@ import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { RiTiktokLine } from "react-icons/ri";
 import ContactForm from "@/components/contact-form";
-import { anneEmail } from "@/config";
+import { anneContactEmail, annePartnershipEmail } from "@/config";
 import {
   Accordion,
   AccordionContent,
@@ -53,7 +53,7 @@ export default function ContactPage() {
                   <Mail className="h-6 w-6 text-primary mr-4 mt-1" />
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
-                    <p className="text-muted-foreground">{anneEmail}</p>
+                    <p className="text-muted-foreground">{anneContactEmail}</p>
                   </div>
                 </div>
                 {/* <div className="flex items-start">
@@ -213,7 +213,8 @@ export default function ContactPage() {
                   <AccordionContent>
                     I am available to speak at conferences, workshops and
                     corporate events on personal finance topics. Please reach
-                    out with details about your event.
+                    out with details about your event via {annePartnershipEmail}
+                    .
                   </AccordionContent>
                 </AccordionItem>
 

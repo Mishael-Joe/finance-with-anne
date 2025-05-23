@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { LayoutClient } from "./layout-client";
+import Script from "next/script"; // ✅ Import next/script
 
 // Initialize the Inter font with Latin subset
 const inter = Inter({ subsets: ["latin"] });
@@ -24,6 +25,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/* ✅ Google Analytics Script */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-288SLP3B4Y"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-288SLP3B4Y');
+          `}
+        </Script>
+      </head>
       <body className={`scroll-smooth ${inter.className}`}>
         <LayoutClient>{children}</LayoutClient>
       </body>
