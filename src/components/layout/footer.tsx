@@ -209,7 +209,12 @@ export default function Footer() {
               <p>Suite 456</p>
               <p>Nigeria</p>
               <p>(+234) 123-4567</p> */}
-              <p className="mt-">{anneContactEmail}</p>
+              <a
+                href={`mailto:${anneContactEmail}`}
+                className="hover:text-primary hover:underline"
+              >
+                {anneContactEmail}
+              </a>
             </address>
           </div>
         </div>

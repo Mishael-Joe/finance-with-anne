@@ -190,7 +190,7 @@ export default function ContactPage() {
               </h2>
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-1">
-                  <AccordionTrigger>
+                  <AccordionTrigger className="text-lg">
                     Do you offer one-on-one coaching?
                   </AccordionTrigger>
                   <AccordionContent>
@@ -207,19 +207,25 @@ export default function ContactPage() {
                 </AccordionItem>
 
                 <AccordionItem value="item-2">
-                  <AccordionTrigger>
+                  <AccordionTrigger className="text-lg">
                     Are you available for speaking engagements?
                   </AccordionTrigger>
                   <AccordionContent>
                     I am available to speak at conferences, workshops and
                     corporate events on personal finance topics. Please reach
-                    out with details about your event via {annePartnershipEmail}
+                    out with details about your event via{" "}
+                    <a
+                      href={`mailto:${annePartnershipEmail}`}
+                      className="text-blue-600 underline"
+                    >
+                      {annePartnershipEmail}
+                    </a>
                     .
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="item-3">
-                  <AccordionTrigger>
+                  <AccordionTrigger className="text-lg">
                     How quickly can I expect a response?
                   </AccordionTrigger>
                   <AccordionContent>
