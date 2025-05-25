@@ -1,9 +1,8 @@
 import { Product } from "@/app/products/page";
 
-export const anneContactEmail =
-  process.env.ANNE_CONTACT_EMAIL || "financeswithanne@gmail.com";
+export const anneContactEmail = process.env.NEXT_PUBLIC_ANNE_CONTACT_EMAIL;
 export const annePartnershipEmail =
-  process.env.ANNE_PARTNERSHIP_EMAIL || "financeswithanne@gmail.com";
+  process.env.NEXT_PUBLIC_ANNE_PARTNERSHIP_EMAIL;
 
 // Sample products
 export const products: Product[] = [
