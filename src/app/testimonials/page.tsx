@@ -321,15 +321,15 @@ export default function TestimonialsPage() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           {/* <a
             href="/courses"
-            className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-white shadow-sm transition-colors hover:bg-primary/90"
+            className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground"
           >
             Explore Courses
           </a> */}
           <Link
-            href="/resources"
-            className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground"
+            href="/products"
+            className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-white shadow-sm transition-colors hover:bg-primary/90"
           >
-            Browse Resources
+            Browse Products and Services
           </Link>
         </div>
       </section>
