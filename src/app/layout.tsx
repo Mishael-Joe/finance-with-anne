@@ -15,7 +15,6 @@ export const metadata: Metadata = {
     "Learn personal finance, budgeting, saving, and investing strategies with Anne, a certified financial educator.",
   keywords:
     "personal finance, budgeting, saving, investing, financial education",
-  generator: "v0.dev",
 };
 
 export default function RootLayout({
