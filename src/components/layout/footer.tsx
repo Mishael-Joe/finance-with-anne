@@ -213,14 +213,15 @@ export default function Footer() {
                   Budget Templates
                 </Link>
               </li>
-              {/* <li>
+              <li>
                 <Link
-                  href="/resources"
+                  href="/tools/investment-calculator"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Financial Calculators
+                  Investment Calculator
                 </Link>
               </li>
+              {/* 
               <li>
                 <Link
                   href="/resources"
