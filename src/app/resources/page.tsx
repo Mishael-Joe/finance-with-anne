@@ -113,6 +113,75 @@ export default function ResourcesPage() {
           <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
             <div className="aspect-video relative bg-muted">
               <Image
+                src="/savings-calculator.jpg?height=300&width=500"
+                alt="Savings Calculator"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+                Free
+              </div>
+            </div>
+            <div className="p-6">
+              <div className="flex items-center mb-2">
+                <Calculator className="h-5 w-5 text-primary mr-2" />
+                <span className="text-sm font-medium text-muted-foreground">
+                  Online Tool
+                </span>
+              </div>
+              <h3 className="text-xl font-bold mb-2">Savings Calculator</h3>
+              <p className="text-muted-foreground mb-4">
+                Use our savings calculator to estimate how much you need to save
+                each month to reach your financial goals. Adjust for interest
+                rates and time frames.
+              </p>
+              <Button
+                href="/tools/savings-calculator"
+                variant="primary"
+                className="w-full"
+              >
+                <Calculator className="mr-2 h-4 w-4" /> Use Calculator
+              </Button>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
+            <div className="aspect-video relative bg-muted">
+              <Image
+                src="/net-worth.jpg?height=300&width=500"
+                alt="Net Worth Calculator"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+                Free
+              </div>
+            </div>
+            <div className="p-6">
+              <div className="flex items-center mb-2">
+                <Calculator className="h-5 w-5 text-primary mr-2" />
+                <span className="text-sm font-medium text-muted-foreground">
+                  Online Tool
+                </span>
+              </div>
+              <h3 className="text-xl font-bold mb-2">Net Worth Calculator</h3>
+              <p className="text-muted-foreground mb-4">
+                Calculate your net worth easily with our online tool. Track your
+                assets and liabilities to see your financial health at a glance.
+              </p>
+              <Button
+                href="/tools/net-worth-calculator"
+                variant="primary"
+                className="w-full"
+              >
+                <Calculator className="mr-2 h-4 w-4" /> Use Calculator
+              </Button>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
+            <div className="aspect-video relative bg-muted">
+              <Image
                 src="/investment-calculator.jpg?height=300&width=500"
                 alt="Investment Calculator"
                 fill

@@ -42,3 +42,57 @@ export interface CompoundingOption {
   label: string;
   description: string;
 }
+
+/**
+ * Savings calculator input data
+ */
+export interface SavingsData {
+  currency: string;
+  goalAmount: number;
+  currentSavings: number;
+  targetDate: string;
+  interestRate: number;
+  goalName: string;
+}
+
+/**
+ * Savings calculation results
+ */
+export interface SavingsResults {
+  monthlySavings: number;
+  totalMonths: number;
+  remainingAmount: number;
+  totalInterest: number;
+  progressPercent: number;
+  milestones: Milestone[];
+}
+
+/**
+ * Savings milestone
+ */
+export interface Milestone {
+  percentage: number;
+  months: number;
+}
+
+/**
+ * Financial item for net worth calculator
+ */
+export interface FinancialItem {
+  id: string;
+  name: string;
+  value: number;
+  category: string;
+}
+
+/**
+ * Net worth calculation data
+ */
+export interface NetWorthData {
+  totalAssets: number;
+  totalLiabilities: number;
+  netWorth: number;
+  currency: string;
+  assetsBreakdown: FinancialItem[];
+  liabilitiesBreakdown: FinancialItem[];
+}
