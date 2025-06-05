@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { formatDate } from "@/lib/utils";
+// import { formatDate } from "@/lib/utils";
 import type { Post } from "@/lib/posts";
 
 const getCategoryBadgeStyle = (category: string) => {

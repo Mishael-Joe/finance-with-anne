@@ -11,7 +11,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Card } from "@/components/ui/card";
+// import { Card } from "@/components/ui/card";
 import Button from "@/components/ui/button";
 
 interface YoutubeVideoType {
@@ -21,6 +21,16 @@ interface YoutubeVideoType {
 }
 
 const videos: YoutubeVideoType[] = [
+  {
+    videoLink: "https://youtu.be/DuhKwge_iGs?si=9EfgXaF9s6WU3uBL",
+    h3: "Video Title 1",
+    pTag: "Description for video 1",
+  },
+  {
+    videoLink: "https://youtu.be/irrkZ02g45g?si=dPNQQ0O6CYWV85PJ",
+    h3: "Video Title 1",
+    pTag: "Description for video 1",
+  },
   {
     videoLink: "https://youtu.be/wGvjr-shdNE?si=LZyVjJoCw7rW6ARf",
     h3: "Video Title 1",
@@ -41,16 +51,16 @@ const videos: YoutubeVideoType[] = [
     h3: "Video Title 4",
     pTag: "Description for video 4",
   },
-  {
-    videoLink: "https://youtu.be/ECZhm9i-7v4?si=-cmWR_lK8bkel_Bq",
-    h3: "Video Title 5",
-    pTag: "Description for video 5",
-  },
-  {
-    videoLink: "https://youtu.be/fYT4MOEmHtg?si=JQsCGSXogPqUU3EJ",
-    h3: "Video Title 6",
-    pTag: "Description for video 6",
-  },
+  // {
+  //   videoLink: "https://youtu.be/ECZhm9i-7v4?si=-cmWR_lK8bkel_Bq",
+  //   h3: "Video Title 5",
+  //   pTag: "Description for video 5",
+  // },
+  // {
+  //   videoLink: "https://youtu.be/fYT4MOEmHtg?si=JQsCGSXogPqUU3EJ",
+  //   h3: "Video Title 6",
+  //   pTag: "Description for video 6",
+  // },
 ];
 
 // Helper to extract thumbnail from YouTube URL
