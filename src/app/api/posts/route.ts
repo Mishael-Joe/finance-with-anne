@@ -22,9 +22,9 @@ export async function GET(request: NextRequest) {
 
     // Build query
     const query: any = {};
-    // if (published !== null) {
-    //   query.published = published === "true";
-    // }
+    if (published !== null) {
+      query.published = published === "true";
+    }
 
     // Add category filter if provided
     if (category) {
