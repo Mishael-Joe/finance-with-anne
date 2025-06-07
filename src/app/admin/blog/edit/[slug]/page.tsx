@@ -21,6 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import Image from "next/image";
 
 /**
  * Edit Blog Post page component
@@ -32,6 +33,7 @@ export default function EditBlogPostPage() {
   const slug = params.slug as string;
 
   const [isLoading, setIsLoading] = useState(true);
+  const [upLoadNewImg, setUpLoadNewImg] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -139,16 +141,16 @@ export default function EditBlogPostPage() {
     });
 
     // Auto-generate excerpt if empty
-    if (!formData.excerpt) {
-      // Strip HTML tags and get first 160 characters
-      const plainText = content.replace(/<[^>]+>/g, "");
-      const excerpt =
-        plainText.substring(0, 160) + (plainText.length > 160 ? "..." : "");
-      setFormData((prev) => ({
-        ...prev,
-        excerpt,
-      }));
-    }
+    // if (!formData.excerpt) {
+    //   // Strip HTML tags and get first 160 characters
+    //   const plainText = content.replace(/<[^>]+>/g, "");
+    //   const excerpt =
+    //     plainText.substring(0, 160) + (plainText.length > 160 ? "..." : "");
+    //   setFormData((prev) => ({
+    //     ...prev,
+    //     excerpt,
+    //   }));
+    // }
   };
 
   /**
@@ -271,32 +273,48 @@ export default function EditBlogPostPage() {
         </div>
 
         {/* Featured Image */}
-        <div className="space-y-2">
-          <label htmlFor="featuredImage" className="text-sm font-medium">
-            Featured Image
-          </label>
-          <UploadDropzone
-            endpoint="imageUploader"
-            onClientUploadComplete={(res) => {
-              // Do something with the response
-              // console.log("Files: ", res);
-              // alert("Upload Completed");
-              toast.success("Upload Completed.");
-              setFormData((prev) => ({
-                ...prev,
-                featuredImage: res[0]?.ufsUrl,
-              }));
-            }}
-            onUploadError={(error: Error) => {
-              // Do something with the error.
-              // console.log("error: ", error);
-              // alert(`ERROR! ${error.message}`);
-              toast.error(`ERROR! ${error.message}`);
-            }}
-            config={{ cn: twMerge }}
-            className="bg-secondary/15 ut-label:text-lg ut-allowed-content:ut-uploading:text-red-300 cursor-pointer"
-          />
-        </div>
+        {upLoadNewImg ? (
+          <div className="space-y-2">
+            <label htmlFor="featuredImage" className="text-sm font-medium">
+              Featured Image
+            </label>
+            <UploadDropzone
+              endpoint="imageUploader"
+              onClientUploadComplete={(res) => {
+                // Do something with the response
+                // console.log("Files: ", res);
+                // alert("Upload Completed");
+                toast.success("Upload Completed.");
+                setFormData((prev) => ({
+                  ...prev,
+                  featuredImage: res[0]?.ufsUrl,
+                }));
+              }}
+              onUploadError={(error: Error) => {
+                // Do something with the error.
+                // console.log("error: ", error);
+                // alert(`ERROR! ${error.message}`);
+                toast.error(`ERROR! ${error.message}`);
+              }}
+              config={{ cn: twMerge }}
+              className="bg-secondary/15 ut-label:text-lg ut-allowed-content:ut-uploading:text-red-300 cursor-pointer"
+            />
+          </div>
+        ) : (
+          <div className="space-y-2">
+            <label htmlFor="featuredImage" className="text-sm font-medium">
+              Featured Image
+            </label>
+            <div>
+              <Image
+                src={formData.featuredImage}
+                fill
+                priority
+                alt={formData.title || "feature Image"}
+              />
+            </div>
+          </div>
+        )}
 
         {/* Content */}
         <div className="space-y-2">
@@ -363,10 +381,10 @@ export default function EditBlogPostPage() {
             <SelectContent>
               {[
                 "Money Mindset",
-                "Earning More",
+                "Make More Money",
                 "Saving & Budgeting",
-                "Local Investing",
-                "Global Investing",
+                "Nigerian Investments",
+                "Invest Globally",
                 "Financial Tools",
                 "Life Goals",
                 "Success Stories",

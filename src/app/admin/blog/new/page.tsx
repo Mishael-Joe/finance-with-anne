@@ -91,17 +91,17 @@ export default function NewBlogPostPage() {
       content,
     });
 
-    // Auto-generate excerpt if empty
-    if (!formData.excerpt) {
-      // Strip HTML tags and get first 160 characters
-      const plainText = content.replace(/<[^>]+>/g, "");
-      const excerpt =
-        plainText.substring(0, 160) + (plainText.length > 160 ? "..." : "");
-      setFormData((prev) => ({
-        ...prev,
-        excerpt,
-      }));
-    }
+    // // Auto-generate excerpt if empty
+    // if (!formData.excerpt) {
+    //   // Strip HTML tags and get first 160 characters
+    //   const plainText = content.replace(/<[^>]+>/g, "");
+    //   const excerpt =
+    //     plainText.substring(0, 160) + (plainText.length > 160 ? "..." : "");
+    //   setFormData((prev) => ({
+    //     ...prev,
+    //     excerpt,
+    //   }));
+    // }
   };
 
   /**
@@ -311,10 +311,10 @@ export default function NewBlogPostPage() {
             <SelectContent>
               {[
                 "Money Mindset",
-                "Earning More",
+                "Make More Money",
                 "Saving & Budgeting",
-                "Local Investing",
-                "Global Investing",
+                "Nigerian Investments",
+                "Invest Globally",
                 "Financial Tools",
                 "Life Goals",
                 "Success Stories",
