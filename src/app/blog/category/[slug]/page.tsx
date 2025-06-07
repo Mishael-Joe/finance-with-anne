@@ -45,10 +45,10 @@ export default async function CategoryPage({
   // Map slug to actual category name from enum
   const categoryMap: Record<string, string> = {
     "money-mindset": "Money Mindset",
-    "earning-more": "Earning More",
+    "make-more-money": "Make More Money",
     "saving-budgeting": "Saving & Budgeting",
-    "local-investing": "Local Investing",
-    "global-investing": "Global Investing",
+    "nigerian-investments": "Nigerian Investments",
+    "invest-globally": "Invest Globally",
     "financial-tools": "Financial Tools",
     "life-goals": "Life Goals",
     "success-stories": "Success Stories",

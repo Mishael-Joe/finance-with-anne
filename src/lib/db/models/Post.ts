@@ -61,10 +61,10 @@ const PostSchema = new Schema<IPost>(
       required: [true, "Category is required"],
       enum: [
         "Money Mindset",
-        "Earning More",
+        "Make More Money",
         "Saving & Budgeting",
-        "Local Investing",
-        "Global Investing",
+        "Nigerian Investments",
+        "Invest Globally",
         "Financial Tools",
         "Life Goals",
         "Success Stories",

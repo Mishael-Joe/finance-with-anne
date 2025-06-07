@@ -80,6 +80,7 @@ export default async function BlogAdminPage() {
                           href={`/blog/${post.slug}`}
                           className="hover:text-primary"
                           target="_blank"
+                          prefetch
                         >
                           {post.title}
                         </Link>
@@ -107,6 +108,7 @@ export default async function BlogAdminPage() {
                         <Link
                           href={`/admin/blog/edit/${post.slug}`}
                           className="text-primary hover:text-primary-light"
+                          prefetch
                         >
                           <Edit className="h-4 w-4" />
                           <span className="sr-only">Edit</span>
@@ -114,6 +116,7 @@ export default async function BlogAdminPage() {
                         <Link
                           href={`/admin/blog/delete/${post.slug}`}
                           className="text-red-500 hover:text-red-700"
+                          prefetch
                         >
                           <Trash2 className="h-4 w-4" />
                           <span className="sr-only">Delete</span>
