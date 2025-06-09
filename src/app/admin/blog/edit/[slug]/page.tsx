@@ -32,7 +32,7 @@ export default function EditBlogPostPage() {
   const params = useParams();
   const slug = params.slug as string;
 
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [upLoadNewImg, setUpLoadNewImg] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -53,6 +53,8 @@ export default function EditBlogPostPage() {
   });
 
   useEffect(() => {
+    if (status === "loading") return; // Wait until loading is complete
+
     if (status === "unauthenticated" || session?.user?.role !== "admin") {
       router.push(
         `/admin/login?error=AccessDenied&callbackUrl=${encodeURIComponent(
@@ -139,18 +141,6 @@ export default function EditBlogPostPage() {
       ...formData,
       content,
     });
-
-    // Auto-generate excerpt if empty
-    // if (!formData.excerpt) {
-    //   // Strip HTML tags and get first 160 characters
-    //   const plainText = content.replace(/<[^>]+>/g, "");
-    //   const excerpt =
-    //     plainText.substring(0, 160) + (plainText.length > 160 ? "..." : "");
-    //   setFormData((prev) => ({
-    //     ...prev,
-    //     excerpt,
-    //   }));
-    // }
   };
 
   /**
@@ -273,48 +263,58 @@ export default function EditBlogPostPage() {
         </div>
 
         {/* Featured Image */}
-        {upLoadNewImg ? (
-          <div className="space-y-2">
-            <label htmlFor="featuredImage" className="text-sm font-medium">
-              Featured Image
-            </label>
-            <UploadDropzone
-              endpoint="imageUploader"
-              onClientUploadComplete={(res) => {
-                // Do something with the response
-                // console.log("Files: ", res);
-                // alert("Upload Completed");
-                toast.success("Upload Completed.");
-                setFormData((prev) => ({
-                  ...prev,
-                  featuredImage: res[0]?.ufsUrl,
-                }));
-              }}
-              onUploadError={(error: Error) => {
-                // Do something with the error.
-                // console.log("error: ", error);
-                // alert(`ERROR! ${error.message}`);
-                toast.error(`ERROR! ${error.message}`);
-              }}
-              config={{ cn: twMerge }}
-              className="bg-secondary/15 ut-label:text-lg ut-allowed-content:ut-uploading:text-red-300 cursor-pointer"
-            />
-          </div>
-        ) : (
-          <div className="space-y-2">
-            <label htmlFor="featuredImage" className="text-sm font-medium">
-              Featured Image
-            </label>
-            <div>
+        <div className="space-y-2">
+          <label htmlFor="featuredImage" className="text-sm font-medium">
+            Featured Image
+          </label>
+
+          {upLoadNewImg ? (
+            <>
+              <UploadDropzone
+                endpoint="imageUploader"
+                onClientUploadComplete={(res) => {
+                  toast.success("Upload Completed.");
+                  setFormData((prev) => ({
+                    ...prev,
+                    featuredImage: res[0]?.ufsUrl,
+                  }));
+                }}
+                onUploadError={(error: Error) => {
+                  toast.error(`ERROR! ${error.message}`);
+                }}
+                config={{ cn: twMerge }}
+                className="bg-secondary/15 ut-label:text-lg ut-allowed-content:ut-uploading:text-red-300 cursor-pointer"
+              />
+            </>
+          ) : formData.featuredImage ? (
+            <div className="relative w-fit rounded overflow-hidden">
               <Image
                 src={formData.featuredImage}
-                fill
+                width={200}
+                height={200}
                 priority
-                alt={formData.title || "feature Image"}
+                alt={formData.title || "Featured Image"}
+                className="object-cover h-fit w-fit"
               />
             </div>
+          ) : (
+            <div className="text-center font-medium text-xl text-red-500">
+              <p>No Featured Image yet, please upload one!</p>
+            </div>
+          )}
+
+          <div className="flex items-center gap-2 mb-2">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => setUpLoadNewImg(!upLoadNewImg)}
+              className="bg-primary text-white hover:text-white hover:bg-primary/80"
+            >
+              {upLoadNewImg ? "Cancel Upload" : "Upload New Image"}
+            </Button>
           </div>
-        )}
+        </div>
 
         {/* Content */}
         <div className="space-y-2">
