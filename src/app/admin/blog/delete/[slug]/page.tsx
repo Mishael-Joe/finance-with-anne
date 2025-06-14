@@ -108,7 +108,7 @@ export default function DeleteBlogPostPage() {
       <div className="container mx-auto px-4 md:px-6 py-12">
         <div className="max-w-2xl mx-auto">
           <div className="bg-red-50 text-red-500 p-6 rounded-lg mb-6">
-            <h2 className="text-xl font-bold mb-2 text-primary">Error</h2>
+            <h2 className="text-xl font-bold mb-2 text-red-600">Error</h2>
             <p>{error}</p>
           </div>
           <Button variant="outline" onClick={() => router.back()}>
