@@ -264,12 +264,12 @@ export default function Footer() {
               <p>Suite 456</p>
               <p>Nigeria</p>
               <p>(+234) 123-4567</p> */}
-              <Link
+              <a
                 href={`mailto:${anneContactEmail}`}
                 className="hover:text-primary hover:underline text-inherit"
               >
                 {anneContactEmail}
-              </Link>
+              </a>
             </address>
           </div>
         </div>
