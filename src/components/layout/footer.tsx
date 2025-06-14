@@ -269,7 +269,7 @@ export default function Footer() {
                 className="hover:text-primary hover:underline text-inherit"
               >
                 {anneContactEmail}
-              </Link>
+              </a>
             </address>
           </div>
         </div>
