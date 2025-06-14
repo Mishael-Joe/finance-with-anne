@@ -24,7 +24,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand and Tagline */}
           <div>
-            <Link href="/" className="flex items-center space-x-2 mb-4">
+            <Link
+              href="/"
+              className="flex items-center space-x-2 mb-4 text-inherit hover:text-primary transition-colors"
+            >
               <span className="h-8 w-8 rounded-full bg-primary flex items-center justify-center text-white font-bold">
                 A
               </span>
@@ -132,7 +135,9 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
+            <h3 className="font-semibold text-lg mb-4 text-primary">
+              Quick Links
+            </h3>
             <ul className="space-y-2">
               <li>
                 <Link
@@ -203,7 +208,9 @@ export default function Footer() {
 
           {/* Resources */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Resources</h3>
+            <h3 className="font-semibold text-lg mb-4 text-primary">
+              Resources
+            </h3>
             <ul className="space-y-2">
               <li>
                 <Link
@@ -251,18 +258,18 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Contact</h3>
+            <h3 className="font-semibold text-lg mb-4 text-primary">Contact</h3>
             <address className="not-italic text-muted-foreground space-y-2">
               {/* <p>123 Financial Street</p>
               <p>Suite 456</p>
               <p>Nigeria</p>
               <p>(+234) 123-4567</p> */}
-              <a
+              <Link
                 href={`mailto:${anneContactEmail}`}
-                className="hover:text-primary hover:underline"
+                className="hover:text-primary hover:underline text-inherit"
               >
                 {anneContactEmail}
-              </a>
+              </Link>
             </address>
           </div>
         </div>

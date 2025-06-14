@@ -49,7 +49,9 @@ export default function CategorySection({
   return (
     <section className="mb-16">
       <div className="flex justify-between items-center mb-5">
-        <h2 className="text-2xl font-bold">{categoryDescriptions(category)}</h2>
+        <h2 className="text-2xl font-bold text-primary">
+          {categoryDescriptions(category)}
+        </h2>
         <Link
           href={`/blog/category/${categorySlug}`}
           className="text-primary hover:text-primary-dark flex items-center text-sm font-medium"

@@ -137,23 +137,18 @@
     @apply bg-background text-foreground;
   }
 
-  a:hover {
-    @apply text-primary-light;
+  a {
+    @apply text-primary-light hover:text-primary;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1 {
     @apply font-semibold text-primary;
   }
 
   h1 {
-    @apply text-4xl md:text-5xl;
+    @apply text-4xl;
   }
-  h2 {
+  /* h2 {
     @apply text-3xl md:text-4xl;
   }
   h3 {
@@ -161,7 +156,7 @@
   }
   h4 {
     @apply text-xl md:text-2xl;
-  }
+  } */
   p {
     @apply leading-relaxed;
   }

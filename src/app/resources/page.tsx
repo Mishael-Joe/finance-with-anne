@@ -93,7 +93,7 @@ export default function ResourcesPage() {
                   Excel Template
                 </span>
               </div>
-              <h3 className="text-xl font-bold mb-2">
+              <h3 className="text-xl font-bold mb-2 text-primary">
                 Monthly Budget Template
               </h3>
               <p className="text-muted-foreground mb-4">
@@ -129,7 +129,9 @@ export default function ResourcesPage() {
                   Online Tool
                 </span>
               </div>
-              <h3 className="text-xl font-bold mb-2">Savings Calculator</h3>
+              <h3 className="text-xl font-bold mb-2 text-primary">
+                Savings Calculator
+              </h3>
               <p className="text-muted-foreground mb-4">
                 Use our savings calculator to estimate how much you need to save
                 each month to reach your financial goals. Adjust for interest
@@ -164,7 +166,9 @@ export default function ResourcesPage() {
                   Online Tool
                 </span>
               </div>
-              <h3 className="text-xl font-bold mb-2">Net Worth Calculator</h3>
+              <h3 className="text-xl font-bold mb-2 text-primary">
+                Net Worth Calculator
+              </h3>
               <p className="text-muted-foreground mb-4">
                 Calculate your net worth easily with our online tool. Track your
                 assets and liabilities to see your financial health at a glance.
@@ -198,7 +202,9 @@ export default function ResourcesPage() {
                   Online Tool
                 </span>
               </div>
-              <h3 className="text-xl font-bold mb-2">Investment Calculator</h3>
+              <h3 className="text-xl font-bold mb-2 text-primary">
+                Investment Calculator
+              </h3>
               <p className="text-muted-foreground mb-4">
                 Plan your financial future with our powerful investment
                 calculator. See how compound interest and regular contributions
@@ -218,7 +224,7 @@ export default function ResourcesPage() {
 
       {/* GUIDES */}
       <div className="mt-8 scroll-smooth scroll-mt-20" id="guides">
-        <h2 className="text-2xl font-bold mb-6">Guides</h2>
+        <h2 className="text-2xl font-bold mb-6 text-primary">Guides</h2>
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1">
             <AccordionTrigger>How to Recover Your CSCS Number</AccordionTrigger>

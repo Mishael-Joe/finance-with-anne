@@ -88,7 +88,7 @@ export default function SavingsResults({
 
       {/* Milestones section */}
       <div className="bg-white rounded-xl p-5 shadow-sm">
-        <h3 className="text-lg font-semibold mb-4 text-center">
+        <h3 className="text-lg font-semibold mb-4 text-center text-primary">
           {goalName} - Savings Milestones
         </h3>
 
