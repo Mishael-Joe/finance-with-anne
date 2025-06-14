@@ -32,7 +32,9 @@ export default function SavingsCalculatorPage() {
         {/* Description section */}
         <div className="mt-12 bg-white p-6 rounded-lg border border-border">
           <div className="prose prose-slate max-w-none text-muted-foreground">
-            <h2 className="text-2xl font-bold mb-4">Savings Goal Calculator</h2>
+            <h2 className="text-2xl font-bold mb-4 text-primary">
+              Savings Goal Calculator
+            </h2>
 
             <p>
               Transform your financial dreams into actionable monthly targets

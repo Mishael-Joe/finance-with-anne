@@ -40,19 +40,23 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <div>
-            <h2 className="text-2xl font-bold mb-6">Send a Message</h2>
+            <h2 className="text-2xl font-bold mb-6 text-primary">
+              Send a Message
+            </h2>
             <ContactForm />
           </div>
 
           {/* Contact Information */}
           <div>
-            <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
+            <h2 className="text-2xl font-bold mb-6 text-primary">
+              Contact Information
+            </h2>
             <div className="bg-muted p-8 rounded-lg">
               <div className="space-y-6">
                 <div className="flex items-start">
                   <Mail className="h-6 w-6 text-primary mr-4 mt-1" />
                   <div>
-                    <h3 className="font-semibold mb-1">Email</h3>
+                    <h3 className="font-semibold mb-1 text-primary">Email</h3>
                     <p className="text-muted-foreground">{anneContactEmail}</p>
                   </div>
                 </div>
@@ -80,7 +84,9 @@ export default function ContactPage() {
 
               {/* Social Media */}
               <div className="mt-8">
-                <h3 className="font-semibold mb-4">Connect with Me</h3>
+                <h3 className="font-semibold mb-4 text-primary">
+                  Connect with Me
+                </h3>
                 <div className="flex space-x-4">
                   <a
                     href="https://www.instagram.com/financewithanne?igsh=MTUzcWY0MWE2YnhsdQ%3D%3D&utm_source=qr"
@@ -185,7 +191,7 @@ export default function ContactPage() {
 
             {/* FAQ */}
             <div className="mt-8">
-              <h2 className="text-2xl font-bold mb-6">
+              <h2 className="text-2xl font-bold mb-6 text-primary">
                 Frequently Asked Questions
               </h2>
               <Accordion type="single" collapsible className="w-full">

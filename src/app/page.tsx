@@ -71,7 +71,9 @@ export default async function Home() {
                   className="text-primary"
                 />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Make More Money</h3>
+              <h3 className="text-xl font-semibold mb-3 text-primary">
+                Make More Money
+              </h3>
               <p className="text-muted-foreground">
                 Find simple and proven ways to actively increase your income.
                 Whether it's through side hustles or turning your skills into
@@ -92,7 +94,9 @@ export default async function Home() {
                   className="text-primary"
                 />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Smart Budgeting</h3>
+              <h3 className="text-xl font-semibold mb-3 text-primary">
+                Smart Budgeting
+              </h3>
               <p className="text-muted-foreground">
                 Learn how to create and stick to a budget that works for your
                 lifestyle and financial goals.
@@ -110,7 +114,9 @@ export default async function Home() {
                   className="text-primary"
                 />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Strategic Saving</h3>
+              <h3 className="text-xl font-semibold mb-3 text-primary">
+                Strategic Saving
+              </h3>
               <p className="text-muted-foreground">
                 Discover effective strategies to build your emergency fund and
                 save for major life goals.
@@ -128,7 +134,9 @@ export default async function Home() {
                   className="text-primary"
                 />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Smart Investing</h3>
+              <h3 className="text-xl font-semibold mb-3 text-primary">
+                Smart Investing
+              </h3>
               <p className="text-muted-foreground">
                 Learn how to start investing confidently, grow your money over
                 time and build a portfolio aligned with your goals.

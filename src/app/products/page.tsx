@@ -97,7 +97,7 @@ export default function ProductsPage() {
             </div>
 
             <div className="p-4">
-              <h3 className="text-lg font-bold mb-2 line-clamp-1">
+              <h3 className="text-lg font-bold mb-2 line-clamp-1 text-primary">
                 {product.title}
               </h3>
               <div className="mb-4">

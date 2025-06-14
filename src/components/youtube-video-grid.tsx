@@ -22,39 +22,39 @@ interface YoutubeVideoType {
 
 const videos: YoutubeVideoType[] = [
   {
+    videoLink: "https://youtu.be/8udMJxw5U_k?si=K0mw34-bZxdHggnY",
+    h3: "Video Title 1",
+    pTag: "Description for video 1",
+  },
+  {
     videoLink: "https://youtu.be/DuhKwge_iGs?si=9EfgXaF9s6WU3uBL",
-    h3: "Video Title 1",
-    pTag: "Description for video 1",
-  },
-  {
-    videoLink: "https://youtu.be/irrkZ02g45g?si=dPNQQ0O6CYWV85PJ",
-    h3: "Video Title 1",
-    pTag: "Description for video 1",
-  },
-  {
-    videoLink: "https://youtu.be/wGvjr-shdNE?si=LZyVjJoCw7rW6ARf",
-    h3: "Video Title 1",
-    pTag: "Description for video 1",
-  },
-  {
-    videoLink: "https://youtu.be/GaB6_OF5Hpw?si=TC3GUCGIvpvq03eB",
     h3: "Video Title 2",
     pTag: "Description for video 2",
   },
   {
-    videoLink: "https://youtu.be/F4tp-rtOS5k?si=Gz1QxMdENNiusVQ7",
+    videoLink: "https://youtu.be/irrkZ02g45g?si=dPNQQ0O6CYWV85PJ",
     h3: "Video Title 3",
     pTag: "Description for video 3",
   },
   {
-    videoLink: "https://youtu.be/jfzt7xWxUgU?si=2w_bkRV6riaVPYGd",
+    videoLink: "https://youtu.be/wGvjr-shdNE?si=LZyVjJoCw7rW6ARf",
     h3: "Video Title 4",
     pTag: "Description for video 4",
   },
+  {
+    videoLink: "https://youtu.be/GaB6_OF5Hpw?si=TC3GUCGIvpvq03eB",
+    h3: "Video Title 5",
+    pTag: "Description for video 5",
+  },
+  {
+    videoLink: "https://youtu.be/F4tp-rtOS5k?si=Gz1QxMdENNiusVQ7",
+    h3: "Video Title 6",
+    pTag: "Description for video 6",
+  },
   // {
-  //   videoLink: "https://youtu.be/ECZhm9i-7v4?si=-cmWR_lK8bkel_Bq",
-  //   h3: "Video Title 5",
-  //   pTag: "Description for video 5",
+  //   videoLink: "https://youtu.be/jfzt7xWxUgU?si=2w_bkRV6riaVPYGd",
+  //   h3: "Video Title 4",
+  //   pTag: "Description for video 4",
   // },
   // {
   //   videoLink: "https://youtu.be/fYT4MOEmHtg?si=JQsCGSXogPqUU3EJ",

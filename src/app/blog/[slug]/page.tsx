@@ -77,7 +77,7 @@ export default async function BlogPostPage({
         {/* Blog post header */}
         <article className="max-w-3xl mx-auto">
           <header className="mb-8">
-            <div className="mb-6">
+            {/* <div className="mb-6">
               {Post.tags && Post.tags.length > 0 && (
                 <div className="flex flex-wrap gap-2 mb-4">
                   {Post.tags.map((tag: string) => (
@@ -90,10 +90,8 @@ export default async function BlogPostPage({
                   ))}
                 </div>
               )}
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              {Post.title}
-            </h1>
+            </div> */}
+            <h1 className="text-4xl font-bold mb-4">{Post.title}</h1>
             <div className="flex items-center text-muted-foreground mb-6">
               <div className="mr-4">
                 <Image
@@ -156,7 +154,7 @@ export default async function BlogPostPage({
 
           {/* Newsletter signup */}
           <div className="mt-12 p-8 bg-secondary/10 rounded-lg">
-            <h3 className="text-2xl font-bold mb-4 text-center">
+            <h3 className="text-2xl font-bold mb-4 text-center text-primary">
               Enjoy this article?
             </h3>
             <p className="text-center mb-6">
