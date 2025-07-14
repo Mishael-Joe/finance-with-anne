@@ -108,7 +108,7 @@ export default async function BlogPostPage({
               </div>
               <div>
                 <p className="font-medium">{Post.author || "Anne Johnson"}</p>
-                <p className="text-sm">{formatDate(Post.createdAt)}</p>
+                {/* <p className="text-sm">{formatDate(Post.createdAt)}</p> */}
               </div>
             </div>
             {Post.featuredImage && (
