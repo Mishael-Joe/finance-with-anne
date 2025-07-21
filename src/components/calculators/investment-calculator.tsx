@@ -14,13 +14,13 @@ import { calculateInvestment } from "@/lib/investment-calculations";
  * managing state between the form inputs and results display.
  */
 export default function InvestmentCalculator() {
-  // Investment input state
+  // Investment input state - now allows string values for number inputs
   const [investmentData, setInvestmentData] = useState<InvestmentData>({
     currency: "USD",
-    initialAmount: 10000,
-    monthlyContribution: 500,
-    annualReturn: 7,
-    years: 10,
+    initialAmount: "10000",
+    monthlyContribution: "500",
+    annualReturn: "7",
+    years: "10",
     compoundingFrequency: 2, // Semi-annual
   });
 

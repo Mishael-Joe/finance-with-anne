@@ -1,6 +1,6 @@
 "use client";
 
-import { TrendingUp, DollarSign, PiggyBank, Target } from "lucide-react";
+import { TrendingUp, PiggyBank, Target } from "lucide-react";
 import type { InvestmentData, CalculationResults } from "@/types/calculator";
 import { formatCurrency } from "@/lib/calculator-utils";
 import { cn } from "@/lib/utils";
@@ -90,7 +90,7 @@ export default function InvestmentResults({
               Initial Investment:
             </span>
             <span className="font-medium text-primary">
-              {formatCurrency(data.initialAmount, data.currency)}
+              {formatCurrency(Number(data.initialAmount), data.currency)}
             </span>
           </div>
 
@@ -126,10 +126,10 @@ export default function InvestmentResults({
         <p className="mb-2">
           <strong>Investment Summary:</strong> Over {data.years} years, your
           initial investment of{" "}
-          {formatCurrency(data.initialAmount, data.currency)} plus monthly
-          contributions of{" "}
-          {formatCurrency(data.monthlyContribution, data.currency)} will grow to{" "}
-          {formatCurrency(results.finalAmount, data.currency)} at{" "}
+          {formatCurrency(Number(data.initialAmount), data.currency)} plus
+          monthly contributions of{" "}
+          {formatCurrency(Number(data.monthlyContribution), data.currency)} will
+          grow to {formatCurrency(results.finalAmount, data.currency)} at{" "}
           {data.annualReturn}% annual return.
         </p>
         <p className="text-xs">

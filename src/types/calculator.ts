@@ -3,14 +3,15 @@
  */
 
 /**
- * Investment input data structure
+ * Investment input data structure - allowing string values for number inputs
+ * to support empty states during user input
  */
 export interface InvestmentData {
   currency: string;
-  initialAmount: number;
-  monthlyContribution: number;
-  annualReturn: number;
-  years: number;
+  initialAmount: string | number;
+  monthlyContribution: string | number;
+  annualReturn: string | number;
+  years: string | number;
   compoundingFrequency: number;
 }
 
