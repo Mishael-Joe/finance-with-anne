@@ -15,6 +15,7 @@ import {
   CURRENCY_OPTIONS,
   COMPOUNDING_OPTIONS,
 } from "@/lib/calculator-constants";
+import { validateInvestmentData } from "@/lib/investment-calculations";
 
 interface InvestmentFormProps {
   data: InvestmentData;
@@ -31,12 +32,22 @@ export default function InvestmentForm({
   data,
   onChange,
 }: InvestmentFormProps) {
+  // Get validation errors for display
+  const validationErrors = validateInvestmentData(data);
+
   /**
-   * Handle numeric input changes with validation
+   * Handle numeric input changes - now preserves empty strings
    */
   const handleNumericChange = (field: keyof InvestmentData, value: string) => {
-    const numericValue = Number.parseFloat(value) || 0;
-    onChange({ [field]: numericValue });
+    // Allow empty strings and preserve them in state
+    if (value === "") {
+      onChange({ [field]: "" });
+      return;
+    }
+
+    // For non-empty values, store as string to preserve user input
+    // The calculation function will safely convert to numbers
+    onChange({ [field]: value });
   };
 
   /**
@@ -46,8 +57,35 @@ export default function InvestmentForm({
     onChange({ compoundingFrequency: frequency });
   };
 
+  /**
+   * Get display value for input - handles both string and number types
+   */
+  const getInputValue = (value: string | number): string => {
+    if (value === "" || value === null || value === undefined) {
+      return "";
+    }
+    return value.toString();
+  };
+
   return (
     <div className="space-y-6">
+      {/* Validation Errors Display */}
+      {validationErrors.length > 0 && (
+        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+          <h4 className="text-sm font-medium text-red-800 mb-2">
+            Please fix the following issues:
+          </h4>
+          <ul className="text-sm text-red-700 space-y-1">
+            {validationErrors.map((error, index) => (
+              <li key={index} className="flex items-start">
+                <span className="mr-2">•</span>
+                {error}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       {/* Currency and Initial Amount Row */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-2">
@@ -84,13 +122,14 @@ export default function InvestmentForm({
           <Input
             id="initialAmount"
             type="number"
-            value={data.initialAmount}
+            value={getInputValue(data.initialAmount)}
             onChange={(e) =>
               handleNumericChange("initialAmount", e.target.value)
             }
             min="0"
             step="100"
             className="border-border focus:border-primary"
+            placeholder="Enter initial amount"
           />
         </div>
       </div>
@@ -106,13 +145,14 @@ export default function InvestmentForm({
         <Input
           id="monthlyContribution"
           type="number"
-          value={data.monthlyContribution}
+          value={getInputValue(data.monthlyContribution)}
           onChange={(e) =>
             handleNumericChange("monthlyContribution", e.target.value)
           }
           min="0"
           step="50"
           className="border-border focus:border-primary"
+          placeholder="Enter monthly contribution"
         />
       </div>
 
@@ -127,12 +167,13 @@ export default function InvestmentForm({
         <Input
           id="annualReturn"
           type="number"
-          value={data.annualReturn}
+          value={getInputValue(data.annualReturn)}
           onChange={(e) => handleNumericChange("annualReturn", e.target.value)}
           min="0"
           max="50"
           step="0.1"
           className="border-border focus:border-primary"
+          placeholder="Enter expected annual return"
         />
       </div>
 
@@ -144,12 +185,13 @@ export default function InvestmentForm({
         <Input
           id="years"
           type="number"
-          value={data.years}
+          value={getInputValue(data.years)}
           onChange={(e) => handleNumericChange("years", e.target.value)}
           min="1"
           max="50"
           step="1"
           className="border-border focus:border-primary"
+          placeholder="Enter investment period"
         />
       </div>
 
