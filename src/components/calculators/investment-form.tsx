@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import { Label } from "@/components/ui/label";
 import Input from "@/components/ui/input";
 import {
@@ -16,6 +17,7 @@ import {
   COMPOUNDING_OPTIONS,
 } from "@/lib/calculator-constants";
 import { validateInvestmentData } from "@/lib/investment-calculations";
+import { formatNumberWithCommas } from "@/lib/utils";
 
 interface InvestmentFormProps {
   data: InvestmentData;
@@ -27,27 +29,62 @@ interface InvestmentFormProps {
  *
  * Renders all input fields for the investment calculator,
  * including currency selection, amounts, rates, and compounding frequency.
+ * Automatically formats inputs like amounts and enforces valid numeric input.
  */
 export default function InvestmentForm({
   data,
   onChange,
 }: InvestmentFormProps) {
+  const initialAmountRef = useRef<HTMLInputElement>(null);
+  const monthlyContributionRef = useRef<HTMLInputElement>(null);
+
   // Get validation errors for display
   const validationErrors = validateInvestmentData(data);
 
   /**
-   * Handle numeric input changes - now preserves empty strings
+   * Handle numeric input with formatting (for amounts).
+   * Preserves cursor position and stores raw unformatted value in state.
    */
-  const handleNumericChange = (field: keyof InvestmentData, value: string) => {
-    // Allow empty strings and preserve them in state
-    if (value === "") {
-      onChange({ [field]: "" });
-      return;
-    }
+  const handleFormattedNumericChange = (
+    field: keyof InvestmentData,
+    value: string,
+    inputRef: React.RefObject<HTMLInputElement | null>
+  ) => {
+    // Allow only numbers, commas, and a single decimal point
+    const cleanedValue = value
+      .replace(/[^\d.,]/g, "")
+      .replace(/(\..*)\./g, "$1");
 
-    // For non-empty values, store as string to preserve user input
-    // The calculation function will safely convert to numbers
-    onChange({ [field]: value });
+    // Format with commas
+    const formattedValue = formatNumberWithCommas(cleanedValue);
+
+    // Store raw value without commas
+    const rawValue = formattedValue.replace(/,/g, "");
+    onChange({ [field]: rawValue });
+
+    // Preserve cursor position after formatting
+    if (inputRef.current) {
+      const cursorPosition = inputRef.current.selectionStart;
+      setTimeout(() => {
+        if (cursorPosition !== null) {
+          const commaDiff = formattedValue.length - value.length;
+          const newPosition = Math.max(0, cursorPosition + commaDiff);
+          inputRef.current?.setSelectionRange(newPosition, newPosition);
+        }
+      }, 0);
+    }
+  };
+
+  /**
+   * Handle basic numeric input (no formatting).
+   * Used for fields like annual return (%) and investment period (years).
+   */
+  const handleNumberFieldChange = (
+    field: keyof InvestmentData,
+    value: string
+  ) => {
+    const numericValue = value.replace(/[^\d.]/g, "");
+    onChange({ [field]: numericValue });
   };
 
   /**
@@ -121,10 +158,16 @@ export default function InvestmentForm({
           </Label>
           <Input
             id="initialAmount"
-            type="number"
-            value={getInputValue(data.initialAmount)}
+            inputMode="numeric"
+            type="text"
+            ref={initialAmountRef}
+            value={formatNumberWithCommas(getInputValue(data.initialAmount))}
             onChange={(e) =>
-              handleNumericChange("initialAmount", e.target.value)
+              handleFormattedNumericChange(
+                "initialAmount",
+                e.target.value,
+                initialAmountRef
+              )
             }
             min="0"
             step="100"
@@ -144,10 +187,18 @@ export default function InvestmentForm({
         </Label>
         <Input
           id="monthlyContribution"
-          type="number"
-          value={getInputValue(data.monthlyContribution)}
+          type="text"
+          inputMode="numeric"
+          ref={monthlyContributionRef}
+          value={formatNumberWithCommas(
+            getInputValue(data.monthlyContribution)
+          )}
           onChange={(e) =>
-            handleNumericChange("monthlyContribution", e.target.value)
+            handleFormattedNumericChange(
+              "monthlyContribution",
+              e.target.value,
+              monthlyContributionRef
+            )
           }
           min="0"
           step="50"
@@ -166,9 +217,12 @@ export default function InvestmentForm({
         </Label>
         <Input
           id="annualReturn"
-          type="number"
+          type="text"
+          inputMode="decimal"
           value={getInputValue(data.annualReturn)}
-          onChange={(e) => handleNumericChange("annualReturn", e.target.value)}
+          onChange={(e) =>
+            handleNumberFieldChange("annualReturn", e.target.value)
+          }
           min="0"
           max="50"
           step="0.1"
@@ -184,9 +238,10 @@ export default function InvestmentForm({
         </Label>
         <Input
           id="years"
-          type="number"
+          type="text"
+          inputMode="numeric"
           value={getInputValue(data.years)}
-          onChange={(e) => handleNumericChange("years", e.target.value)}
+          onChange={(e) => handleNumberFieldChange("years", e.target.value)}
           min="1"
           max="50"
           step="1"

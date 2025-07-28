@@ -34,7 +34,7 @@ export default function MoneyTrackerSalesPage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-r from-primary to-primary-light text-white">
         <div className="absolute inset-0 bg-black/10"></div>
-        <div className="relative container mx-auto px-4 py-16 md:py-24">
+        <div className="relative container mx-auto px-4 py-8 md:py-16">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center bg-secondary/20 text-secondary-light px-4 py-2 rounded-full text-sm font-medium mb-6">
               <Zap className="w-4 h-4 mr-2" />
@@ -92,7 +92,7 @@ export default function MoneyTrackerSalesPage() {
       </section>
 
       {/* Problem Section */}
-      <section className="py-16 md:py-24">
+      <section className="py-8 md:py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
@@ -132,7 +132,7 @@ export default function MoneyTrackerSalesPage() {
       </section>
 
       {/* Solution Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-primary/5 to-secondary/5">
+      <section className="py-8 md:py-16 bg-gradient-to-r from-primary/5 to-secondary/5">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
@@ -145,7 +145,7 @@ export default function MoneyTrackerSalesPage() {
 
             <p className="text-xl mb-12 text-gray-700">
               The Only Budget Tracker That Actually Adapts to{" "}
-              <span className="font-bold text-secondary">YOUR Life</span>
+              <span className="font-bold text-green-500">YOUR Life</span>
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
@@ -200,7 +200,7 @@ export default function MoneyTrackerSalesPage() {
       </section>
 
       {/* Results Timeline */}
-      <section className="py-16 md:py-24">
+      <section className="py-8 md:py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
@@ -253,7 +253,7 @@ export default function MoneyTrackerSalesPage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section className="py-8 md:py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
@@ -306,7 +306,7 @@ export default function MoneyTrackerSalesPage() {
       </section>
 
       {/* What You Get */}
-      <section className="py-16 md:py-24">
+      <section className="py-8 md:py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
@@ -343,10 +343,10 @@ export default function MoneyTrackerSalesPage() {
       </section>
 
       {/* Urgency Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-red-500 to-orange-500 text-white">
+      <section className="py-8 md:py-16 bg-gradient-to-r from-red-500 to-orange-500 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">⏰ URGENCY</h2>
+            <h2 className="text-6xl md:text-6xl font-bold mb-6">⏰</h2>
 
             <p className="text-xl mb-4">
               This price is only for the{" "}
@@ -372,7 +372,7 @@ export default function MoneyTrackerSalesPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section className="py-8 md:py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
@@ -415,7 +415,7 @@ export default function MoneyTrackerSalesPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-primary to-primary-light text-white">
+      <section className="py-8 md:py-16 bg-gradient-to-r from-primary to-primary-light text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-8">

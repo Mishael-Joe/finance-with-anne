@@ -1,30 +1,32 @@
 import type { InvestmentData, CalculationResults } from "@/types/calculator";
 
 /**
- * DEVELOPER NOTE: Updated to handle string | number input types
+ * DEVELOPER NOTE: Updated to handle string | number input types from form fields.
  *
- * This file has been modified to support form inputs that can be either strings or numbers,
- * allowing for truly empty input fields without forcing them back to 0. The calculation
- * logic remains identical, but all numeric inputs are now safely converted using the
- * safeToNumber() helper function.
+ * This file has been modified to gracefully handle numeric input as either string or number,
+ * accounting for real-world cases like user-entered commas, decimals, empty fields, etc.
  *
- * Key changes:
- * - Added safeToNumber() utility for safe string-to-number conversion
- * - Updated calculateInvestment() to handle string | number inputs
- * - Updated validateInvestmentData() to work with mixed input types
- * - Preserved all original calculation formulas and business logic
+ * Key features:
+ * - Added safeToNumber() to safely parse strings like "1,000.50" into numbers
+ * - calculateInvestment() supports flexible inputs while preserving original math logic
+ * - validateInvestmentData() checks for invalid formatting and enforces business rules
+ * - All calculations and validation rules now safely guard against malformed or missing data
  */
 
 /**
- * Safely converts a string or number value to a number for calculations
+ * Safely converts a string or number value to a valid number for calculations.
  *
- * This utility handles the common form input scenario where fields can be
- * empty strings, null, undefined, or contain invalid numeric data.
+ * This utility handles:
+ * - Empty values ("" / null / undefined)
+ * - Formatted numbers (e.g., "1,000.50")
+ * - Invalid strings that fail to parse (returns 0 instead of NaN)
  *
- * @param value - The input value to convert (string, number, null, or undefined)
- * @returns A valid number (0 for empty/invalid inputs)
+ * @param value - The input to convert
+ * @returns Parsed number, or 0 for invalid inputs
  */
-function safeToNumber(value: string | number | null | undefined): number {
+export function safeToNumber(
+  value: string | number | null | undefined
+): number {
   if (value === null || value === undefined || value === "") {
     return 0;
   }
@@ -33,32 +35,32 @@ function safeToNumber(value: string | number | null | undefined): number {
     return isNaN(value) ? 0 : value;
   }
 
-  const parsed = Number.parseFloat(value);
+  const cleanedValue = value.replace(/,/g, "").trim(); // Remove commas, trim whitespace
+  const parsed = Number.parseFloat(cleanedValue);
   return isNaN(parsed) ? 0 : parsed;
 }
 
 /**
- * Calculate investment growth with compound interest and regular contributions
+ * Calculate investment growth over time using compound interest and recurring contributions.
  *
- * This function implements the compound interest formula along with
- * future value calculations for regular monthly contributions.
+ * This function supports form inputs with mixed types (string | number) and performs
+ * the full investment projection calculation:
+ * - Compound interest on initial amount
+ * - Future value of monthly contributions
+ * - Total interest, contributions, and percentage growth
  *
- * UPDATED: Now safely handles string | number inputs from form fields
- * while preserving all original calculation logic and formulas.
- *
- * @param data - Investment parameters (supports string | number for numeric fields)
- * @returns Calculated investment results
+ * @param data - Investment parameters from form
+ * @returns Final results for use in UI/graphs
  */
 export function calculateInvestment(data: InvestmentData): CalculationResults {
-  // UPDATED: Safe conversion of potentially string inputs to numbers
-  // This allows form fields to be empty without breaking calculations
+  // Convert form inputs safely for use in math
   const initialAmount = safeToNumber(data.initialAmount);
   const monthlyContribution = safeToNumber(data.monthlyContribution);
   const annualReturn = safeToNumber(data.annualReturn);
   const years = safeToNumber(data.years);
-  const compoundingFrequency = data.compoundingFrequency; // Always number
+  const compoundingFrequency = data.compoundingFrequency;
 
-  // Early return for invalid scenarios (preserves original business logic)
+  // Skip calculations for invalid scenarios
   if (years <= 0 || (initialAmount === 0 && monthlyContribution === 0)) {
     return {
       finalAmount: 0,
@@ -69,17 +71,11 @@ export function calculateInvestment(data: InvestmentData): CalculationResults {
     };
   }
 
-  // Convert annual return to decimal (unchanged calculation logic)
   const annualReturnDecimal = annualReturn / 100;
-
-  // Calculate monthly interest rate (unchanged calculation logic)
   const monthlyRate = annualReturnDecimal / 12;
-
-  // Total number of months (unchanged calculation logic)
   const totalMonths = years * 12;
 
-  // Calculate compound interest for initial amount (unchanged formula)
-  // Formula: A = P(1 + r/n)^(nt)
+  // Compound interest on the initial investment
   const finalInitialAmount =
     initialAmount *
     Math.pow(
@@ -87,25 +83,24 @@ export function calculateInvestment(data: InvestmentData): CalculationResults {
       compoundingFrequency * years
     );
 
-  // Calculate future value of monthly contributions (unchanged formula)
-  // Formula: FV = PMT × [((1 + r)^n - 1) / r] (ordinary annuity)
+  // Future value of monthly contributions
   let monthlyContributionsFV = 0;
   if (monthlyRate > 0) {
     monthlyContributionsFV =
       (monthlyContribution * (Math.pow(1 + monthlyRate, totalMonths) - 1)) /
       monthlyRate;
   } else {
-    // If no interest, just sum the contributions (unchanged logic)
+    // If return rate is 0%, fallback to basic total
     monthlyContributionsFV = monthlyContribution * totalMonths;
   }
 
-  // Calculate totals (unchanged calculation logic)
+  // Totals
   const finalAmount = finalInitialAmount + monthlyContributionsFV;
   const monthlyContributionsTotal = monthlyContribution * totalMonths;
   const totalContributions = initialAmount + monthlyContributionsTotal;
   const interestEarned = finalAmount - totalContributions;
 
-  // Calculate growth percentage (unchanged calculation logic)
+  // Percent growth relative to total contributions
   const totalGrowthPercent =
     totalContributions > 0 ? (interestEarned / totalContributions) * 100 : 0;
 
@@ -119,24 +114,45 @@ export function calculateInvestment(data: InvestmentData): CalculationResults {
 }
 
 /**
- * Validate investment input data
+ * Validate user-entered investment data.
  *
- * UPDATED: Now handles string | number inputs from form fields
- * while maintaining the same validation rules and error messages.
+ * This function performs both format-level and business-rule validation.
+ * It supports mixed input types (string | number) and returns helpful error messages.
  *
- * @param data - Investment data to validate (supports string | number inputs)
- * @returns Array of validation errors (empty if valid)
+ * Validation includes:
+ * - Proper numeric formatting (only digits, commas, decimals)
+ * - No negative values
+ * - Return rate and investment years must fall within accepted ranges
+ * - At least one contribution method must be non-zero
+ *
+ * @param data - Raw input from form
+ * @returns Array of validation error strings
  */
 export function validateInvestmentData(data: InvestmentData): string[] {
   const errors: string[] = [];
 
-  // UPDATED: Safe conversion for validation (preserves original validation logic)
+  // Disallow any non-numeric characters (except commas and dots)
+  if (
+    typeof data.initialAmount === "string" &&
+    /[^0-9.,]/.test(data.initialAmount)
+  ) {
+    errors.push("Initial investment contains invalid characters");
+  }
+
+  if (
+    typeof data.monthlyContribution === "string" &&
+    /[^0-9.,]/.test(data.monthlyContribution)
+  ) {
+    errors.push("Monthly contribution contains invalid characters");
+  }
+
+  // Convert for numeric validation
   const initialAmount = safeToNumber(data.initialAmount);
   const monthlyContribution = safeToNumber(data.monthlyContribution);
   const annualReturn = safeToNumber(data.annualReturn);
   const years = safeToNumber(data.years);
 
-  // Original validation rules preserved
+  // Business rule enforcement
   if (initialAmount < 0) {
     errors.push("Initial amount cannot be negative");
   }
@@ -153,7 +169,6 @@ export function validateInvestmentData(data: InvestmentData): string[] {
     errors.push("Investment period must be between 1 and 50 years");
   }
 
-  // UPDATED: Additional validation for meaningful investment scenarios
   if (initialAmount === 0 && monthlyContribution === 0) {
     errors.push(
       "Either initial investment or monthly contribution must be greater than 0"

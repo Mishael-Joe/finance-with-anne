@@ -4,6 +4,7 @@ import { TrendingUp, PiggyBank, Target } from "lucide-react";
 import type { InvestmentData, CalculationResults } from "@/types/calculator";
 import { formatCurrency } from "@/lib/calculator-utils";
 import { cn } from "@/lib/utils";
+import { safeToNumber } from "@/lib/investment-calculations";
 
 interface InvestmentResultsProps {
   data: InvestmentData;
@@ -90,7 +91,7 @@ export default function InvestmentResults({
               Initial Investment:
             </span>
             <span className="font-medium text-primary">
-              {formatCurrency(Number(data.initialAmount), data.currency)}
+              {formatCurrency(safeToNumber(data.initialAmount), data.currency)}
             </span>
           </div>
 
