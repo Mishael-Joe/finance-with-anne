@@ -83,3 +83,33 @@ export function slugify(str: string): string {
     .replace(/[\s_-]+/g, "-")
     .replace(/^-+|-+$/g, "");
 }
+
+/**
+ * Formats a numeric string by inserting commas as thousand separators.
+ *
+ * This function also:
+ * - Removes any non-numeric characters except the decimal point.
+ * - Ensures only one decimal point is retained.
+ * - Returns the formatted number as a string, preserving decimal values if present.
+ *
+ * @param value - A string representing a number (may include commas or symbols)
+ * @returns A formatted string with commas for thousands (e.g., "1234567.89" → "1,234,567.89")
+ */
+export function formatNumberWithCommas(value: string): string {
+  // Return early if input is an empty string
+  if (value === "") return "";
+
+  // Remove all characters except digits and the first decimal point
+  const sanitizedValue = value.replace(/[^\d.]/g, "");
+
+  // Split the sanitized string into integer and decimal parts
+  const [integerPart, decimalPart] = sanitizedValue.split(".");
+
+  // Add commas to the integer part (e.g., 1000000 -> 1,000,000)
+  const formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+  // Reattach the decimal part if it exists
+  return decimalPart !== undefined
+    ? `${formattedInteger}.${decimalPart}`
+    : formattedInteger;
+}
