@@ -4,11 +4,10 @@
  * A 'default' entry is provided for countries not explicitly listed.
  */
 export const pricing = {
-  // NG: {  },
-  // NG: { amount: 1, currency: "USD", symbol: "$" },
+  NG: { amount: 11999, currency: "NGN", symbol: "₦" },
   US: { amount: 12.99, currency: "USD", symbol: "$" },
   GB: { amount: 12.99, currency: "GBP", symbol: "£" },
-  default: { amount: 11999, currency: "NGN", symbol: "₦" },
+  default: { amount: 12.99, currency: "USD", symbol: "$" },
 };
 
 /**
