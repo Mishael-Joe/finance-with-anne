@@ -107,35 +107,3 @@ export async function sendContactEmails({
     html: userHtml,
   });
 }
-
-// import { anneContactEmail } from "@/config";
-// import nodemailer from "nodemailer";
-
-// type MailOptions = {
-//   subject: string;
-//   html: string;
-//   replyTo?: string;
-// };
-
-// export async function sendMail({ subject, html, replyTo }: MailOptions) {
-//   const transporter = nodemailer.createTransport({
-//     // service: "gmail", // or other service
-//     host: "smtp.zoho.com", // or your provider’s SMTP
-//     port: 465,
-//     secure: true,
-//     auth: {
-//       user: anneContactEmail,
-//       pass: process.env.ZOHO_MAIL_SECRET_APP_SPECIFIED_KEY,
-//     },
-//   });
-
-//   const mailOptions = {
-//     from: `"Finance With Anne - Contact" <${anneContactEmail}>`, // branded identity
-//     to: anneContactEmail, // you receive the message
-//     subject,
-//     html,
-//     replyTo, // this lets you click "reply" to reach the user directly
-//   };
-
-//   await transporter.sendMail(mailOptions);
-// }

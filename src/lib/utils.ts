@@ -1,5 +1,7 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { v4 as uuidv4 } from "uuid";
+import { webcrypto } from "crypto";
 
 /**
  * Utility function to conditionally join class names
@@ -112,4 +114,138 @@ export function formatNumberWithCommas(value: string): string {
   return decimalPart !== undefined
     ? `${formattedInteger}.${decimalPart}`
     : formattedInteger;
+}
+
+export function getYouTubeEmbedUrl(url: string) {
+  try {
+    const parsedUrl = new URL(url);
+    const hostname = parsedUrl.hostname;
+
+    if (hostname.includes("youtu.be")) {
+      const videoId = parsedUrl.pathname.slice(1);
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    }
+
+    if (hostname.includes("youtube.com")) {
+      const videoId = parsedUrl.searchParams.get("v");
+      if (videoId) {
+        return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+      }
+    }
+
+    return ""; // fallback if not recognized
+  } catch {
+    return "";
+  }
+}
+
+// Helper to extract thumbnail from YouTube URL
+export const getYoutubeThumbnail = (url: string): string => {
+  try {
+    const parsedUrl = new URL(url);
+
+    let videoId = "";
+
+    if (parsedUrl.hostname === "youtu.be") {
+      // Handle short URLs like https://youtu.be/VIDEO_ID
+      videoId = parsedUrl.pathname.slice(1); // remove the leading "/"
+    } else {
+      // Handle long URLs like https://www.youtube.com/watch?v=VIDEO_ID
+      videoId = parsedUrl.searchParams.get("v") || "";
+    }
+
+    return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+  } catch {
+    return "/placeholder.svg"; // fallback if URL parsing fails
+  }
+};
+
+/**
+ * Generates a unique alphanumeric ID of a specified length.
+ * This function creates a UUID (Universally Unique Identifier), removes hyphens,
+ * and returns the first `length` characters.
+ *
+ * @param {number} length - The desired length of the unique ID (must be ≤ 32, since UUIDs without hyphens are 32 chars long).
+ * @returns {string} A truncated uppercase alphanumeric string from the UUID.
+ *
+ * @example
+ * // Returns something like "3F7A9B2E" (first 8 chars of a UUID without hyphens)
+ * const id = generateUniqueId(8);
+ *
+ * @example
+ * // Can be used to generate request numbers like "WDR-3F7A9B2E"
+ * const requestNumber = `WDR-${generateUniqueId(8).toUpperCase()}`;
+ */
+export function generateUniqueId(length: number) {
+  // Generate a UUID and remove all hyphens
+  const uuid = uuidv4().replace(/-/g, "");
+
+  // Return the first 'length' characters
+  return uuid.substring(0, length);
+}
+
+export async function encryptAES(
+  data: string,
+  token: string,
+  nonce: string
+): Promise<string> {
+  if (nonce.length !== 12) {
+    throw new Error("Nonce must be exactly 12 characters long");
+  }
+
+  const cryptoSubtle = globalThis.crypto?.subtle || webcrypto?.subtle;
+
+  if (!cryptoSubtle) {
+    throw new Error("Crypto API is not available in this environment.");
+  }
+
+  const decodedKeyBytes = Uint8Array.from(atob(token), (c) => c.charCodeAt(0));
+
+  const key = await cryptoSubtle.importKey(
+    "raw",
+    decodedKeyBytes,
+    { name: "AES-GCM" },
+    false,
+    ["encrypt"]
+  );
+  const iv = new TextEncoder().encode(nonce);
+
+  const encryptedData = await cryptoSubtle.encrypt(
+    {
+      name: "AES-GCM",
+      iv: iv,
+    },
+    key,
+    new TextEncoder().encode(data)
+  );
+
+  return btoa(String.fromCharCode(...new Uint8Array(encryptedData)));
+}
+
+/**
+ * Encrypts the provided payload using Flutterwave's 3DES-ECB scheme.
+ * NOTE: In production, this should live on the server.
+ * @param {string} encryptionKey - Flutterwave encryption key (from env)
+ * @param {unknown} payload - The request payload to encrypt
+ * @returns {Promise<string>} base64 encoded encrypted payload
+ */
+export async function encrypt(
+  encryptionKey: string,
+  payload: any
+): Promise<string> {
+  const text = JSON.stringify(payload);
+
+  // Dynamically import node-forge only when this function runs
+  const forge = await import("node-forge");
+
+  const cipher = forge.cipher.createCipher(
+    "3DES-ECB",
+    forge.util.createBuffer(encryptionKey)
+  );
+  cipher.start({ iv: "" });
+  cipher.update(forge.util.createBuffer(text, "utf8")); // if it doesn't work, try "utf-8" as fallback cuz that is what flutterwave uses in their docs
+  cipher.finish();
+  const encrypted = cipher.output;
+
+  return forge.util.encode64(encrypted.getBytes());
 }

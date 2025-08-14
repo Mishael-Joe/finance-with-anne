@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import NewsletterSignup from "@/components/newsletter-signup";
 import BlogList from "@/components/blog/blog-list";
-import Button from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { YoutubeVideoGrid } from "@/components/youtube-video-grid";
 import { getPosts } from "@/lib/posts";
 

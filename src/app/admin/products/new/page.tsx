@@ -6,8 +6,8 @@ import { useState, type FormEvent, useCallback, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import QuillEditor from "@/components/blog/quill-editor";
-import Button from "@/components/ui/button";
-import Input from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Loader2, Upload, X, Plus } from "lucide-react";
 import {
   Select,

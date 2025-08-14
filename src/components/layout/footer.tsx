@@ -141,14 +141,6 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/about"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
@@ -161,14 +153,6 @@ export default function Footer() {
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Real Money Talk
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/resources"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Free Resources
                 </Link>
               </li>
               <li>

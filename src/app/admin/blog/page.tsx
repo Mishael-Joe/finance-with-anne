@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getPostModel } from "@/lib/db/models/Post";
 import { connectToDatabase } from "@/lib/db/mongoose";
 import { formatDate } from "@/lib/utils";
-import Button from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Edit, Plus, Trash2 } from "lucide-react";
 import { getServerSession } from "next-auth";
 import { authOptions, isAdmin } from "@/lib/auth";

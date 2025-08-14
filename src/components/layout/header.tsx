@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import Button from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 
 /**
  * Header component with responsive navigation
@@ -22,14 +22,13 @@ export default function Header() {
 
   // Navigation links configuration
   const navLinks = [
-    // { href: "/", label: "Home" },
     { href: "/about", label: "About Anne" },
     { href: "/blog", label: "Real Money Talk" },
-    { href: "/resources", label: "Free Resources" },
+    { href: "/resources", label: "Resources" },
     { href: "/products", label: "Products and Services" },
     // { href: "/courses", label: "Courses" },
     { href: "/testimonials", label: "Testimonials" },
-    { href: "/contact", label: "Contact Anne" },
+    { href: "/contact", label: "Contact" },
   ];
 
   // Function to check if a link is active
@@ -41,7 +40,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
+      <div className=" max-w-6xl mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         {/* Logo and Brand Name */}
         <Link
           href="/"
@@ -50,13 +49,13 @@ export default function Header() {
           <span className="h-8 w-8 rounded-full bg-primary flex items-center justify-center text-white font-bold">
             A
           </span>
-          <span className="font-semibold text-xl hidden sm:inline-block">
+          <span className="font-semibold text-xl hidden lg:inline-block">
             Finance with Anne
           </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6">
+        <nav className="hidden md:flex items-center space-x-3">
           {navLinks.map((link) => (
             <Link
               key={link.href}
