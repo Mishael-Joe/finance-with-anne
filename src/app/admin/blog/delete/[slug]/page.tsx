@@ -6,7 +6,7 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { AlertTriangle, ArrowLeft, Loader2 } from "lucide-react";
 import { formatDate } from "@/lib/utils";
-import Button from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { useSession } from "next-auth/react";
 import PageLoader from "@/components/ui/page-loader";
 

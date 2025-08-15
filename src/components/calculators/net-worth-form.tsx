@@ -1,8 +1,8 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Button from "@/components/ui/button";
-import Input from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Plus, Trash2, TrendingUp, TrendingDown } from "lucide-react";
 import { formatCurrency } from "@/lib/calculator-utils";
 import type { FinancialItem } from "@/types/calculator";

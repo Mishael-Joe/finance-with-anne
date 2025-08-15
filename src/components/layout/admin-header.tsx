@@ -4,18 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
-import {
-  Menu,
-  X,
-  LayoutDashboard,
-  ShoppingBag,
-  FileText,
-  Users,
-  Settings,
-  LogOut,
-  Lock,
-} from "lucide-react";
-import Button from "@/components/ui/button";
+import { Menu, X, LayoutDashboard, FileText, LogOut, Lock } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { useSession } from "next-auth/react";
 
 /**

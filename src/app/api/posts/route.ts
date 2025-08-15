@@ -120,10 +120,10 @@ export async function POST(request: NextRequest) {
 
     // Return the created post
     return NextResponse.json(post, { status: 201 });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error creating post:", error);
     return NextResponse.json(
-      { error: "Failed to create post" },
+      { error: error.message || "Failed to create post" },
       { status: 500 }
     );
   }

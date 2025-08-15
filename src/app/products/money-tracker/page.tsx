@@ -12,8 +12,9 @@ import {
   Globe,
   Zap,
 } from "lucide-react";
-import Button from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title:
@@ -55,13 +56,15 @@ export default function MoneyTrackerSalesPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <Button
-                size="lg"
-                className="bg-white hover:bg-white text-primary font-bold px-8 py-4 text-lg transition flex gap-2 group"
-              >
-                Get Your Tracker Now
-                <ArrowRight className="w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-1.5" />
-              </Button>
+              <Link href={`/checkout`}>
+                <Button
+                  size="lg"
+                  className="bg-white hover:bg-white text-primary font-bold px-8 py-4 text-lg transition flex gap-2 group"
+                >
+                  Get Your Tracker Now
+                  <ArrowRight className="w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-1.5" />
+                </Button>
+              </Link>
 
               <div className="flex items-center text-secondary-light">
                 <Shield className="w-5 h-5 mr-2" />
@@ -188,13 +191,15 @@ export default function MoneyTrackerSalesPage() {
               ))}
             </div>
 
-            <Button
-              size="lg"
-              className="bg-primary hover:bg-primary text-white font-bold px-8 py-4 text-lg transition group hidden sm:inline-flex"
-            >
-              Start Tracking Your Money Today
-              <ArrowRight className="w-5 h-5 ml-2 transform transition-transform duration-300 group-hover:translate-x-1.5" />
-            </Button>
+            <Link href={`/checkout`}>
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary text-white font-bold px-8 py-4 text-lg transition group hidden sm:inline-flex"
+              >
+                Start Tracking Your Money Today
+                <ArrowRight className="w-5 h-5 ml-2 transform transition-transform duration-300 group-hover:translate-x-1.5" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -360,13 +365,15 @@ export default function MoneyTrackerSalesPage() {
               Every day you wait is another day money slips away.
             </p>
 
-            <Button
-              size="lg"
-              className="bg-white text-red-600 hover:bg-gray-100 font-bold px-8 py-4 text-lg group hidden sm:inline-flex"
-            >
-              Get Your Complete Budget and Money Tracker Today!
-              <ArrowRight className="ml-2 w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-1.5" />
-            </Button>
+            <Link href={`/checkout`}>
+              <Button
+                size="lg"
+                className="bg-white text-red-600 hover:bg-gray-100 font-bold px-8 py-4 text-lg group hidden sm:inline-flex"
+              >
+                Get Your Complete Budget and Money Tracker Today!
+                <ArrowRight className="ml-2 w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-1.5" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -446,13 +453,15 @@ export default function MoneyTrackerSalesPage() {
               Don't let another day of financial uncertainty slip by.
             </p>
 
-            <Button
-              size="lg"
-              className="bg-white hover:bg-white text-primary font-bold px-8 py-4 text-lg mb-6 group"
-            >
-              Get Your Tracker Now
-              <ArrowRight className="ml-2 w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-1.5" />
-            </Button>
+            <Link href={`/checkout`}>
+              <Button
+                size="lg"
+                className="bg-white hover:bg-white text-primary font-bold px-8 py-4 text-lg mb-6 group"
+              >
+                Get Your Tracker Now
+                <ArrowRight className="ml-2 w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-1.5" />
+              </Button>
+            </Link>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-secondary-light">
               <div className="flex items-center">

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { getProductModel } from "@/lib/db/models/Product";
 import { connectToDatabase } from "@/lib/db/mongoose";
 import { formatDate } from "@/lib/utils";
-import Button from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Edit, Plus, Trash2, Eye, EyeOff } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import currency from "currency.js";

@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { Label } from "@/components/ui/label";
-import Input from "@/components/ui/input";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -10,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import Button from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import type { InvestmentData } from "@/types/calculator";
 import {
   CURRENCY_OPTIONS,

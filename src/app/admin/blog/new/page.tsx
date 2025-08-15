@@ -5,8 +5,8 @@ import type React from "react";
 import { useEffect, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import QuillEditor from "@/components/blog/quill-editor";
-import Button from "@/components/ui/button";
-import Input from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Loader2 } from "lucide-react";
 import { UploadDropzone } from "@/utils/uploadthing";
 import { twMerge } from "tailwind-merge";
@@ -161,7 +161,7 @@ export default function NewBlogPostPage() {
       }
 
       // Redirect to the blog page on success
-      router.push("/blog");
+      router.push("/admin/blog");
       router.refresh();
     } catch (err) {
       // Handle errors

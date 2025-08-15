@@ -12,7 +12,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 // import { Card } from "@/components/ui/card";
-import Button from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
+import { getYouTubeEmbedUrl, getYoutubeThumbnail } from "@/lib/utils";
 
 interface YoutubeVideoType {
   videoLink: string;
@@ -62,50 +63,6 @@ const videos: YoutubeVideoType[] = [
   //   pTag: "Description for video 6",
   // },
 ];
-
-// Helper to extract thumbnail from YouTube URL
-const getYoutubeThumbnail = (url: string): string => {
-  try {
-    const parsedUrl = new URL(url);
-
-    let videoId = "";
-
-    if (parsedUrl.hostname === "youtu.be") {
-      // Handle short URLs like https://youtu.be/VIDEO_ID
-      videoId = parsedUrl.pathname.slice(1); // remove the leading "/"
-    } else {
-      // Handle long URLs like https://www.youtube.com/watch?v=VIDEO_ID
-      videoId = parsedUrl.searchParams.get("v") || "";
-    }
-
-    return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-  } catch {
-    return "/placeholder.svg"; // fallback if URL parsing fails
-  }
-};
-
-function getYouTubeEmbedUrl(url: string) {
-  try {
-    const parsedUrl = new URL(url);
-    const hostname = parsedUrl.hostname;
-
-    if (hostname.includes("youtu.be")) {
-      const videoId = parsedUrl.pathname.slice(1);
-      return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-    }
-
-    if (hostname.includes("youtube.com")) {
-      const videoId = parsedUrl.searchParams.get("v");
-      if (videoId) {
-        return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-      }
-    }
-
-    return ""; // fallback if not recognized
-  } catch {
-    return "";
-  }
-}
 
 export function YoutubeVideoGrid() {
   const [currentIndex, setCurrentIndex] = useState(0);

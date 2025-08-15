@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
  * @param children - Button content
  * @param props - Any additional button attributes
  */
-export default function Button({
+export function Button({
   variant = "default",
   size = "default",
   href,
