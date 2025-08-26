@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import { geolocation } from "@vercel/functions";
-import { getPriceByCountry } from "@/lib/pricing";
 import { CheckoutForm } from "@/components/checkout/checkout-form";
 import Image from "next/image";
 import { CheckCircle } from "lucide-react";
-import { headers } from "next/headers";
 import { getYoutubeThumbnail } from "@/lib/utils";
 
 /**
@@ -37,21 +34,6 @@ export const metadata: Metadata = {
  * and displays the checkout form.
  */
 export default async function CheckoutPage() {
-  // Server-side IP detection using Vercel's geolocation
-  // Create a Request object from current headers
-  const rawHeaders = await headers();
-  const headersObj: Record<string, string> = {};
-  rawHeaders.forEach((value, key) => {
-    headersObj[key] = value;
-  });
-  const request = new Request("https://financewithanne.com", {
-    headers: headersObj,
-  });
-
-  const geo = geolocation(request);
-  const countryCode = geo?.country || "default";
-
-  const priceDetails = getPriceByCountry(countryCode);
   const youTubeVideoUrl = "https://youtu.be/e2avV3gkcVA?si=9DoerNXv9NZcQEvn";
 
   return (
@@ -128,7 +110,7 @@ export default async function CheckoutPage() {
 
         {/* Right Column: Checkout Form */}
         <div className="flex flex-col justify-center">
-          <CheckoutForm priceDetails={priceDetails} />
+          <CheckoutForm />
         </div>
       </div>
     </main>

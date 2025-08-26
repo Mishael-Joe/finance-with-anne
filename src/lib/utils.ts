@@ -221,31 +221,3 @@ export async function encryptAES(
 
   return btoa(String.fromCharCode(...new Uint8Array(encryptedData)));
 }
-
-/**
- * Encrypts the provided payload using Flutterwave's 3DES-ECB scheme.
- * NOTE: In production, this should live on the server.
- * @param {string} encryptionKey - Flutterwave encryption key (from env)
- * @param {unknown} payload - The request payload to encrypt
- * @returns {Promise<string>} base64 encoded encrypted payload
- */
-export async function encrypt(
-  encryptionKey: string,
-  payload: any
-): Promise<string> {
-  const text = JSON.stringify(payload);
-
-  // Dynamically import node-forge only when this function runs
-  const forge = await import("node-forge");
-
-  const cipher = forge.cipher.createCipher(
-    "3DES-ECB",
-    forge.util.createBuffer(encryptionKey)
-  );
-  cipher.start({ iv: "" });
-  cipher.update(forge.util.createBuffer(text, "utf8")); // if it doesn't work, try "utf-8" as fallback cuz that is what flutterwave uses in their docs
-  cipher.finish();
-  const encrypted = cipher.output;
-
-  return forge.util.encode64(encrypted.getBytes());
-}
