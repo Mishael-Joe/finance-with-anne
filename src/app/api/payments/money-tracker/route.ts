@@ -1,21 +1,46 @@
-import { encrypt } from "@/lib/utils";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
+  if (!process.env.FLUTTERWAVE_API_URL || !process.env.FLUTTERWAVE_SECRET_KEY) {
+    console.error("Missing required environment variables");
+    return NextResponse.json(
+      { error: "Server configuration error" },
+      { status: 500 }
+    );
+  }
+
   const body = await request.json();
 
   try {
     const { payload } = body;
 
-    console.log("Payment payload:", payload);
+    const requiredFields = [
+      "tx_ref",
+      "amount",
+      "currency",
+      "redirect_url",
+      "customer",
+    ];
+    const missingFields = requiredFields.filter((field) => !payload[field]);
 
-    const encryptedPayload = await encrypt(
-      process.env.FLUTTERWAVE_ENCRYPTION_KEY!,
-      payload
-    );
+    if (missingFields.length > 0) {
+      return NextResponse.json(
+        { error: `Missing required fields: ${missingFields.join(", ")}` },
+        { status: 400 }
+      );
+    }
 
+    // Validate amount is a positive number
+    if (typeof payload.amount !== "number" || payload.amount <= 0) {
+      return NextResponse.json(
+        { error: "Invalid amount: must be a positive number" },
+        { status: 400 }
+      );
+    }
+
+    console.log("Payment initiated for tx_ref:", payload.tx_ref);
     const flutterwaveRes = await fetch(
-      "https://api.flutterwave.com/v3/charges?type=card",
+      `${process.env.FLUTTERWAVE_API_URL}/payments`,
       {
         method: "POST",
         headers: {
@@ -23,7 +48,17 @@ export async function POST(request: NextRequest) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          client: encryptedPayload,
+          payment_options: "card, ussd",
+          tx_ref: payload.tx_ref,
+          amount: payload.amount,
+          currency: payload.currency,
+          redirect_url: payload.redirect_url,
+          customer: payload.customer,
+          meta: payload.meta,
+          configurations: {
+            session_duration: 10, // Session timeout in minutes (maxValue: 1440)
+            max_retry_attempt: 3, // Max retry (int)
+          },
         }),
       }
     );
