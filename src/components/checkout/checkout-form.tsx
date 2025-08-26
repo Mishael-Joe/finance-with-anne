@@ -97,7 +97,7 @@ export function CheckoutForm() {
       currency: priceDetails?.currency,
       redirect_url:
         process.env.NEXT_PUBLIC_REDIRECT_URL ||
-        "https://financewithanne.com/checkout/success",
+        "https://financewithanne.com/checkout/payment-status",
       customer: {
         email: userData.email,
         name: userData.fullName,
