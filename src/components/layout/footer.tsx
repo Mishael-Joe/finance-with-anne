@@ -244,10 +244,10 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-lg mb-4 text-primary">Contact</h3>
             <address className="not-italic text-muted-foreground space-y-2">
-              {/* <p>123 Financial Street</p>
-              <p>Suite 456</p>
+              <p>Plot 698 Broadview Estate</p>
+              <p>Idu, Abuja</p>
               <p>Nigeria</p>
-              <p>(+234) 123-4567</p> */}
+              <p>+234 8076 529 944</p>
               <a
                 href={`mailto:${anneContactEmail}`}
                 className="hover:text-primary hover:underline text-inherit"
