@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Mail } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { FiYoutube, FiFacebook } from "react-icons/fi";
 import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { RiTiktokLine } from "react-icons/ri";
 import ContactForm from "@/components/contact-form";
-import { anneContactEmail, annePartnershipEmail } from "@/config";
+import { annePartnershipEmail } from "@/config";
 import {
   Accordion,
   AccordionContent,
@@ -57,14 +57,16 @@ export default function ContactPage() {
                   <Mail className="h-6 w-6 text-primary mr-4 mt-1" />
                   <div>
                     <h3 className="font-semibold mb-1 text-primary">Email</h3>
-                    <p className="text-muted-foreground">{anneContactEmail}</p>
+                    <p className="text-muted-foreground">
+                      financeswithanne@gmail.com
+                    </p>
                   </div>
                 </div>
-                {/* <div className="flex items-start">
+                <div className="flex items-start">
                   <Phone className="h-6 w-6 text-primary mr-4 mt-1" />
                   <div>
                     <h3 className="font-semibold mb-1">Phone</h3>
-                    <p className="text-muted-foreground">(+234) 123-4567</p>
+                    <p className="text-muted-foreground">+234 8076 529 944</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -72,14 +74,14 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold mb-1">Office</h3>
                     <p className="text-muted-foreground">
-                      123 Financial Street
+                      Plot 698 Broadview Estate
                       <br />
-                      Suite 456
+                      Idu, Abuja
                       <br />
                       Nigeria
                     </p>
                   </div>
-                </div> */}
+                </div>
               </div>
 
               {/* Social Media */}
