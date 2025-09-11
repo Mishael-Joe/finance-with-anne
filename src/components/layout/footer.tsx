@@ -20,7 +20,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-muted border-t">
-      <div className="container mx-auto px-4 md:px-6 py-12">
+      <div className="mx-auto max-w-7xl px-4 md:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand and Tagline */}
           <div>
@@ -235,6 +235,31 @@ export default function Footer() {
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Latest Articles
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Policies */}
+          <div>
+            <h3 className="font-semibold text-lg mb-4 text-primary">
+              Policies
+            </h3>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  href="/returns-policy"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Return Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/privacy-policy"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Privacy Policy
                 </Link>
               </li>
             </ul>
