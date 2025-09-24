@@ -1,8 +1,7 @@
 "use client";
 
 import type React from "react";
-
-import { useEffect, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import QuillEditor from "@/components/blog/quill-editor";
 import { Button } from "@/components/ui/button";
@@ -10,8 +9,6 @@ import { Input } from "@/components/ui/input";
 import { Loader2 } from "lucide-react";
 import { UploadDropzone } from "@/utils/uploadthing";
 import { twMerge } from "tailwind-merge";
-import { useSession } from "next-auth/react";
-import PageLoader from "@/components/ui/page-loader";
 import { toast } from "sonner";
 import {
   Select,
@@ -20,6 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { authors, AuthorsType } from "@/lib/db/models/Post";
 
 /**
  * New Blog Post page component
@@ -29,8 +27,6 @@ export default function NewBlogPostPage() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  const { data: session, status } = useSession();
 
   // Form state
   const [formData, setFormData] = useState({
@@ -44,20 +40,6 @@ export default function NewBlogPostPage() {
     category: "",
     published: false,
   });
-
-  useEffect(() => {
-    if (status === "unauthenticated" || session?.user?.role !== "admin") {
-      router.push(
-        `/admin/login?error=AccessDenied&callbackUrl=${encodeURIComponent(
-          "/admin/blog/new"
-        )}`
-      );
-    }
-  }, [status, session, router]);
-
-  if (status === "unauthenticated" || session?.user?.role !== "admin") {
-    return <PageLoader />; // Still render null but only after the effect runs
-  }
 
   /**
    * Handle input changes for form fields
@@ -335,13 +317,23 @@ export default function NewBlogPostPage() {
           <label htmlFor="author" className="text-sm font-medium">
             Author
           </label>
-          <Input
-            id="author"
-            name="author"
+          <Select
             value={formData.author}
-            onChange={handleInputChange}
-            placeholder="Anne Johnson"
-          />
+            onValueChange={(value: AuthorsType) =>
+              setFormData((prev) => ({ ...prev, author: value }))
+            }
+          >
+            <SelectTrigger id="author">
+              <SelectValue placeholder="Select an author" />
+            </SelectTrigger>
+            <SelectContent>
+              {Object.values(authors).map((auth) => (
+                <SelectItem key={auth} value={auth}>
+                  {auth}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
         {/* Published Status */}

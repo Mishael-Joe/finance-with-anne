@@ -5,7 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 import { getPostBySlug } from "@/lib/db/models/Post";
 import { connectToDatabase } from "@/lib/db/mongoose";
-import { formatDate } from "@/lib/utils";
+import { formatDate, getImage } from "@/lib/utils";
 import NewsletterSignup from "@/components/newsletter-signup";
 import HtmlContent from "@/components/blog/html-content";
 
@@ -95,11 +95,12 @@ export default async function BlogPostPage({
             <div className="flex items-center text-muted-foreground mb-6">
               <div className="mr-4">
                 <Image
-                  src={
-                    Post.author === "Mishael Joseph"
-                      ? "/testimonials/mishael.jpg?height=40&width=40"
-                      : "/anne.jpg?height=40&width=40"
-                  }
+                  src={getImage(Post.author)}
+                  // src={
+                  //   Post.author === "Mishael Joseph"
+                  //     ? "/testimonials/mishael.jpg?height=40&width=40"
+                  //     : "/anne.jpg?height=40&width=40"
+                  // }
                   alt="Anne"
                   width={40}
                   height={40}
