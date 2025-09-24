@@ -22,6 +22,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Image from "next/image";
+import { authors, AuthorsType } from "@/lib/db/models/Post";
 
 /**
  * Edit Blog Post page component
@@ -405,13 +406,23 @@ export default function EditBlogPostPage() {
           <label htmlFor="author" className="text-sm font-medium">
             Author
           </label>
-          <Input
-            id="author"
-            name="author"
+          <Select
             value={formData.author}
-            onChange={handleInputChange}
-            placeholder="Anne Johnson"
-          />
+            onValueChange={(value: AuthorsType) =>
+              setFormData((prev) => ({ ...prev, author: value }))
+            }
+          >
+            <SelectTrigger id="author">
+              <SelectValue placeholder="Select an author" />
+            </SelectTrigger>
+            <SelectContent>
+              {Object.values(authors).map((auth) => (
+                <SelectItem key={auth} value={auth}>
+                  {auth}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
         {/* Published Status */}

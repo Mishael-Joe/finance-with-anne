@@ -4,26 +4,12 @@ import { connectToDatabase } from "@/lib/db/mongoose";
 import { formatDate } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Edit, Plus, Trash2 } from "lucide-react";
-import { getServerSession } from "next-auth";
-import { authOptions, isAdmin } from "@/lib/auth";
-import { redirect } from "next/navigation";
 
 /**
  * Blog Admin Page
  * Displays a list of all blog posts with options to create, edit, and delete
  */
 export default async function BlogAdminPage() {
-  const session = await getServerSession(authOptions);
-
-  // If not authenticated or not an admin, redirect to login
-  if (!session || !isAdmin(session)) {
-    redirect(
-      `/admin/login?error=AccessDenied&callbackUrl=${encodeURIComponent(
-        "/admin/blog"
-      )}`
-    );
-  }
-
   // Connect to the database
   await connectToDatabase();
 

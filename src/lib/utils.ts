@@ -2,6 +2,7 @@ import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { v4 as uuidv4 } from "uuid";
 import { webcrypto } from "crypto";
+import { Authors, authors, AuthorsType } from "./db/models/Post";
 
 /**
  * Utility function to conditionally join class names
@@ -221,3 +222,11 @@ export async function encryptAES(
 
   return btoa(String.fromCharCode(...new Uint8Array(encryptedData)));
 }
+
+const authorImages: Record<Authors, string> = {
+  [Authors.AnneEwere]: "/anne.jpg",
+  [Authors.Mishael]: "/testimonials/mishael.jpg",
+  [Authors.FunmiAzeez]: "/taiye.jpg",
+};
+
+export const getImage = (val: AuthorsType) => authorImages[val] ?? "/anne.jpg";

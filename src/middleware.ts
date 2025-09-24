@@ -17,6 +17,8 @@ export async function middleware(request: NextRequest) {
       secret: process.env.NEXTAUTH_SECRET,
     });
 
+    // console.log("token", token);
+
     // If no token or not an admin, redirect to login
     if (!token || token.role !== "admin") {
       const url = new URL("/admin/login", request.url);

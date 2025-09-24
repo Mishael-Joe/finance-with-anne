@@ -1,6 +1,20 @@
 import mongoose, { Schema, type Document, type Model } from "mongoose";
 import { connectToDatabase } from "../mongoose";
 
+export enum Authors {
+  AnneEwere = "Anne Ewere",
+  FunmiAzeez = "Funmi Azeez",
+  Mishael = "Mishael Joseph",
+}
+
+export const authors = {
+  [Authors.AnneEwere]: Authors.AnneEwere,
+  [Authors.FunmiAzeez]: Authors.FunmiAzeez,
+  [Authors.Mishael]: Authors.Mishael,
+};
+
+export type AuthorsType = keyof typeof authors;
+
 /**
  * Interface for Post document
  */
@@ -19,7 +33,7 @@ export interface IPost extends Document {
     | "Financial Tools"
     | "Life Goals"
     | "Success Stories";
-  author: string;
+  author: Authors;
   tags: string[];
   published: boolean;
   createdAt: Date;
@@ -73,6 +87,7 @@ const PostSchema = new Schema<IPost>(
     author: {
       type: String,
       required: [true, "Author is required"],
+      enum: Object.values(Authors),
       // default: "Anne Johnson",
     },
     tags: {
