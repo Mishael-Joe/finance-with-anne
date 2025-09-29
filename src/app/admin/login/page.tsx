@@ -40,15 +40,16 @@ export default function AdminLoginPage() {
         password,
       });
 
-      if (result?.status !== 200) {
+      if (result?.error) {
         setLoginError(result!.error);
         setIsLoading(false);
         return;
-      }
-
-      router.refresh();
+      } else {
       // Redirect to the dashboard on successful login
-      router.push(decodeURIComponent(callbackUrl));
+      // router.push(decodeURIComponent(callbackUrl));
+      router.push("/admin/dashboard");
+      router.refresh(); 
+      }
     } catch (error) {
       console.error("Login error:", error);
       setLoginError("An unexpected error occurred. Please try again.");
