@@ -46,9 +46,9 @@ export default function AdminLoginPage() {
         return;
       }
 
+      router.refresh();
       // Redirect to the dashboard on successful login
       router.push(decodeURIComponent(callbackUrl));
-      router.refresh();
     } catch (error) {
       console.error("Login error:", error);
       setLoginError("An unexpected error occurred. Please try again.");

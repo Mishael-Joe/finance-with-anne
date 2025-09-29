@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { LayoutClient } from "./layout-client";
 import Script from "next/script"; // ✅ Import next/script
+import { AuthProvider } from "@/components/providers";
 
 // Initialize the Inter font with Latin subset
 const inter = Inter({ subsets: ["latin"] });
@@ -40,7 +41,13 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={`scroll-smooth ${inter.className}`}>
-        <LayoutClient>{children}</LayoutClient>
+        {/* 
+          Wrap the entire application with AuthProvider to enable authentication
+          throughout the app using the useSession() hook
+        */}
+        <AuthProvider>
+          <LayoutClient>{children}</LayoutClient>
+        </AuthProvider>
       </body>
     </html>
   );
