@@ -14,7 +14,7 @@ export async function middleware(request: NextRequest) {
   // If it is an admin page and no adminToken, redirect to admin login page
   if (isAdminPage(pathname) && !adminToken) {
     const url = new URL("/admin/login", request.url);
-    url.searchParams.set("callbackUrl", encodeURI(request.url));
+    url.searchParams.set("callbackUrl", request.url);
     url.searchParams.set("error", "AccessDenied");
     return NextResponse.redirect(url);
   }
@@ -22,3 +22,11 @@ export async function middleware(request: NextRequest) {
   // Everything else is allowed
   return NextResponse.next();
 }
+
+export const config = {
+  matcher: [
+    // Run middleware only on routes that start with `/admin`
+    // Next.js automatically excludes _next/static and _next/image
+    "/admin/:path*",
+  ],
+};
