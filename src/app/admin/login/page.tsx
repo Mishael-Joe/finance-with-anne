@@ -45,7 +45,8 @@ export default function AdminLoginPage() {
 
       if (response.data.success === true || response.status === 200) {
         toast.success("You have Successfully signed In.");
-        router.push(callbackUrl);
+        // router.push(callbackUrl);
+        router.push("/admin/dashboard");
         router.refresh();
       } else {
         toast.error("There was an error signing you in. Please try again.");
