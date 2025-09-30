@@ -3,22 +3,17 @@
 import type React from "react";
 
 import { useState, type FormEvent } from "react";
-import { useRouter } from "next/navigation";
 import { Loader2, AlertCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { useSession } from "next-auth/react";
 
 /**
  * Create Admin Page
  * Protected page that allows existing admins to create new admin users
  */
 export default function CreateAdminPage() {
-  const router = useRouter();
-  const { data: session, status } = useSession();
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -28,24 +23,6 @@ export default function CreateAdminPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
-
-  // Redirect if not authenticated or not an admin
-  if (status === "loading") {
-    return (
-      <div className="container mx-auto px-4 py-16 flex justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-      </div>
-    );
-  }
-
-  if (status === "unauthenticated" || session?.user?.role !== "admin") {
-    router.push(
-      `/admin/login?error=AccessDenied&callbackUrl=${encodeURIComponent(
-        "/admin/create-admin"
-      )}`
-    );
-    return null;
-  }
 
   /**
    * Handle form input changes

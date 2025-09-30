@@ -2,9 +2,8 @@ import { type NextRequest, NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/db/mongoose";
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/lib/auth";
 import { z } from "zod";
+import { getAdminFromCookie } from "@/lib/helpers/get-admin-from-cookies";
 
 // Define validation schema for admin creation
 const adminSchema = z.object({
@@ -20,8 +19,8 @@ const adminSchema = z.object({
 export async function POST(request: NextRequest) {
   try {
     // Check if the request is from an admin
-    const session = await getServerSession(authOptions);
-    if (!session || session.user.role !== "admin") {
+    const session = await getAdminFromCookie();
+    if (!session || session.role !== "admin") {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 

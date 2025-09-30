@@ -2,7 +2,8 @@ import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { v4 as uuidv4 } from "uuid";
 import { webcrypto } from "crypto";
-import { Authors, authors, AuthorsType } from "./db/models/Post";
+import { Authors, AuthorsType } from "./db/models/Post";
+import { AdminTokenData } from "@/app/api/admin/login/route";
 
 /**
  * Utility function to conditionally join class names
@@ -71,6 +72,15 @@ export function formatDate(date: string | Date): string {
     month: "long",
     day: "numeric",
   });
+}
+
+/**
+ * Helper function to check if a user is authenticated and has admin role
+ * @param user The user session
+ * @returns Boolean indicating if the user is an admin
+ */
+export function isAdmin(user: AdminTokenData) {
+  return user?.role === "admin";
 }
 
 /**

@@ -1,5 +1,4 @@
-import { authOptions } from "@/lib/auth";
-import { getServerSession } from "next-auth";
+import { getAdminFromCookie } from "@/lib/helpers/get-admin-from-cookies";
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { UploadThingError } from "uploadthing/server";
 
@@ -8,11 +7,11 @@ const f = createUploadthing();
 // auth function to check if the user is authenticated
 const auth = async () => {
   // Check authentication
-  const session = await getServerSession(authOptions);
-  if (!session) {
+  const user = await getAdminFromCookie();
+  if (!user) {
     return null;
   }
-  return session.user.name;
+  return user.name;
 };
 
 // FileRouter for your app, can contain multiple FileRoutes

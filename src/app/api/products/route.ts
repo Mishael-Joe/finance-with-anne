@@ -2,9 +2,7 @@ import { type NextRequest, NextResponse } from "next/server";
 import { getProductModel } from "@/lib/db/models/Product";
 import { connectToDatabase } from "@/lib/db/mongoose";
 import { revalidatePath } from "next/cache";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/lib/auth";
-
+import { getAdminFromCookie } from "@/lib/helpers/get-admin-from-cookies";
 /**
  * GET handler for fetching all products
  * Supports filtering by category, visibility, and pagination
@@ -79,9 +77,9 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     // Check authentication
-    const session = await getServerSession(authOptions);
+    const session = await getAdminFromCookie();
 
-    if (!session || session.user.role !== "admin") {
+    if (!session || session.role !== "admin") {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 

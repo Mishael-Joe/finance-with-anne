@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { signOut } from "next-auth/react";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu, X, LayoutDashboard, FileText, LogOut, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useSession } from "next-auth/react";
+import axios from "axios";
+import { toast } from "sonner";
 
 /**
  * Admin Header component with responsive navigation
@@ -18,10 +18,25 @@ import { useSession } from "next-auth/react";
  * - Active link highlighting
  * - User info and logout button
  */
-export default function AdminHeader() {
+export default function AdminHeader({ user }: { user?: string }) {
+  const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const { data: session } = useSession();
+  // Handle logout
+  const handleLogout = async () => {
+    try {
+      const response = await axios.post("/api/admin/logout");
+      if (response.status === 200) {
+        router.push("/admin/login");
+        router.refresh();
+        toast.success("Logged out successfully");
+        return;
+      }
+      toast.error("Logout failed. Please try again.");
+    } catch (error) {
+      return error;
+    }
+  };
 
   // Navigation links configuration
   const navLinks = [
@@ -43,11 +58,6 @@ export default function AdminHeader() {
       return true;
     if (path !== "/admin/dashboard" && pathname.startsWith(path)) return true;
     return false;
-  };
-
-  // Handle logout
-  const handleLogout = async () => {
-    await signOut({ redirect: true, callbackUrl: "/" });
   };
 
   return (
@@ -84,12 +94,12 @@ export default function AdminHeader() {
 
         {/* User Info and Logout */}
         <div className="hidden md:flex items-center space-x-4">
-          {session?.user && (
+          {user && (
             <div className="flex items-center">
               <div className="relative group">
                 <button className="text-sm flex items-center space-x-1 hover:text-white/80">
-                  <span>{session.user.name?.split(" ")[0]}</span>
-                  <span className="text-white/70">(Admin)</span>
+                  <span>{user?.split(" ")[0]}</span>
+                  {user && <span className="text-white/70">(Admin)</span>}
                 </button>
 
                 {/* Dropdown menu */}
@@ -160,8 +170,8 @@ export default function AdminHeader() {
             {/* User links in mobile menu */}
             <div className="pt-4 border-t border-white/10 space-y-4">
               <div className="text-sm mb-2">
-                {session?.user?.name?.split(" ")[0]}{" "}
-                <span className="text-white/70">(Admin)</span>
+                {user?.split(" ")[0]}{" "}
+                {user && <span className="text-white/70">(Admin)</span>}
               </div>
 
               {userLinks.map((link) => {

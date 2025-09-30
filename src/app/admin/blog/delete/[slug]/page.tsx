@@ -7,8 +7,6 @@ import Link from "next/link";
 import { AlertTriangle, ArrowLeft, Loader2 } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { useSession } from "next-auth/react";
-import PageLoader from "@/components/ui/page-loader";
 
 /**
  * Delete Blog Post page component
@@ -23,18 +21,6 @@ export default function DeleteBlogPostPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isDeleting, setIsDeleting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  const { data: session, status } = useSession();
-
-  useEffect(() => {
-    if (status === "unauthenticated" || session?.user?.role !== "admin") {
-      router.push(
-        `/admin/login?error=AccessDenied&callbackUrl=${encodeURIComponent(
-          "/admin/blog/delete/" + slug
-        )}`
-      );
-    }
-  }, [status, session, router, slug]);
 
   useEffect(() => {
     async function fetchPost() {
@@ -53,14 +39,8 @@ export default function DeleteBlogPostPage() {
       }
     }
 
-    if (slug && status === "authenticated" && session?.user?.role === "admin") {
-      fetchPost();
-    }
-  }, [slug, status, session]);
-
-  if (status === "loading") {
-    return <PageLoader />;
-  }
+    fetchPost();
+  }, [slug]);
 
   /**
    * Handle post deletion

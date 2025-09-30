@@ -7,25 +7,12 @@ import { Button } from "@/components/ui/button";
 import { Edit, Plus, Trash2, Eye, EyeOff } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import currency from "currency.js";
-import { redirect } from "next/navigation";
-import { authOptions, isAdmin } from "@/lib/auth";
-import { getServerSession } from "next-auth";
 
 /**
  * Products Admin Page
  * Displays a list of all digital products with options to create, edit, and delete
  */
 export default async function ProductsAdminPage() {
-  const session = await getServerSession(authOptions);
-  // If not authenticated or not an admin, redirect to login
-  if (!session || !isAdmin(session)) {
-    redirect(
-      `/admin/login?error=AccessDenied&callbackUrl=${encodeURIComponent(
-        "/admin/products"
-      )}`
-    );
-  }
-
   // Connect to the database
   await connectToDatabase();
 

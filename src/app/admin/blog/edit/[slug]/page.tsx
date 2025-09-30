@@ -11,7 +11,6 @@ import { Input } from "@/components/ui/input";
 import { Loader2 } from "lucide-react";
 import { UploadDropzone } from "@/utils/uploadthing";
 import { twMerge } from "tailwind-merge";
-import { useSession } from "next-auth/react";
 import PageLoader from "@/components/ui/page-loader";
 import { toast } from "sonner";
 import {
@@ -38,8 +37,6 @@ export default function EditBlogPostPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const { data: session, status } = useSession();
-
   // Form state
   const [formData, setFormData] = useState({
     title: "",
@@ -52,18 +49,6 @@ export default function EditBlogPostPage() {
     author: "",
     published: false,
   });
-
-  useEffect(() => {
-    if (status === "loading") return; // Wait until loading is complete
-
-    if (status === "unauthenticated" || session?.user?.role !== "admin") {
-      router.push(
-        `/admin/login?error=AccessDenied&callbackUrl=${encodeURIComponent(
-          "/admin/blog/edit/" + slug
-        )}`
-      );
-    }
-  }, [status, session, router]);
 
   // Fetch post data on component mount
   useEffect(() => {
@@ -106,10 +91,6 @@ export default function EditBlogPostPage() {
       fetchPost();
     }
   }, [slug]);
-
-  if (status === "unauthenticated" || session?.user?.role !== "admin") {
-    return <PageLoader />; // Still render null but only after the effect runs
-  }
 
   /**
    * Handle input changes for form fields
