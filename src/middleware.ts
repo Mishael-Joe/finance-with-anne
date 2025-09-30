@@ -25,15 +25,8 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // ✅ Run middleware only on routes that start with `/admin`
-    // This includes `/admin`, `/admin/login`, `/admin/dashboard`, etc.
+    // Run middleware only on routes that start with `/admin`
+    // Next.js automatically excludes _next/static and _next/image
     "/admin/:path*",
-
-    // ❌ Explicitly ignore Next.js internal files and favicon
-    // - `_next/static/*`  → static assets (JS, CSS, etc.)
-    // - `_next/image/*`   → image optimization
-    // - `favicon.ico`     → site favicon
-    // The negative lookahead ensures middleware is skipped for these
-    "/((?!_next/static|_next/image|favicon.ico).*)",
   ],
 };
