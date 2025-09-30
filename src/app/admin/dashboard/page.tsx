@@ -1,6 +1,3 @@
-import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth/next";
-import { authOptions, isAdmin } from "@/lib/auth";
 import Link from "next/link";
 import {
   Card,
@@ -10,6 +7,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { BookOpen, ShoppingBag, Users, FileText } from "lucide-react";
+import { getAdminFromCookie } from "@/lib/helpers/get-admin-from-cookies";
+import { isAdmin } from "@/lib/utils";
+import { redirect } from "next/navigation";
 
 /**
  * Admin Dashboard Page
@@ -17,10 +17,10 @@ import { BookOpen, ShoppingBag, Users, FileText } from "lucide-react";
  */
 export default async function AdminDashboardPage() {
   // Get the user's session
-  const session = await getServerSession(authOptions);
+  const user = await getAdminFromCookie();
 
   // If not authenticated or not an admin, redirect to login
-  if (!session || !isAdmin(session)) {
+  if (!user || !isAdmin(user)) {
     redirect(
       `/admin/login?error=AccessDenied&callbackUrl=${encodeURIComponent(
         "/admin/dashboard"
@@ -41,9 +41,7 @@ export default async function AdminDashboardPage() {
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold">Admin Dashboard</h1>
-          <p className="text-muted-foreground">
-            Welcome back, {session.user.name}
-          </p>
+          <p className="text-muted-foreground">Welcome back, {user.name}</p>
         </div>
       </div>
 

@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Loader2, AlertCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import axios from "axios";
+import { toast } from "sonner";
 
 /**
  * Admin Login Page
@@ -34,21 +35,20 @@ export default function AdminLoginPage() {
     setLoginError(null);
 
     try {
-      const result = await signIn("credentials", {
-        redirect: false,
+      const userInput = {
         email,
         password,
-      });
+      };
+      const response = await axios.post(`/api/admin/login`, userInput);
 
-      if (result?.error) {
-        setLoginError(result!.error);
-        setIsLoading(false);
-        return;
+      console.log("response", response);
+
+      if (response.data.success === true || response.status === 200) {
+        toast.success("You have Successfully signed In.");
+        router.push(callbackUrl);
+        router.refresh();
       } else {
-      // Redirect to the dashboard on successful login
-      // router.push(decodeURIComponent(callbackUrl));
-      router.push("/admin/dashboard");
-      router.refresh(); 
+        toast.error("There was an error signing you in. Please try again.");
       }
     } catch (error) {
       console.error("Login error:", error);

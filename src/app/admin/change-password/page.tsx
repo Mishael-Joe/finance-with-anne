@@ -4,7 +4,6 @@ import type React from "react";
 
 import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
 import { Loader2, AlertCircle, Check, X, Eye, EyeOff } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -18,7 +17,6 @@ import { Progress } from "@/components/ui/progress";
  */
 export default function ChangePasswordPage() {
   const router = useRouter();
-  const { data: session, status } = useSession();
 
   // Form state
   const [formData, setFormData] = useState({
@@ -44,24 +42,6 @@ export default function ChangePasswordPage() {
     number: false,
     special: false,
   });
-
-  // Redirect if not authenticated or not an admin
-  if (status === "loading") {
-    return (
-      <div className="container mx-auto px-4 py-16 flex justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-      </div>
-    );
-  }
-
-  if (status === "unauthenticated" || session?.user?.role !== "admin") {
-    router.push(
-      `/admin/login?error=AccessDenied&callbackUrl=${encodeURIComponent(
-        "/admin/change-password"
-      )}`
-    );
-    return null;
-  }
 
   /**
    * Handle form input changes

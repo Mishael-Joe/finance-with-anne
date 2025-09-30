@@ -2,9 +2,12 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { LayoutClient } from "./layout-client";
 import Script from "next/script"; // ✅ Import next/script
-import { AuthProvider } from "@/components/providers";
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+import { extractRouterConfig } from "uploadthing/server";
+import { ourFileRouter } from "./api/uploadthing/core";
+import Footer from "@/components/layout/footer";
+import { Toaster } from "sonner";
 
 // Initialize the Inter font with Latin subset
 const inter = Inter({ subsets: ["latin"] });
@@ -41,13 +44,18 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={`scroll-smooth ${inter.className}`}>
-        {/* 
-          Wrap the entire application with AuthProvider to enable authentication
-          throughout the app using the useSession() hook
-        */}
-        <AuthProvider>
-          <LayoutClient>{children}</LayoutClient>
-        </AuthProvider>
+        <NextSSRPlugin
+          /**
+           * The `extractRouterConfig` will extract **only** the route configs
+           * from the router to prevent additional information from being
+           * leaked to the client. The data passed to the client is the same
+           * as if you were to fetch `/api/uploadthing` directly.
+           */
+          routerConfig={extractRouterConfig(ourFileRouter)}
+        />
+        {children}
+        <Toaster />
+        <Footer />
       </body>
     </html>
   );

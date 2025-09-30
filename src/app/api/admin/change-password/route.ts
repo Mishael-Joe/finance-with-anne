@@ -1,10 +1,10 @@
 import { type NextRequest, NextResponse } from "next/server";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/lib/auth";
 import { connectToDatabase } from "@/lib/db/mongoose";
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import { z } from "zod";
+import { getUserModel } from "@/lib/db/models/user.model";
+import { getAdminFromCookie } from "@/lib/helpers/get-admin-from-cookies";
 
 // Define validation schema for password change
 const passwordChangeSchema = z.object({
@@ -27,9 +27,9 @@ const passwordChangeSchema = z.object({
  */
 export async function POST(request: NextRequest) {
   try {
-    // Check authentication
-    const session = await getServerSession(authOptions);
-    if (!session) {
+    const admin = await getAdminFromCookie();
+
+    if (!admin) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
@@ -64,7 +64,8 @@ export async function POST(request: NextRequest) {
       );
 
     // Find the user by ID
-    const user = await UserModel.findById(session.user.id);
+    const User = await getUserModel();
+    const user = await User.findById(admin.id);
     if (!user) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }

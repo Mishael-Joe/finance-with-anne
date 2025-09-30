@@ -2,7 +2,7 @@
 
 import type React from "react";
 
-import { useState, type FormEvent, useCallback, useEffect } from "react";
+import { useState, type FormEvent, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import QuillEditor from "@/components/blog/quill-editor";
@@ -19,8 +19,6 @@ import {
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
-import { useSession } from "next-auth/react";
-import PageLoader from "@/components/ui/page-loader";
 
 /**
  * New Product page component
@@ -32,7 +30,6 @@ export default function NewProductPage() {
   const [error, setError] = useState<string | null>(null);
   const [uploadingImage, setUploadingImage] = useState(false);
   const [uploadingFile, setUploadingFile] = useState(false);
-  const { data: session, status } = useSession();
 
   // Form state
   const [formData, setFormData] = useState({
@@ -45,16 +42,6 @@ export default function NewProductPage() {
     slug: "",
     isVisible: true,
   });
-
-  useEffect(() => {
-    if (status === "unauthenticated" || session?.user?.role !== "admin") {
-      router.push(
-        `/admin/login?error=AccessDenied&callbackUrl=${encodeURIComponent(
-          "/admin/products/new"
-        )}`
-      );
-    }
-  }, [status, session, router]);
 
   /**
    * Handle image upload
@@ -191,10 +178,6 @@ export default function NewProductPage() {
     },
     [formData.slug, toast]
   );
-
-  if (status === "unauthenticated" || session?.user?.role !== "admin") {
-    return <PageLoader />; // Still render null but only after the effect runs
-  }
 
   /**
    * Handle input changes for form fields

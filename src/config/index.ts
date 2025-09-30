@@ -1,4 +1,4 @@
-import { Product } from "@/app/products/page";
+import { Product } from "@/app/(root)/products/page";
 
 export const anneContactEmail = process.env.NEXT_PUBLIC_ANNE_CONTACT_EMAIL;
 export const annePartnershipEmail =
