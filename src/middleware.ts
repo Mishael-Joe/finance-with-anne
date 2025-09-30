@@ -14,7 +14,7 @@ export async function middleware(request: NextRequest) {
   // If it is an admin page and no adminToken, redirect to admin login page
   if (isAdminPage(pathname) && !adminToken) {
     const url = new URL("/admin/login", request.url);
-    url.searchParams.set("callbackUrl", encodeURI(request.url));
+    url.searchParams.set("callbackUrl", request.url);
     url.searchParams.set("error", "AccessDenied");
     return NextResponse.redirect(url);
   }
