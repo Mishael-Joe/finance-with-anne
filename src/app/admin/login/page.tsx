@@ -48,6 +48,8 @@ export default function AdminLoginPage() {
         // router.push(callbackUrl);
         router.push("/admin/dashboard");
         router.refresh();
+        setIsLoading(false);
+        return;
       } else {
         toast.error("There was an error signing you in. Please try again.");
       }
