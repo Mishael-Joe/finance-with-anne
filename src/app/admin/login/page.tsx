@@ -41,7 +41,7 @@ export default function AdminLoginPage() {
       };
       const response = await axios.post(`/api/admin/login`, userInput);
 
-      console.log("response", response);
+      // console.log("response", response);
 
       if (response.data.success === true || response.status === 200) {
         toast.success("You have Successfully signed In.");
