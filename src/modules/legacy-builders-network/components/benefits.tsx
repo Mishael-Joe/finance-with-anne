@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { CheckIcon } from "lucide-react";
+import Link from "next/link";
 
 export default function Benefits() {
   const benefits = [
@@ -41,8 +42,13 @@ export default function Benefits() {
         </div>
       </div>
 
-      <Button className="bg-primary text-white text-2xl lg:text-3xl px-10 py-4 lg:py-8 rounded hover:bg-primary-light/90 mt-8">
-        Subscribe Now
+      <Button
+        className="bg-primary text-white text-2xl lg:text-3xl px-10 py-4 lg:py-8 rounded hover:bg-primary-light/90 mt-8"
+        asChild
+      >
+        <Link href="/payment" className="text-white">
+          Subscribe Now
+        </Link>
       </Button>
     </section>
   );

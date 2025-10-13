@@ -34,6 +34,12 @@ export async function POST(request: Request) {
       );
     }
 
+    const webhookType = transactionData?.data?.meta?.type;
+
+    if (webhookType === "subscription") {
+      return NextResponse.json({ message: "Webhook processed successfully" });
+    }
+
     // ✅ Step 3: Send congratulatory email to user
     const customerEmail = transactionData?.data?.meta?.email;
     const amount = transactionData?.data?.amount;
