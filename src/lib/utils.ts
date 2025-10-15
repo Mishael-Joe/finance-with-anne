@@ -234,7 +234,7 @@ export async function encryptAES(
 }
 
 const authorImages: Record<Authors, string> = {
-  [Authors.AnneEwere]: "/anne.jpg",
+  [Authors.AnneEnwere]: "/anne.jpg",
   [Authors.Mishael]: "/testimonials/mishael.jpg",
   [Authors.FunmiAzeez]: "/taiye.jpg",
 };

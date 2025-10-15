@@ -2,13 +2,13 @@ import mongoose, { Schema, type Document, type Model } from "mongoose";
 import { connectToDatabase } from "../mongoose";
 
 export enum Authors {
-  AnneEwere = "Anne Ewere",
+  AnneEnwere = "Anne Enwere",
   FunmiAzeez = "Funmi Azeez",
   Mishael = "Mishael Joseph",
 }
 
 export const authors = {
-  [Authors.AnneEwere]: Authors.AnneEwere,
+  [Authors.AnneEnwere]: Authors.AnneEnwere,
   [Authors.FunmiAzeez]: Authors.FunmiAzeez,
   [Authors.Mishael]: Authors.Mishael,
 };

@@ -34,6 +34,14 @@ export function SubscriptionForm() {
   const [isProcessing, setIsProcessing] = useState(false);
   const priceDetails = { amount: 150000, currency: "NGN", symbol: "₦" };
 
+  // 💥 New states for coupon
+  const [couponCode, setCouponCode] = useState("");
+  const [couponDiscount, setCouponDiscount] = useState<number>(0);
+  const [isApplyingCoupon, setIsApplyingCoupon] = useState(false);
+
+  // 🧮 Derived total amount after discount
+  const discountedTotal = Math.max(priceDetails.amount - couponDiscount, 0);
+
   // Effect to validate form inputs
   useEffect(() => {
     const { fullName, email, phoneNumber } = userData;
@@ -60,6 +68,38 @@ export function SubscriptionForm() {
     }));
   };
 
+  // 👇 Handle applying coupon
+  const handleApplyCoupon = async () => {
+    if (!couponCode.trim()) return toast.error("Enter a coupon code first");
+    setIsApplyingCoupon(true);
+    try {
+      const { data } = await axios.post("/api/coupon/validate", {
+        code: couponCode,
+      });
+      if (!data.success) {
+        toast.error(data.message || "Invalid coupon");
+        setCouponDiscount(0);
+        return;
+      }
+
+      const { discountType, discountValue } = data.data;
+      let discount = 0;
+
+      if (discountType === "percentage") {
+        discount = (priceDetails.amount * discountValue) / 100;
+      } else {
+        discount = discountValue;
+      }
+
+      setCouponDiscount(discount);
+      toast.success(`Coupon applied! You saved ₦${discount.toLocaleString()}`);
+    } catch (err) {
+      toast.error("Error applying coupon. Try again.");
+    } finally {
+      setIsApplyingCoupon(false);
+    }
+  };
+
   // ==================== Shared Payment Utilities (NEW) ====================
 
   /**
@@ -69,9 +109,8 @@ export function SubscriptionForm() {
   function buildBaseV3Payload() {
     return {
       tx_ref: `TX-REF-${generateUniqueId(8).toUpperCase()}`,
-      // amount: priceDetails?.amount,
-      amount: 1500,
-      currency: priceDetails?.currency,
+      amount: discountedTotal || priceDetails.amount,
+      currency: priceDetails.currency,
       redirect_url:
         process.env.NEXT_PUBLIC_REDIRECT_URL_FOR_SUBSCRIPTION ||
         "https://financewithanne.com/payment/status",
@@ -87,6 +126,7 @@ export function SubscriptionForm() {
         fullname: userData.fullName,
         plan: "Premium Community Subscription",
         date: new Date().toISOString(),
+        couponApplied: couponCode.toUpperCase() || null,
       },
     } as const;
   }
@@ -189,7 +229,48 @@ export function SubscriptionForm() {
           </p>
         </CardHeader>
         <CardContent className="p-6 md:p-8">
+          {/* 💰 Price Display Section */}
           <div className="text-center mb-6">
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-2">
+              {couponDiscount > 0 ? "Discounted Price:" : "Price:"}
+            </h2>
+
+            {couponDiscount > 0 ? (
+              <div>
+                {/* Original Price */}
+                <p className="text-2xl text-gray-400 line-through">
+                  {priceDetails.symbol}
+                  {priceDetails.amount.toLocaleString()} {priceDetails.currency}
+                </p>
+
+                {/* Discounted Price */}
+                <p className="text-4xl md:text-5xl font-extrabold text-green-600">
+                  {priceDetails.symbol}
+                  {discountedTotal.toLocaleString()} {priceDetails.currency}
+                </p>
+
+                {/* Savings Info */}
+                <p className="text-sm text-green-700 mt-1">
+                  You saved{" "}
+                  <span className="font-semibold">
+                    {priceDetails.symbol}
+                    {couponDiscount.toLocaleString()}
+                  </span>{" "}
+                  using coupon{" "}
+                  <span className="font-semibold uppercase">{couponCode}</span>{" "}
+                  🎉
+                </p>
+              </div>
+            ) : (
+              // No coupon applied yet
+              <p className="text-4xl md:text-5xl font-extrabold text-green-600">
+                {priceDetails.symbol}
+                {priceDetails.amount.toLocaleString()} {priceDetails.currency}
+              </p>
+            )}
+          </div>
+
+          {/* <div className="text-center mb-6">
             <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-2">
               Price:
             </h2>
@@ -202,7 +283,7 @@ export function SubscriptionForm() {
                 {priceDetails?.currency}
               </span>
             </p>
-          </div>
+          </div> */}
 
           <form onSubmit={handleProceedToPayment} className="space-y-5">
             <h3 className="text-xl font-semibold text-gray-800 border-b pb-2 mb-4">
@@ -243,6 +324,31 @@ export function SubscriptionForm() {
                 required
                 className="border-border focus:border-primary"
               />
+            </div>
+
+            {/* 💥 Coupon input */}
+            <div className="grid gap-2">
+              <Label htmlFor="coupon">Coupon Code (optional)</Label>
+              <div className="flex gap-2">
+                <Input
+                  id="coupon"
+                  value={couponCode}
+                  onChange={(e) => setCouponCode(e.target.value)}
+                  placeholder="Enter coupon code"
+                />
+                <Button
+                  type="button"
+                  onClick={handleApplyCoupon}
+                  disabled={isApplyingCoupon}
+                  variant="outline"
+                >
+                  {isApplyingCoupon ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    "Apply"
+                  )}
+                </Button>
+              </div>
             </div>
 
             <Button

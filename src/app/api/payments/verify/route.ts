@@ -1,3 +1,4 @@
+import { getCouponModel } from "@/lib/db/models/coupon.model";
 import { NextResponse } from "next/server";
 
 export interface FlutterwaveVerifyResponse {
@@ -37,6 +38,7 @@ export interface FlutterwaveVerifyResponse {
       plan: string;
       date: string;
       type: string;
+      couponApplied: string | null;
     };
     amount_settled: number;
     customer: {
@@ -61,7 +63,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // ✅ Step 2: Verify transaction with Flutterwave API
+    // Step 2: Verify transaction with Flutterwave API
     const transactionData = await verifyTransaction(tx_ref);
 
     if (!transactionData || transactionData?.data?.status !== "successful") {
@@ -69,6 +71,31 @@ export async function POST(req: Request) {
         { ok: false, error: "Transaction not successful" },
         { status: 400 }
       );
+    }
+
+    // Step 3: Update coupon if applied
+    const Coupon = await getCouponModel();
+    const couponCode = transactionData.data.meta?.couponApplied;
+    try {
+      console.log("couponCode", couponCode);
+      if (couponCode) {
+        const coupon = await Coupon.findOne({ code: couponCode.toUpperCase() });
+        if (coupon) {
+          coupon.usedCount += 1;
+
+          // deactivate if usageLimit reached
+          if (coupon.usageLimit && coupon.usedCount >= coupon.usageLimit) {
+            coupon.isActive = false;
+          }
+
+          await coupon.save();
+          console.log(`Coupon ${coupon.code} usage incremented`);
+        } else {
+          console.warn(`Coupon code ${couponCode} not found`);
+        }
+      }
+    } catch (error) {
+      console.error("Error updating coupon:", error);
     }
 
     return NextResponse.json(

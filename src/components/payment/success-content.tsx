@@ -129,9 +129,7 @@ export default function SuccessContent({ searchParams }: SuccessContentProps) {
 
         if (isMounted) {
           setPayload(json.data || null);
-          setStatus(
-            json.data?.status === "successful" || json.ok ? "success" : "failed"
-          );
+          setStatus(json.data?.status === "successful" ? "success" : "failed");
         }
       } catch (err) {
         if (isMounted) {

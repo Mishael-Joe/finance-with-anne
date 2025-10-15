@@ -19,7 +19,7 @@ export default async function PaymentSuccessPage({
 
   const statusArr = ["successful", "completed"];
   // If status is not successful or completed, show failed content
-  if (!statusArr.includes((status as string).toLowerCase())) {
+  if (!status && !statusArr.includes((status as string).toLowerCase())) {
     return (
       <Suspense
         fallback={
