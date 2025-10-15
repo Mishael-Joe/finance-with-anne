@@ -119,6 +119,17 @@ export default async function AdminDashboardPage() {
           </Card>
         </Link>
 
+        <Link href="/admin/coupons" className="block">
+          <Card className="hover:shadow-md transition-shadow">
+            <CardHeader>
+              <CardTitle>Manage Coupons</CardTitle>
+              <CardDescription>
+                Create and edit discount coupons
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        </Link>
+
         {/* <Link href="/admin/orders" className="block">
           <Card className="hover:shadow-md transition-shadow">
             <CardHeader>

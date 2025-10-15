@@ -3,7 +3,15 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, X, LayoutDashboard, FileText, LogOut, Lock } from "lucide-react";
+import {
+  Menu,
+  X,
+  LayoutDashboard,
+  FileText,
+  LogOut,
+  Lock,
+  TicketPercent,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { toast } from "sonner";
@@ -43,6 +51,7 @@ export default function AdminHeader({ user }: { user?: string }) {
     { href: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
     // { href: "/admin/products", label: "Products", icon: ShoppingBag },
     { href: "/admin/blog", label: "Blog", icon: FileText },
+    { href: "/admin/coupons", label: "Coupons", icon: TicketPercent },
     // { href: "/admin/users", label: "Users", icon: Users },
     // { href: "/admin/settings", label: "Settings", icon: Settings },
   ];

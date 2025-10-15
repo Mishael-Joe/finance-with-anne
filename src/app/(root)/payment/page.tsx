@@ -8,13 +8,7 @@ import { SubscriptionForm } from "@/components/payment/subscription-form";
 export const metadata: Metadata = {
   title: "Payment - Subscription",
   description: "Securely subscribe to the Premium Community",
-  keywords: [
-    "money tracker",
-    "budgeting tool",
-    "financial planning",
-    "checkout",
-    "secure payment",
-  ],
+  keywords: ["checkout", "secure payment"],
   openGraph: {
     title: "Payment - Subscription",
     description: "Securely subscribe to the Premium Community",
