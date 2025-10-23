@@ -1,55 +1,86 @@
-import { Button } from "@/components/ui/button";
-import { CheckIcon } from "lucide-react";
-import Link from "next/link";
+import {
+  BookOpen,
+  CheckCircle2,
+  TrendingUp,
+  Users,
+  VideoIcon,
+} from "lucide-react";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 export default function Benefits() {
   const benefits = [
-    "Monthly Webinars with Anne.",
-    "Market Analysis Breakdown (stocks, bonds, T-bills, real estate).",
-    "Guest Experts from across industries.",
-    "Beginners Investment Course (start strong).",
-    "Access to insider-level opportunities & vetted strategies.",
+    {
+      icon: <VideoIcon />,
+      headerText: "Monthly Webinars with Anne",
+      content:
+        " Live sessions where you can ask questions and learn directly from me",
+      contents: "Monthly Webinars with Anne.",
+    },
+    {
+      icon: <TrendingUp />,
+      headerText: "Market Analysis Breakdown",
+      content:
+        "Stocks, bonds, T-bills, real estate all analyzed and explained.",
+    },
+    {
+      icon: <Users />,
+      headerText: "Guest Experts",
+      content:
+        "Learn from industry professionals across various investment sectors",
+      contents: "Guest Experts from across industries.",
+    },
+    {
+      icon: <BookOpen />,
+      headerText: " Beginners Investment Course",
+      content:
+        " Start with a solid foundation perfect for those just getting started",
+      contents: "Beginners Investment Course (start strong)",
+    },
+    {
+      icon: <CheckCircle2 />,
+      headerText: " Vetted Strategies",
+      content: " Access insider-level opportunities and proven strategies.",
+    },
   ];
 
   return (
-    <section className="py-12 px-4 text-center">
-      <h2 className="text-3xl md:text-4xl font-bold mb-4">
-        JOIN THE COMMUNITY
-      </h2>
-
-      <div className="flex flex-col pt-12 w-full">
-        <div className="py-4 px-20 -mb-1 flex flex-col gap-2 border-2 border-primary font-bold max-w-md mx-auto">
-          <p className="text-lg">Annual</p>
-          <p className="text-2xl text-primary">₦150,000</p>
-          <p className="text-xs">Paid Annually</p>
-        </div>
-        <div className="max-w-6xl mx-auto px-4 sm:px-0">
-          <h2 className="text-3xl w-full font-bold text-center bg-primary p-3 text-white">
-            What you will get (Benefits)
+    <section className="py-8 xs:py-12 sm:py-16 md:py-20 lg:py-24 bg-primary">
+      <div className="max-w-4xl mx-auto px-4 xs:px-5 sm:px-6 md:px-8 lg:px-8">
+        {/* Heading Section */}
+        <div className="w-full flex flex-col items-center mb-6 xs:mb-8 sm:mb-10 md:mb-12">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-white mt-1 xs:mt-2 text-center">
+            What You Will Get
           </h2>
+        </div>
 
-          <div className="grid gap-6 -mt-0.5 border-2 p-14">
+        {/* Cards Grid */}
+        <div className="mb-6 xs:mb-8 sm:mb-10 md:mb-12">
+          <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 gap-3 xs:gap-4 sm:gap-5 md:gap-6">
             {benefits.map((benefit, index) => (
-              <div
+              <Card
                 key={index}
-                className="flex items-start justify-center sm:justify-start sm:items-center gap-2"
+                className={`hover:shadow-md transition-shadow duration-300 border-secondary ${
+                  index === benefits.length - 1 ? "sm:col-span-2" : ""
+                }`}
               >
-                <CheckIcon className="text-primary hidden sm:inline-flex" />
-                <p className="text-lg">{benefit}</p>
-              </div>
+                <CardHeader className="pb-2 xs:pb-3 sm:pb-4">
+                  <div className="w-full flex flex-col items-start">
+                    <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-9 sm:h-9 bg-secondary text-black flex items-center justify-center rounded mb-2 xs:mb-3 font-semibold text-sm xs:text-base">
+                      {benefit.icon}
+                    </div>
+                    <div className="font-bold text-lg xs:text-xl sm:text-xl md:text-2xl">
+                      {benefit.headerText}
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="font-semibold text-start text-sm xs:text-base sm:text-lg md:text-lg text-gray-700 leading-relaxed">
+                  {benefit.content}
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
       </div>
-
-      <Button
-        className="bg-primary text-white text-2xl lg:text-3xl px-10 py-4 lg:py-8 rounded hover:bg-primary-light/90 mt-8"
-        asChild
-      >
-        <Link href="/payment" className="text-white">
-          Subscribe Now
-        </Link>
-      </Button>
     </section>
   );
 }

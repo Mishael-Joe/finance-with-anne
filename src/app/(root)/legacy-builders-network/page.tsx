@@ -1,9 +1,10 @@
 import Benefits from "@/modules/legacy-builders-network/components/benefits";
 import Hero from "@/modules/legacy-builders-network/components/hero";
 import ProblemSection from "@/modules/legacy-builders-network/components/problem-section";
-import SubscriptionIntro from "@/modules/legacy-builders-network/components/subscription-intro";
 import Testimonials from "@/modules/legacy-builders-network/components/testimonials";
 import { Metadata } from "next";
+import CommunityIntro from "@/modules/legacy-builders-network/components/community-intro";
+import SubscriptionPage from "@/modules/legacy-builders-network/components/subscrition-intro";
 
 export const metadata: Metadata = {
   title: "Legacy Builders Network - Premium Investment Community",
@@ -15,8 +16,9 @@ export default function Home() {
     <main className="min-h-screen">
       <Hero />
       <ProblemSection />
-      <SubscriptionIntro />
+      <CommunityIntro />
       <Benefits />
+      <SubscriptionPage />
       <Testimonials />
     </main>
   );

@@ -12,6 +12,7 @@ import {
 import { CheckCircle, ExternalLink } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { pricingForCummunity } from "@/lib/pricing";
 
 type VerifyResponse = {
   ok: boolean;
@@ -230,7 +231,8 @@ export default function SuccessContent({ searchParams }: SuccessContentProps) {
                   <p className="font-medium">
                     {payload.amount
                       ? `${
-                          payload.currency ?? "NGN"
+                          payload.currency ??
+                          pricingForCummunity["default"].currency
                         } ${payload.amount.toLocaleString()}`
                       : "—"}
                   </p>

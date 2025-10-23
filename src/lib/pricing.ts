@@ -22,3 +22,29 @@ export function getPriceByCountry(countryCode: string) {
   const priceEntry = pricing[countryCode as keyof typeof pricing];
   return priceEntry || pricing.default;
 }
+
+/**
+ * Defines the pricing structure for different countries.
+ * Each country code maps to an object containing the amount, currency code, and symbol.
+ * A 'default' entry is provided for countries not explicitly listed.
+ * Used in the legacy page
+ */
+export const pricingForCummunity = {
+  NG: { amount: 150000, currency: "NGN", symbol: "₦" },
+  US: { amount: 150.0, currency: "USD", symbol: "$" },
+  GB: { amount: 150.0, currency: "GBP", symbol: "£" },
+  default: { amount: 150.0, currency: "USD", symbol: "$" },
+  // default: { amount: 1000, currency: "NGN", symbol: "₦" },
+};
+
+/**
+ * Retrieves the price details for a given country code.
+ * If the country code is not found in the pricing list, the default price is returned.
+ *
+ * @param countryCode - The two-letter ISO country code (e.g., "US", "NG").
+ * @returns An object containing the amount, currency code, and symbol for the detected country, or the default.
+ */
+export function getPriceByCountryForCummunity(countryCode: string) {
+  const priceEntry = pricingForCummunity[countryCode as keyof typeof pricing];
+  return priceEntry || pricingForCummunity.default;
+}
