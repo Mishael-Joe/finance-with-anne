@@ -114,9 +114,13 @@ export default function SubscriptionPage() {
 
             <CardFooter className="pt-4 xs:pt-5 sm:pt-6">
               <Link href="/payment" className="w-full">
-                <Button className="bg-secondary group w-full text-gray-900 px-4 xs:px-6 py-4 xs:py-5 sm:py-6 rounded-lg font-bold text-base xs:text-lg sm:text-xl hover:bg-yellow-300 transition-colors duration-300 shadow-md hover:shadow-lg">
-                  Join now - {priceDetails?.symbol}
-                  {priceDetails?.amount.toLocaleString()}
+                <Button className="bg-secondary group w-full space-x-2 text-gray-900 px-4 xs:px-6 py-8 xs:py-10 sm:py-6 rounded-lg font-bold text-base xs:text-lg sm:text-xl hover:bg-yellow-300 transition-colors duration-300 shadow-md hover:shadow-lg">
+                  <span>Join now </span>
+                  <span className="hidden sm:inline-flex">
+                    {" "}
+                    - {priceDetails?.symbol}
+                    {priceDetails?.amount.toLocaleString()}
+                  </span>
                   <ArrowRight className="w-5 h-5 ml-2 transform transition-transform duration-300 group-hover:translate-x-1.5" />
                 </Button>
               </Link>
