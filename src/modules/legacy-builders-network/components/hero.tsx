@@ -39,8 +39,12 @@ export default function Hero() {
           {/* Call-to-Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/payment">
-              <Button className="bg-secondary group text-gray-900 px-8 py-6 rounded-lg font-bold text-lg hover:bg-secondary-light transition-colors">
+              <Button className="bg-secondary hidden sm:inline-flex group text-gray-900 px-8 py-6 rounded-lg font-bold text-lg hover:bg-secondary-light transition-colors">
                 Join the Premium Community Today
+                <ArrowRight className="w-5 h-5 ml-2 transform transition-transform duration-300 group-hover:translate-x-1.5" />
+              </Button>
+              <Button className="bg-secondary sm:hidden group text-gray-900 px-8 py-6 rounded-lg font-bold text-lg hover:bg-secondary-light transition-colors">
+                Join Now
                 <ArrowRight className="w-5 h-5 ml-2 transform transition-transform duration-300 group-hover:translate-x-1.5" />
               </Button>
             </Link>
