@@ -272,7 +272,7 @@ export default function Footer() {
               <p>Plot 698 Broadview Estate</p>
               <p>Idu, Abuja</p>
               <p>Nigeria</p>
-              <p>+234 8076 529 944</p>
+              {/* <p>+234 8076 529 944</p> */}
               <a
                 href={`mailto:${anneContactEmail}`}
                 className="hover:text-primary hover:underline text-inherit"
