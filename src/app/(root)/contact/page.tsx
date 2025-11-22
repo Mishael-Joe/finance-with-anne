@@ -62,13 +62,13 @@ export default function ContactPage() {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start">
+                {/* <div className="flex items-start">
                   <Phone className="h-6 w-6 text-primary mr-4 mt-1" />
                   <div>
                     <h3 className="font-semibold mb-1">Phone</h3>
                     <p className="text-muted-foreground">+234 8076 529 944</p>
                   </div>
-                </div>
+                </div> */}
                 <div className="flex items-start">
                   <MapPin className="h-6 w-6 text-primary mr-4 mt-1" />
                   <div>
