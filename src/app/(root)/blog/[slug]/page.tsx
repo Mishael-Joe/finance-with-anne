@@ -96,11 +96,6 @@ export default async function BlogPostPage({
               <div className="mr-4">
                 <Image
                   src={getImage(Post.author)}
-                  // src={
-                  //   Post.author === "Mishael Joseph"
-                  //     ? "/testimonials/mishael.jpg?height=40&width=40"
-                  //     : "/anne.jpg?height=40&width=40"
-                  // }
                   alt="Anne"
                   width={40}
                   height={40}

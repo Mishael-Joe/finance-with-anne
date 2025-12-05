@@ -5,12 +5,14 @@ export enum Authors {
   AnneEnwere = "Anne Enwere",
   FunmiAzeez = "Funmi Azeez",
   Mishael = "Mishael Joseph",
+  Rita = "Rita Ijenigwe",
 }
 
 export const authors = {
   [Authors.AnneEnwere]: Authors.AnneEnwere,
   [Authors.FunmiAzeez]: Authors.FunmiAzeez,
   [Authors.Mishael]: Authors.Mishael,
+  [Authors.Rita]: Authors.Rita,
 };
 
 export type AuthorsType = keyof typeof authors;
