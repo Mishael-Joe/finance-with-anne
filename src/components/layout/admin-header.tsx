@@ -11,6 +11,7 @@ import {
   LogOut,
   Lock,
   TicketPercent,
+  Users,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
@@ -52,7 +53,7 @@ export default function AdminHeader({ user }: { user?: string }) {
     // { href: "/admin/products", label: "Products", icon: ShoppingBag },
     { href: "/admin/blog", label: "Blog", icon: FileText },
     { href: "/admin/coupons", label: "Coupons", icon: TicketPercent },
-    // { href: "/admin/users", label: "Users", icon: Users },
+    { href: "/admin/create-admin", label: "Create Admin", icon: Users },
     // { href: "/admin/settings", label: "Settings", icon: Settings },
   ];
 

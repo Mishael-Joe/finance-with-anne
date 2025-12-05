@@ -236,7 +236,8 @@ export async function encryptAES(
 const authorImages: Record<Authors, string> = {
   [Authors.AnneEnwere]: "/anne.jpg",
   [Authors.Mishael]: "/testimonials/mishael.jpg",
-  [Authors.FunmiAzeez]: "/taiye.jpg",
+  [Authors.FunmiAzeez]: "/bloggers/taiye.jpg",
+  [Authors.Rita]: "/bloggers/rita.jpg",
 };
 
 export const getImage = (val: AuthorsType) => authorImages[val] ?? "/anne.jpg";
