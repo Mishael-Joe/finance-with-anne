@@ -47,7 +47,7 @@ export default function BlogCard({ post }: { post: Post }) {
       {/* Featured image */}
       <div className="aspect-video relative bg-muted">
         <Image
-          src={post.featuredImage || "/placeholder.svg?height=300&width=500"}
+          src={post.featuredImage || "/placeholder.svg"}
           alt={post.title}
           fill
           className="object-cover"
@@ -79,8 +79,8 @@ export default function BlogCard({ post }: { post: Post }) {
             <Image
               src={
                 post.author === "Mishael Joseph"
-                  ? "/testimonials/mishael.jpg?height=40&width=40"
-                  : "/anne.jpg?height=40&width=40"
+                  ? "/testimonials/mishael.jpg"
+                  : "/anne.jpg"
               }
               alt="Anne"
               width={32}

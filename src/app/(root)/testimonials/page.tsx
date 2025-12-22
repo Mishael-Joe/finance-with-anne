@@ -15,7 +15,7 @@ const testimonials = [
   {
     name: "Adedayo Adekunle",
     text: `Very excellent and professional. Attended to all my perturbing questions and provided practical steps to improve my finance. Thanks for the session, Anne.`,
-    avatar: "/testimonials/adedayo.png?height=60&width=60",
+    avatar: "/testimonials/adedayo.png",
     isImage: true,
   },
   {
@@ -78,7 +78,7 @@ export default function TestimonialsPage() {
               <div className="flex items-center">
                 <div className="mr-4">
                   <Image
-                    src="/testimonials/mishael.jpg?height=80&width=80"
+                    src="/testimonials/mishael.jpg"
                     alt="Featured Client"
                     width={60}
                     height={60}
@@ -96,7 +96,7 @@ export default function TestimonialsPage() {
             <div className="flex justify-center">
               <div className="relative w-full max-w-md aspect-video rounded-lg overflow-hidden">
                 <Image
-                  src="/testimonials/mishael.jpg?height=400&width=600"
+                  src="/testimonials/mishael.jpg"
                   alt="Client Success Story"
                   fill
                   className="object-cover"
@@ -171,7 +171,7 @@ export default function TestimonialsPage() {
           <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
             <div className="aspect-video relative bg-muted">
               <Image
-                src="/anne.jpg?height=300&width=500"
+                src="/anne.jpg"
                 alt="Video Testimonial"
                 fill
                 className="object-cover"
@@ -197,7 +197,7 @@ export default function TestimonialsPage() {
           <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
             <div className="aspect-video relative bg-muted">
               <Image
-                src="/anne.jpg?height=300&width=500"
+                src="/anne.jpg"
                 alt="Video Testimonial"
                 fill
                 className="object-cover"

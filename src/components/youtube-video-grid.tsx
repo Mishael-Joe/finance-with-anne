@@ -103,7 +103,7 @@ export function YoutubeVideoGrid() {
               <div className="absolute inset-0 flex items-center justify-center">
                 <div>
                   <Image
-                    src={"/youtube-svgrepo-com.svg"}
+                    src={"/svg/youtube-svgrepo-com.svg"}
                     alt={"Play Button"}
                     height={72}
                     width={72}

@@ -77,7 +77,7 @@ export default function ResourcesPage() {
           >
             <div className="aspect-video relative bg-muted">
               <Image
-                src="/budgeting.jpg?height=300&width=500"
+                src="/budgeting.jpg"
                 alt="Monthly Budget Template"
                 fill
                 className="object-cover"
@@ -113,7 +113,7 @@ export default function ResourcesPage() {
           <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
             <div className="aspect-video relative bg-muted">
               <Image
-                src="/savings-calculator.jpg?height=300&width=500"
+                src="/savings-calculator.jpg"
                 alt="Savings Calculator"
                 fill
                 className="object-cover"
@@ -150,7 +150,7 @@ export default function ResourcesPage() {
           <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
             <div className="aspect-video relative bg-muted">
               <Image
-                src="/net-worth.jpg?height=300&width=500"
+                src="/net-worth.jpg"
                 alt="Net Worth Calculator"
                 fill
                 className="object-cover"
@@ -186,7 +186,7 @@ export default function ResourcesPage() {
           <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
             <div className="aspect-video relative bg-muted">
               <Image
-                src="/investment-calculator.jpg?height=300&width=500"
+                src="/investment-calculator.jpg"
                 alt="Investment Calculator"
                 fill
                 className="object-cover"

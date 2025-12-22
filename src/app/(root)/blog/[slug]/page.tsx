@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -31,7 +33,7 @@ export async function generateMetadata({
     }
 
     return {
-      title: `${Post.title} | Finance with Anne`,
+      title: `${Post.title}`,
       description: Post.excerpt,
     };
   } catch (error) {
@@ -130,7 +132,7 @@ export default async function BlogPostPage({
             <div className="flex items-center">
               <div className="mr-4">
                 <Image
-                  src="/placeholder.svg?height=80&width=80"
+                  src="/placeholder.svg"
                   alt="Anne"
                   width={80}
                   height={80}

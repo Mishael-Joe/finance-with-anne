@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import type { Metadata } from "next";
 import { getPostsByCategory } from "@/lib/posts";
 import CategorySection from "@/components/blog/category-section";
