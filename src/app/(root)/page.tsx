@@ -5,11 +5,11 @@ import NewsletterSignup from "@/components/newsletter-signup";
 import BlogList from "@/components/blog/blog-list";
 import { Button } from "@/components/ui/button";
 import { YoutubeVideoGrid } from "@/components/youtube-video-grid";
-import { getPosts } from "@/lib/posts";
+import { getPublishedPosts } from "@/lib/posts";
 
 export default async function Home() {
   // Fetch the latest posts for the blog section
-  const posts = await getPosts();
+  const posts = await getPublishedPosts();
 
   return (
     <div className="flex flex-col min-h-screen">

@@ -1,3 +1,6 @@
+import { getPostModel } from "./db/models/Post";
+import { connectToDatabase } from "./db/mongoose";
+
 export interface Post {
   slug: string;
   title: string;
@@ -76,6 +79,27 @@ export async function getPosts(): Promise<Post[]> {
       (a, b) =>
         new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
     );
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    return [];
+  }
+}
+
+/**
+ * Get all published posts (newest first)
+ * Server-side ONLY
+ */
+export async function getPublishedPosts(): Promise<Post[]> {
+  try {
+    await connectToDatabase();
+
+    const PostModel = await getPostModel();
+
+    const posts = await PostModel.find({ published: true })
+      .sort({ createdAt: -1 })
+      .lean();
+
+    return posts as Post[];
   } catch (error) {
     console.error("Error fetching posts:", error);
     return [];
