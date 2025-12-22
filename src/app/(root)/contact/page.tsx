@@ -72,7 +72,7 @@ export default function ContactPage() {
                 <div className="flex items-start">
                   <MapPin className="h-6 w-6 text-primary mr-4 mt-1" />
                   <div>
-                    <h3 className="font-semibold mb-1">Office</h3>
+                    <h3 className="font-semibold mb-1 text-primary">Office</h3>
                     <p className="text-muted-foreground">
                       Plot 698 Broadview Estate
                       <br />

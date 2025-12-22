@@ -31,7 +31,7 @@ export async function generateMetadata({
     }
 
     return {
-      title: `${Post.title} | Finance with Anne`,
+      title: `${Post.title}`,
       description: Post.excerpt,
     };
   } catch (error) {

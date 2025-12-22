@@ -64,7 +64,7 @@ export default async function Home() {
             <div className="bg-white rounded-lg shadow-md p-8 text-center md:col-span-2 md:col-start-3">
               <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Image
-                  src="/money-svgrepo-com.svg"
+                  src="/svg/money-svgrepo-com.svg"
                   alt="Money Icon"
                   width={40}
                   height={40}
@@ -87,7 +87,7 @@ export default async function Home() {
             <div className="bg-white rounded-lg shadow-md p-8 text-center">
               <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Image
-                  src="/budget-svgrepo-com.svg"
+                  src="/svg/budget-svgrepo-com.svg"
                   alt="Budgeting Icon"
                   width={40}
                   height={40}
@@ -107,7 +107,7 @@ export default async function Home() {
             <div className="bg-white rounded-lg shadow-md p-8 text-center">
               <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Image
-                  src="/savings-svgrepo-com.svg"
+                  src="/svg/savings-svgrepo-com.svg"
                   alt="Saving Icon"
                   width={40}
                   height={40}
@@ -127,7 +127,7 @@ export default async function Home() {
             <div className="bg-white rounded-lg shadow-md p-8 text-center">
               <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Image
-                  src="/investment-svgrepo-com.svg"
+                  src="/svg/investment-svgrepo-com.svg"
                   alt="Investing Icon"
                   width={40}
                   height={40}
