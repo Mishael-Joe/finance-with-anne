@@ -1,15 +1,9 @@
-import type { Metadata } from "next";
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
 import { Star } from "lucide-react";
 import { FaRegCircleUser } from "react-icons/fa6";
-import Link from "next/link";
-
-// Define metadata for SEO
-export const metadata: Metadata = {
-  title: "Testimonials | Finance with Anne",
-  description:
-    "Read what clients and students say about working with Anne and how her financial guidance has transformed their lives.",
-};
 
 const testimonials = [
   {
@@ -29,222 +23,135 @@ const testimonials = [
   },
   {
     name: "Toyin Osasona Fanisi",
-    text: `This session was highly informative and educative as well. Anne has this simple side of her that makes everything she teaches easy to practice and apply. I love how I was able to discuss and plan my investment journey with her. This class is recommended if you're tired of trial and error.`,
+    text: `This session was highly informative and educative as well. Anne has this simple side of her that makes everything she teaches easy to practice and apply.`,
   },
   {
     name: "Okulaja Oludayo",
-    text: `Coach Anne is a practical financial advisor with vast investment acumen. I wish the life-changing conversation could have gone on forever. Attentive and compassionate—your wisdom is a gift.`,
+    text: `Coach Anne is a practical financial advisor with vast investment acumen. Attentive and compassionate—your wisdom is a gift.`,
   },
   {
     name: "Chidi Mbakigwe",
-    text: `Engaging with Anne has been an eye opener. Her guidance and advice come from experience. I came out of the session with clarity about what to do next and how to do it.`,
+    text: `Engaging with Anne has been an eye opener. I came out of the session with clarity about what to do next.`,
   },
 ];
 
 export default function TestimonialsPage() {
   return (
-    <div className="container mx-auto px-4 md:px-6 py-12">
-      {/* Testimonials Header */}
-      <section className="mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center">
-          Client Testimonials
-        </h1>
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="text-lg text-muted-foreground">
-            Hear from people who have transformed their financial lives through
-            my courses, coaching, and resources.
-          </p>
+    <main className="relative bg-background text-foreground overflow-hidden">
+      {/* ================= HERO ================= */}
+      <section className="relative py-28 md:py-36">
+        {/* Decorative background glow */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-[-120px] left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px]" />
         </div>
-      </section>
 
-      {/* Featured Testimonial */}
-      <section className="mb-16">
-        <div className="bg-primary text-white p-8 md:p-12 rounded-lg">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div>
-              <div className="flex mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="h-6 w-6 fill-current text-yellow-400"
-                  />
-                ))}
-              </div>
-              <blockquote className="text-xl md:text-2xl italic mb-6">
-                "Working with Anne completely transformed my relationship with
-                money. I feel in control of my finances and confident about my
-                future."
-              </blockquote>
-              <div className="flex items-center">
-                <div className="mr-4">
-                  <Image
-                    src="/testimonials/mishael.jpg"
-                    alt="Featured Client"
-                    width={60}
-                    height={60}
-                    className="rounded-full"
-                  />
-                </div>
-                <div>
-                  <h3 className="font-bold text-xl text-slate-200">
-                    Mishael Joseph
-                  </h3>
-                  {/* <p className="text-white/80">Mishael Joseph</p> */}
-                </div>
-              </div>
-            </div>
-            <div className="flex justify-center">
-              <div className="relative w-full max-w-md aspect-video rounded-lg overflow-hidden">
-                <Image
-                  src="/testimonials/mishael.jpg"
-                  alt="Client Success Story"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
+        <div className="container mx-auto px-4 md:px-6 text-center max-w-4xl">
+          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-6">
+            5-Star Client Experiences
+          </div>
+
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight">
+            Real Stories.
+            <span className="block text-primary">
+              Real Financial Transformation.
+            </span>
+          </h1>
+
+          <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+            From clarity to confidence, these are the voices of individuals who
+            have taken intentional steps toward financial growth.
+          </p>
+
+          <div className="mt-10">
+            <Link
+              href="/products"
+              className="inline-flex h-12 items-center justify-center rounded-md bg-primary px-10 text-sm font-medium text-white shadow-lg shadow-primary/30 hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
+            >
+              Start Your Transformation
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Testimonials Grid */}
-      <section className="mb-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* ================= TESTIMONIAL GRID ================= */}
+      <section className="container mx-auto px-4 md:px-6 pb-32">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((testimonial, index) => (
-            <div
+            <article
               key={index}
-              className="bg-white p-6 rounded-lg shadow-md border border-border"
+              className="
+                group relative rounded-2xl border border-border
+                bg-card p-8 shadow-sm
+                hover:shadow-xl hover:-translate-y-1
+                transition-all duration-300
+                flex flex-col
+              "
             >
-              {/* Star Rating */}
+              {/* Rating */}
               <div className="flex mb-4">
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
-                    className="h-5 w-5 fill-current text-yellow-400"
+                    className="h-4 w-4 fill-yellow-400 text-yellow-400"
                   />
                 ))}
               </div>
 
               {/* Quote */}
-              <blockquote className="mb-6 italic">
-                "{testimonial.text}"
+              <blockquote className="text-sm leading-relaxed text-muted-foreground flex-1 mb-6 italic">
+                “{testimonial.text}”
               </blockquote>
 
-              {/* Author Info */}
-              <div className="flex items-center">
-                <div className="mr-4">
-                  {testimonial.isImage ? (
-                    <Image
-                      src={testimonial.avatar}
-                      alt={testimonial.name}
-                      width={60}
-                      height={60}
-                      className="rounded-full"
-                    />
-                  ) : (
-                    <FaRegCircleUser className="rounded-full w-12 h-12 text-slate-500" />
-                  )}
-                </div>
+              {/* Footer */}
+              <div className="flex items-center gap-3 pt-5 border-t border-border/60">
+                {testimonial.isImage ? (
+                  <Image
+                    src={testimonial.avatar!}
+                    alt={testimonial.name}
+                    width={44}
+                    height={44}
+                    className="rounded-full object-cover"
+                  />
+                ) : (
+                  <FaRegCircleUser className="h-10 w-10 text-muted-foreground" />
+                )}
                 <div>
-                  <h4 className="font-bold text-slate-500">
-                    {testimonial.name}
-                  </h4>
+                  <p className="font-semibold text-sm">{testimonial.name}</p>
                   {testimonial.description && (
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-xs text-muted-foreground">
                       {testimonial.description}
                     </p>
                   )}
                 </div>
               </div>
-            </div>
+
+              {/* Subtle hover glow */}
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none ring-1 ring-primary/20" />
+            </article>
           ))}
         </div>
       </section>
 
-      {/* Video Testimonials */}
-      {/* <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-8 text-center">
-          Video Testimonials
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          
-          <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
-            <div className="aspect-video relative bg-muted">
-              <Image
-                src="/anne.jpg"
-                alt="Video Testimonial"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
-                  <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-white border-b-8 border-b-transparent ml-1"></div>
-                </div>
-              </div>
-            </div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold mb-2">
-                Lisa's Debt Freedom Journey
-              </h3>
-              <p className="text-muted-foreground">
-                Lisa shares how she paid off $45,000 in debt using strategies
-                from the Debt Freedom Plan.
-              </p>
-            </div>
-          </div>
+      {/* ================= CTA ================= */}
+      <section className="container mx-auto px-4 md:px-6 pb-32">
+        <div className="rounded-3xl bg-gradient-to-br from-primary to-primary/80 text-white p-14 text-center space-y-6 shadow-xl">
+          <h2 className="text-3xl md:text-4xl font-bold">
+            Ready to Rewrite Your Financial Story?
+          </h2>
 
-          
-          <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
-            <div className="aspect-video relative bg-muted">
-              <Image
-                src="/anne.jpg"
-                alt="Video Testimonial"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
-                  <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-white border-b-8 border-b-transparent ml-1"></div>
-                </div>
-              </div>
-            </div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold mb-2">
-                Mark's Investment Success
-              </h3>
-              <p className="text-muted-foreground">
-                Mark discusses how he built a diversified investment portfolio
-                following Anne's guidance.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section> */}
+          <p className="max-w-2xl mx-auto text-white/90">
+            Learn the same principles that have helped countless individuals
+            gain clarity, discipline, and long-term confidence with money.
+          </p>
 
-      {/* Call to Action */}
-      <section className="bg-secondary/10 p-8 md:p-12 rounded-lg text-center">
-        <h2 className="text-3xl font-bold mb-4 text-primary">
-          Ready to Transform Your Finances?
-        </h2>
-        <p className="max-w-2xl mx-auto mb-8 text-muted-foreground">
-          Join thousands of others who have taken control of their financial
-          future with Anne's guidance.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          {/* <a
-            href="/courses"
-            className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground"
-          >
-            Explore Courses
-          </a> */}
           <Link
-            href="/products"
-            className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-white shadow-sm transition-colors hover:bg-primary/90"
+            href="/contact"
+            className="inline-flex h-12 items-center justify-center rounded-md bg-white text-primary px-10 text-sm font-medium shadow hover:scale-[1.03] transition-all duration-300"
           >
-            Browse Products and Services
+            Book a Session with Anne
           </Link>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

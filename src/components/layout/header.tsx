@@ -6,112 +6,137 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-/**
- * Header component with responsive navigation
- *
- * Features:
- * - Logo and brand name
- * - Desktop navigation links
- * - Mobile menu with hamburger toggle
- * - Active link highlighting
- * - Call-to-action button
- */
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  // Navigation links configuration
   const navLinks = [
-    { href: "/about", label: "About Anne" },
-    { href: "/blog", label: "Real Money Talk" },
+    { href: "/about", label: "About" },
+    { href: "/blog", label: "Money Talk" },
     { href: "/resources", label: "Resources" },
-    { href: "/products", label: "Products and Services" },
-    // { href: "/courses", label: "Courses" },
+    { href: "/products", label: "Products & Services" },
     { href: "/testimonials", label: "Testimonials" },
     { href: "/contact", label: "Contact" },
   ];
 
-  // Function to check if a link is active
-  const isActive = (path: string) => {
-    if (path === "/" && pathname === "/") return true;
-    if (path !== "/" && pathname.startsWith(path)) return true;
-    return false;
-  };
+  const isActive = (path: string) =>
+    path !== "/" ? pathname.startsWith(path) : pathname === "/";
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto flex h-16 items-center justify-between px-4 md:px-6">
-        {/* Logo and Brand Name */}
-        <Link
-          href="/"
-          className="flex items-center space-x-2 text-inherit hover:text-primary transition-colors"
-        >
-          <span className="h-8 w-8 rounded-full bg-primary flex items-center justify-center text-white font-bold">
-            A
-          </span>
-          <span className="font-semibold text-xl hidden lg:inline-block">
-            Finance with Anne
-          </span>
-        </Link>
+    <header className="sticky top-0 z-50 bg-white lg:bg-background/10 lg:backdrop-blur-xl border-b">
+      <div className="max-w-7xl mx-auto px-4 md:px-4">
+        <div className="flex h-20 items-center justify-between">
+          {/* Brand */}
+          <Link
+            href="/"
+            className="flex items-center gap-3 font-semibold text-lg"
+          >
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-white text-sm font-bold">
+              FA
+            </span>
+            <span className="text-primary">Finance With Anne</span>
+          </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-3">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
-                isActive(link.href) ? "text-primary" : "text-muted-foreground"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Desktop CTA Button */}
-        <div className="hidden md:block">
-          <Button href="/blog" variant="primary" size="sm">
-            Get Started
-          </Button>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-        >
-          {mobileMenuOpen ? (
-            <X className="h-6 w-6" />
-          ) : (
-            <Menu className="h-6 w-6" />
-          )}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden">
-          <nav className="flex flex-col space-y-4 p-4 bg-background border-b">
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  isActive(link.href) ? "text-primary" : "text-muted-foreground"
+                className={`relative text-sm font-medium transition-colors ${
+                  isActive(link.href)
+                    ? "text-primary"
+                    : "text-primary hover:text-primary/80"
                 }`}
+              >
+                {link.label}
+                {isActive(link.href) && (
+                  <span className="absolute -bottom-2 left-0 h-[2px] w-full bg-primary rounded-full" />
+                )}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Desktop CTA */}
+          <div className="hidden lg:flex items-center gap-4">
+            <Button href="/blog" size="sm" variant="premium">
+              Get Started
+            </Button>
+          </div>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            className="lg:hidden rounded-lg p-2 hover:bg-muted transition"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Overlay */}
+      <div
+        className={`lg:hidden fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-opacity ${
+          mobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
+        onClick={() => setMobileMenuOpen(false)}
+      />
+
+      {/* Mobile Menu Panel */}
+      <aside
+        style={{ backgroundColor: "#ffffff", opacity: 1 }}
+        className={`lg:hidden fixed top-0 right-0 z-[9999] h-full w-[85%] max-w-sm
+  shadow-2xl transition-transform duration-300
+  ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}
+      >
+        <div className="flex flex-col h-full p-6">
+          <div className="flex items-center justify-between mb-8">
+            <Link href="/">
+              <span className="font-semibold text-lg text-primary">
+                Finance With Anne{" "}
+              </span>
+            </Link>
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="rounded-lg p-2 hover:bg-muted transition"
+            >
+              <X className="h-6 w-6" />
+            </button>
+          </div>
+
+          <nav className="flex flex-col gap-6">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
+                className={`text-base font-medium transition-colors ${
+                  isActive(link.href)
+                    ? "text-primary"
+                    : "text-primary hover:text-primary/80"
+                }`}
               >
                 {link.label}
               </Link>
             ))}
-            <Button href="/blog" variant="primary" size="sm" className="mt-2">
+          </nav>
+
+          <div className="mt-auto pt-8">
+            <Button
+              href="/blog"
+              className="w-full bg-primary"
+              onClick={() => setMobileMenuOpen(false)}
+            >
               Get Started
             </Button>
-          </nav>
+          </div>
         </div>
-      )}
+      </aside>
     </header>
   );
 }
