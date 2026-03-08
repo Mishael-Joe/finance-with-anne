@@ -66,29 +66,23 @@ export default function NewsletterSignup() {
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="flex-1"
+            className="flex-1 py-4"
             disabled={status === "loading"}
             aria-label="Email address"
           />
           <Button
             type="submit"
-            variant="primary"
+            variant="premium"
             disabled={status === "loading"}
-            className="whitespace-nowrap"
+            className="whitespace-nowrap inline-flex items-center"
           >
-            {status === "loading" ? (
-              "Subscribing..."
-            ) : (
-              <>
-                Subscribe <Send className="ml-2 h-4 w-4" />
-              </>
-            )}
+            {status === "loading" ? "Subscribing..." : <>Subscribe</>}
           </Button>
         </div>
 
         {/* Status message */}
         {status === "success" && (
-          <p className="text-sm text-secondary">{message}</p>
+          <p className="text-[0.7rem] text-secondary">{message}</p>
         )}
         {status === "error" && (
           <p className="text-sm text-red-500">{message}</p>

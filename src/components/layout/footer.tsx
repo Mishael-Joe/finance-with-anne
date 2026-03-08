@@ -19,263 +19,132 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-muted border-t">
-      <div className="mx-auto max-w-7xl px-4 md:px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Brand and Tagline */}
-          <div>
-            <Link
-              href="/"
-              className="flex items-center space-x-2 mb-4 text-inherit hover:text-primary transition-colors"
-            >
-              <span className="h-8 w-8 rounded-full bg-primary flex items-center justify-center text-white font-bold">
-                A
+    <footer className="relative bg-[#0A001C] border-t overflow-hidden">
+      {/* Subtle background accent */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent pointer-events-none" />
+
+      <div className="relative mx-auto max-w-7xl px-6 py-24">
+        {/* Main Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-14 animate-fade-in-up">
+          {/* Brand */}
+          <div className="lg:col-span-2">
+            <Link href="/" className="flex items-center gap-4 mb-6 group">
+              <span className="h-10 w-10 rounded-xl bg-primary flex items-center justify-center text-white font-bold text-xl">
+                FA
               </span>
-              <span className="font-semibold text-xl">Finance with Anne</span>
+              <span className="font-semibold text-2xl tracking-tight text-primary">
+                Finance With Anne
+              </span>
             </Link>
-            <p className="text-muted-foreground mb-4">
-              Empowering you to take control of your financial future through
-              education and practical strategies.
+
+            <p className="text-white max-w-md leading-relaxed mb-8">
+              We provide structured guidance, real-world insights, and
+              easy-to-apply frameworks designed to help you manage money better,
+              reduce financial stress, and plan for the future.
             </p>
-            <div className="flex space-x-4">
-              <a
-                href="https://www.instagram.com/financewithanne?igsh=MTUzcWY0MWE2YnhsdQ%3D%3D&utm_source=qr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#E4405F] p-2 rounded-full text-white hover:opacity-90 transition-colors"
-              >
-                <FaInstagram className="h-5 w-5" />
-                <span className="sr-only">Instagram</span>
-              </a>
-              <a
-                href="https://www.facebook.com/share/18nwuqrJ36/?mibextid=LQQJ4d"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#1877F2] p-2 rounded-full text-white hover:opacity-90 transition-colors"
-              >
-                <FiFacebook className="h-5 w-5" />
-                <span className="sr-only">Facebook</span>
-              </a>
-              <a
-                href="https://x.com/financewithanne?s=21&t=Hzd4iPIbzdXj9WMW-swU_A"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-black p-2 rounded-full text-white hover:opacity-90 transition-colors"
-              >
-                <FaXTwitter className="h-5 w-5" />
-                <span className="sr-only">Twitter Now X</span>
-              </a>
-              <a
-                href="https://youtube.com/@financewithanne?si=5zX3b99rfYKi8RQM"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#FF0000] p-2 rounded-full text-white hover:opacity-90 transition-colors"
-              >
-                <FiYoutube className="h-5 w-5" />
-                <span className="sr-only">YouTube</span>
-              </a>
-              <a
-                href="https://www.tiktok.com/@financewithanne?_t=ZM-8vzFmbQoZtt&_r=1"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-black p-2 rounded-full text-white hover:opacity-90 transition-colors"
-              >
-                <RiTiktokLine className="h-5 w-5" />
-                <span className="sr-only">Tiktok</span>
-              </a>
+
+            {/* Social Icons */}
+            <div className="flex items-center gap-4">
+              {[
+                {
+                  href: "https://www.instagram.com/financewithanne",
+                  icon: <FaInstagram />,
+                },
+                {
+                  href: "https://www.facebook.com/share/18nwuqrJ36",
+                  icon: <FiFacebook />,
+                },
+                { href: "https://x.com/financewithanne", icon: <FaXTwitter /> },
+                {
+                  href: "https://youtube.com/@financewithanne",
+                  icon: <FiYoutube />,
+                },
+                {
+                  href: "https://www.tiktok.com/@financewithanne",
+                  icon: <RiTiktokLine />,
+                },
+              ].map((item, i) => (
+                <a
+                  key={i}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="h-11 w-11 rounded-md border border-slate-200 flex items-center justify-center text-white
+              hover:bg-primary hover:border-primary
+              transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                >
+                  {item.icon}
+                </a>
+              ))}
             </div>
-            {/* <div className="flex space-x-4">
-              <a
-                href="https://www.instagram.com/financewithanne?igsh=MTUzcWY0MWE2YnhsdQ%3D%3D&utm_source=qr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <FaInstagram className="h-5 w-5" />
-                <span className="sr-only">Instagram</span>
-              </a>
-              <a
-                href="https://www.facebook.com/share/18nwuqrJ36/?mibextid=LQQJ4d"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <FiFacebook className="h-5 w-5" />
-                <span className="sr-only">Facebook</span>
-              </a>
-              <a
-                href="https://x.com/financewithanne?s=21&t=Hzd4iPIbzdXj9WMW-swU_A"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <FaXTwitter className="h-5 w-5" />
-                <span className="sr-only">Twitter Now X</span>
-              </a>
-              <a
-                href="https://youtube.com/@financewithanne?si=5zX3b99rfYKi8RQM"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <FiYoutube className="h-5 w-5" />
-                <span className="sr-only">YouTube</span>
-              </a>
-              <a
-                href="https://www.tiktok.com/@financewithanne?_t=ZM-8vzFmbQoZtt&_r=1"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <RiTiktokLine className="h-5 w-5" />
-                <span className="sr-only">Tiktok</span>
-              </a>
-            </div> */}
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="font-semibold text-lg mb-4 text-primary">
-              Quick Links
-            </h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/about"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  About Anne
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/blog"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Real Money Talk
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/products"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Products and Services
-                </Link>
-              </li>
-              {/* <li>
-                <Link
-                  href="/courses"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Courses
-                </Link>
-              </li> */}
-              <li>
-                <Link
-                  href="/testimonials"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Testimonials
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Contact Anne
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h3 className="font-semibold text-lg mb-4 text-primary">
-              Resources
-            </h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/resources"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Budget Templates
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/tools/investment-calculator"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Investment Calculator
-                </Link>
-              </li>
-              {/* 
-              <li>
-                <Link
-                  href="/resources"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Debt Payoff Worksheets
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/resources"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Investment Guides
-                </Link>
-              </li> */}
-              <li>
-                <Link
-                  href="/blog"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Latest Articles
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Policies */}
-          <div>
-            <h3 className="font-semibold text-lg mb-4 text-primary">
-              Policies
-            </h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/returns-policy"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Return Policy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/privacy-policy"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {/* Links */}
+          {[
+            {
+              title: "Quick Links",
+              links: [
+                { label: "About Anne", href: "/about" },
+                { label: "Real Money Talk", href: "/blog" },
+                { label: "Products & Services", href: "/products" },
+                { label: "Contact Anne", href: "/contact" },
+              ],
+            },
+            {
+              title: "Resources",
+              links: [
+                { label: "Budget Templates", href: "/resources" },
+                {
+                  label: "Investment Calculator",
+                  href: "/tools/investment-calculator",
+                },
+                { label: "Latest Articles", href: "/blog" },
+                { label: "Testimonials", href: "/testimonials" },
+              ],
+            },
+          ].map((section) => (
+            <div key={section.title}>
+              <h3 className="font-semibold text-md uppercase tracking-wider text-white mb-6">
+                {section.title}
+              </h3>
+              <ul className="space-y-4">
+                {section.links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="group inline-flex items-center gap-2 text-white transition-all"
+                    >
+                      <span className="group-hover:text-primary transition-colors">
+                        {link.label}
+                      </span>
+                      <span className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all text-primary">
+                        →
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
           {/* Contact */}
           <div>
-            <h3 className="font-semibold text-lg mb-4 text-primary">Contact</h3>
-            <address className="not-italic text-muted-foreground space-y-2">
-              <p>Plot 698 Broadview Estate</p>
+            <h3 className="font-semibold text-sm uppercase tracking-wider text-white mb-6">
+              Contact
+            </h3>
+            <address className="not-italic text-white space-y-3">
+              <p>
+                Federal Capital <br />
+                Territory (FCT), <br />
+                Abuja,
+                <br /> Nigeria.
+              </p>
+              {/* <p>Plot 698 Broadview Estate</p>
               <p>Idu, Abuja</p>
-              <p>Nigeria</p>
-              {/* <p>+234 8076 529 944</p> */}
+              <p>Nigeria</p> */}
               <a
                 href={`mailto:${anneContactEmail}`}
-                className="hover:text-primary hover:underline text-inherit"
+                className="inline-block text-primary transition-colors"
               >
                 {anneContactEmail}
               </a>
@@ -283,31 +152,20 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Footer */}
-        <div className="border-t mt-12 pt-8 flex flex-col md:flex-row justify-center items-center">
-          <p className="text-sm text-muted-foreground mb-4 md:mb-0">
+        {/* Bottom */}
+        <div className="mt-20 pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="text-sm text-muted-foreground">
             &copy; {currentYear} Finance with Anne. All rights reserved.
           </p>
-          {/* <div className="flex space-x-6">
-            <Link
-              href="/"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
-            >
+
+          <div className="flex gap-8 text-sm">
+            <Link href="/privacy-policy" className="text-primary">
               Privacy Policy
             </Link>
-            <Link
-              href="/"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
-            >
-              Terms of Service
+            <Link href="/returns-policy" className="text-primary">
+              Return Policy
             </Link>
-            <Link
-              href="/"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
-            >
-              Sitemap
-            </Link>
-          </div> */}
+          </div>
         </div>
       </div>
     </footer>
